@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 16:39+0300\n"
+"POT-Creation-Date: 2019-04-24 21:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,23 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: locker/settings/base.py:107
+#: employee/models.py:14
+msgid "Middle name"
+msgstr "Отчество"
+
+#: employee/models.py:17
+msgid "Profile"
+msgstr "Профиль"
+
+#: employee/models.py:18
+msgid "Profiles"
+msgstr "Профили"
+
+#: locker/settings/base.py:108
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:108
+#: locker/settings/base.py:109
 msgid "English"
 msgstr "Английский"
 
