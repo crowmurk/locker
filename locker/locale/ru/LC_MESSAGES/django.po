@@ -1,0 +1,134 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-24 16:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: locker/settings/base.py:107
+msgid "Russian"
+msgstr "Русский"
+
+#: locker/settings/base.py:108
+msgid "English"
+msgstr "Английский"
+
+#: templates/400.html:5 templates/400.html:11
+msgid "Bad request"
+msgstr "Ошибка в запросе"
+
+#: templates/400.html:13
+msgid ""
+"\n"
+"                    I do not get upset when people do not understand me,\n"
+"                    upset if I do not understand people.\"\n"
+"                "
+msgstr ""
+"\n"
+"                    Я не огорчаюсь, если люди меня не понимают,\n"
+"                    - огорчаюсь, если я не понимаю людей.\"\n"
+"                "
+
+#: templates/403.html:5 templates/403.html:11
+msgid "Forbidden"
+msgstr "Доступ запрещен"
+
+#: templates/403.html:13
+msgid "No things are forbidden, they are just not recommended."
+msgstr "Запретных вещей нет, есть вещи нерекомендованные."
+
+#: templates/404.html:5 templates/404.html:11
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+#: templates/404.html:13
+msgid ""
+"\n"
+"                    There are all sorts here walking around,\n"
+"                    and then I have a page missing!\n"
+"                "
+msgstr ""
+"\n"
+"                    Ходят тут всякие,\n"
+"                    а потом у меня страницы пропадают!\n"
+"                "
+
+#: templates/500.html:5 templates/500.html:11
+msgid "Internal server error"
+msgstr "Ошибка сервера"
+
+#: templates/500.html:13
+msgid "Do not mistake the one who does nothing."
+msgstr "Никогда не ошибается тот, кто ничего не делает."
+
+#: templates/base.html:26
+msgid "LogOut"
+msgstr "Выйти"
+
+#: templates/base.html:28 templates/registration/login.html:37
+msgid "LogIn"
+msgstr "Войти"
+
+#: templates/base.html:57
+msgid "Estimates"
+msgstr "Сметы"
+
+#: templates/base.html:58
+msgid "Clients"
+msgstr "Клиенты"
+
+#: templates/base.html:59
+msgid "Services"
+msgstr "Услуги"
+
+#: templates/registration/logged_out.html:6
+msgid "Logged out!"
+msgstr "Выход выполнен!"
+
+#: templates/registration/logged_out.html:7
+msgid "Click here to login again."
+msgstr "Войти снова."
+
+#: templates/registration/login.html:8
+msgid ""
+"\n"
+"                    Your username and password didn't match.\n"
+"                    Please try again.\n"
+"                "
+msgstr ""
+"\n"
+"                    Имя пользователя и пароль не совпадают.\n"
+"                    Пожалуйста, попробуйте снова.\n"
+"                "
+
+#: templates/registration/login.html:18
+msgid "Your account doesn't have access to this page."
+msgstr "Ваш пользователь не имеет доступа к этой странице."
+
+#: templates/registration/login.html:21
+msgid "Please login to see this page."
+msgstr "Пожалуйста войдите чтобы увидеть страницу."
+
+#: templates/site/underconstruction.html:5
+#: templates/site/underconstruction.html:11
+msgid "Under construction"
+msgstr "В разработке"
+
+#: templates/site/underconstruction.html:13
+msgid "Sorry, this section is under construction."
+msgstr "Извините, раздел в разработке."
