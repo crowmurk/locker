@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 21:30+0300\n"
+"POT-Creation-Date: 2019-04-25 12:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,107 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: employee/models.py:14
+#: client/models.py:13
+msgid "Name"
+msgstr "Название"
+
+#: client/models.py:21
+msgid "A label for URL config."
+msgstr "URL идентификатор объекта"
+
+#: client/models.py:25
+msgid "Details"
+msgstr "Детали"
+
+#: client/models.py:26
+msgid "Details regarding the client"
+msgstr "Информация о клиенте"
+
+#: client/models.py:30
+msgid "Client"
+msgstr "Клиент"
+
+#: client/models.py:31 templates/base.html:58
+msgid "Clients"
+msgstr "Клиенты"
+
+#: client/templates/client/base_client.html:19
+msgid "First"
+msgstr "Первая"
+
+#: client/templates/client/base_client.html:20
+msgid "Previous"
+msgstr "Предыдущая"
+
+#: client/templates/client/base_client.html:23
+#, python-format
+msgid ""
+"\n"
+"                            Page %(page)s of %(pages)s\n"
+"                        "
+msgstr ""
+"\n"
+"                            Страница %(page)s из %(pages)s\n"
+"                        "
+
+#: client/templates/client/base_client.html:28
+msgid "Next"
+msgstr "Следующая"
+
+#: client/templates/client/base_client.html:29
+msgid "Last"
+msgstr "Последняя"
+
+#: client/templates/client/client_confirm_delete.html:7
+#: client/templates/client/client_detail.html:16
+#: client/templates/client/client_list.html:22
+#: core/templates/core/includes/confirm_delete_form.html:8
+msgid "Delete"
+msgstr "Удалить"
+
+#: client/templates/client/client_detail.html:15
+#: client/templates/client/client_form.html:9
+#: client/templates/client/client_form.html:18
+#: client/templates/client/client_list.html:21
+msgid "Edit"
+msgstr "Изменить"
+
+#: client/templates/client/client_form.html:11
+#: client/templates/client/client_form.html:21
+#: client/templates/client/client_list.html:10
+msgid "Create"
+msgstr "Создать"
+
+#: client/templates/client/client_list.html:28
+#, python-format
+msgid ""
+"\n"
+"                            No %(model_name)s available\n"
+"                        "
+msgstr ""
+"\n"
+"                            %(model_name)s не существует\n"
+"                        "
+
+#: core/templates/core/includes/confirm_delete_form.html:6
+msgid "Are you sure you want to delete"
+msgstr "Вы действительно хотите удалить"
+
+#: core/templates/core/includes/confirm_delete_form.html:7
+msgid "Cancel"
+msgstr "Отмена"
+
+#: core/validators.py:15
+#, python-format
+msgid "An error was founded in %(value)s template: %(message)s"
+msgstr "Шаблон %(value)s содержит ошибку: %(message)s"
+
+#: core/validators.py:27
+#, python-format
+msgid "Slug must not be \"%(slug)s\""
+msgstr "Slug не может быть \"%(slug)s\""
+
+#: employee/admin.py:22 employee/models.py:14
 msgid "Middle name"
 msgstr "Отчество"
 
@@ -32,11 +132,11 @@ msgstr "Профиль"
 msgid "Profiles"
 msgstr "Профили"
 
-#: locker/settings/base.py:108
+#: locker/settings/base.py:110
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:109
+#: locker/settings/base.py:111
 msgid "English"
 msgstr "Английский"
 
@@ -99,10 +199,6 @@ msgstr "Войти"
 #: templates/base.html:57
 msgid "Estimates"
 msgstr "Сметы"
-
-#: templates/base.html:58
-msgid "Clients"
-msgstr "Клиенты"
 
 #: templates/base.html:59
 msgid "Services"
