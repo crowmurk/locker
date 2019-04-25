@@ -22,6 +22,7 @@ urlpatterns = [
     path('', RedirectView.as_view(
         pattern_name='underconstruction',
         permanent=False)),
+    path('client/', include(('client.urls', 'client'))),
     path('underconstruction/', TemplateView.as_view(
         template_name='site/underconstruction.html'),
         name='underconstruction'),

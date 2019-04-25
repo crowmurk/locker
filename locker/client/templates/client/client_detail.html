@@ -1,0 +1,27 @@
+{% extends "client/base_client.html" %}
+{% load i18n %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} – {{ client|verbose_name }}: {{ client }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h3>{{ client|verbose_name }}: {{ client.name }}</h3>
+                <ul class="inline">
+                    <li><a href="{{ client.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
+                    <li><a href="{{ client.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
+                </ul>
+                <dl>
+                    <dt><strong>{% field_verbose_name client 'name' %}:</strong></dt>
+                    <dd>{{ client.name }}</dd>
+                    <dt><strong>{% field_verbose_name client 'details' %}:</strong></dt>
+                    <dd>{{ client.details }}</dd>
+                </dl>
+            </div>
+        </div>
+    </article>
+{% endblock %}

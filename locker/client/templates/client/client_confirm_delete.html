@@ -1,0 +1,12 @@
+{% extends "client/base_client.html" %}
+{% load i18n %}
+{% load forms %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} - {% trans "Delete" %} {{ client|verbose_name|lower }}
+{% endblock %}
+
+{% block content %}
+    {% delete_form client.get_delete_url %}
+{% endblock %}
