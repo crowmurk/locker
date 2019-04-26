@@ -10,7 +10,7 @@
     <article>
         <div class="row">
             <div class="offset-by-two eight columns">
-                <h3>{{ client|verbose_name }}: {{ client.name }}</h3>
+                <h3>{{ client|verbose_name }}:</h3>
                 <ul class="inline">
                     <li><a href="{{ client.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
                     <li><a href="{{ client.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
@@ -20,6 +20,8 @@
                     <dd>{{ client.name }}</dd>
                     <dt><strong>{% field_verbose_name client 'details' %}:</strong></dt>
                     <dd>{{ client.details }}</dd>
+                    <dt><strong>{% trans "Number of orders" %}:</strong></dt>
+                    <dd>{{ client.number_of_orders }}</dd>
                 </dl>
             </div>
         </div>

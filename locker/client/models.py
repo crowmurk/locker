@@ -36,6 +36,11 @@ class Client(models.Model):
             name=self.name,
         )
 
+    def _get_number_of_orders(self):
+        return len(self.order_set.filter(client__id=self.id))
+
+    number_of_orders = property(_get_number_of_orders)
+
     def get_absolute_url(self):
         return reverse(
             'client:detail',
