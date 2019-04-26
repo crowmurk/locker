@@ -20,7 +20,7 @@ from django.views.generic import TemplateView, RedirectView
 
 urlpatterns = [
     path('', RedirectView.as_view(
-        pattern_name='underconstruction',
+        pattern_name='calc:order:list',
         permanent=False)),
     path('client/', include(('client.urls', 'client'))),
     path('calc/', include('calc.urls')),
