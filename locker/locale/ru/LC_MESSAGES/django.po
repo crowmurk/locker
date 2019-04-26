@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 10:29+0300\n"
+"POT-Creation-Date: 2019-04-26 17:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,18 +87,31 @@ msgstr "Опции заказа"
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/templates/calc/base_calc.html:19
-#: client/templates/client/base_client.html:19
+#: calc/tables.py:14 calc/tables.py:40 calc/templates/calc/order_detail.html:23
+msgid "Price"
+msgstr "Цена"
+
+#: calc/tables.py:23 calc/templates/calc/orderoption_detail.html:25
+#: calc/templates/calc/service_detail.html:27
+msgid "Total"
+msgstr "Итого"
+
+#: calc/tables.py:43
+msgid "Sum"
+msgstr "Сумма"
+
+#: calc/templates/calc/base_calc.html:22
+#: client/templates/client/base_client.html:22
 msgid "First"
 msgstr "Первая"
 
-#: calc/templates/calc/base_calc.html:20
-#: client/templates/client/base_client.html:20
+#: calc/templates/calc/base_calc.html:23
+#: client/templates/client/base_client.html:23
 msgid "Previous"
 msgstr "Предыдущая"
 
-#: calc/templates/calc/base_calc.html:23
-#: client/templates/client/base_client.html:23
+#: calc/templates/calc/base_calc.html:26
+#: client/templates/client/base_client.html:26
 #, python-format
 msgid ""
 "\n"
@@ -109,87 +122,56 @@ msgstr ""
 "                            Страница %(page)s из %(pages)s\n"
 "                        "
 
-#: calc/templates/calc/base_calc.html:28
-#: client/templates/client/base_client.html:28
+#: calc/templates/calc/base_calc.html:31
+#: client/templates/client/base_client.html:31
 msgid "Next"
 msgstr "Следующая"
 
-#: calc/templates/calc/base_calc.html:29
-#: client/templates/client/base_client.html:29
+#: calc/templates/calc/base_calc.html:32
+#: client/templates/client/base_client.html:32
 msgid "Last"
 msgstr "Последняя"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:16
-#: calc/templates/calc/order_list.html:22
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:16
-#: calc/templates/calc/orderoption_list.html:22
 #: calc/templates/calc/service_confirm_delete.html:7
 #: calc/templates/calc/service_detail.html:16
-#: calc/templates/calc/service_list.html:22
 #: client/templates/client/client_confirm_delete.html:7
 #: client/templates/client/client_detail.html:16
-#: client/templates/client/client_list.html:22
 #: core/templates/core/includes/confirm_delete_form.html:8
 msgid "Delete"
 msgstr "Удалить"
 
 #: calc/templates/calc/order_detail.html:15
 #: calc/templates/calc/order_form.html:9 calc/templates/calc/order_form.html:18
-#: calc/templates/calc/order_list.html:21
 #: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/orderoption_form.html:9
 #: calc/templates/calc/orderoption_form.html:18
-#: calc/templates/calc/orderoption_list.html:21
 #: calc/templates/calc/service_detail.html:15
 #: calc/templates/calc/service_form.html:9
 #: calc/templates/calc/service_form.html:18
-#: calc/templates/calc/service_list.html:21
 #: client/templates/client/client_detail.html:15
 #: client/templates/client/client_form.html:9
 #: client/templates/client/client_form.html:18
-#: client/templates/client/client_list.html:21
 msgid "Edit"
 msgstr "Изменить"
 
-#: calc/templates/calc/order_detail.html:23
-msgid "Price"
-msgstr "Цена"
-
 #: calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
-#: calc/templates/calc/order_list.html:10
+#: calc/templates/calc/order_list.html:15
 #: calc/templates/calc/orderoption_form.html:11
 #: calc/templates/calc/orderoption_form.html:21
-#: calc/templates/calc/orderoption_list.html:10
+#: calc/templates/calc/orderoption_list.html:15
 #: calc/templates/calc/service_form.html:11
 #: calc/templates/calc/service_form.html:21
-#: calc/templates/calc/service_list.html:10
+#: calc/templates/calc/service_list.html:15
 #: client/templates/client/client_form.html:11
 #: client/templates/client/client_form.html:21
-#: client/templates/client/client_list.html:10
+#: client/templates/client/client_list.html:11
 msgid "Create"
 msgstr "Создать"
-
-#: calc/templates/calc/order_list.html:28
-#: calc/templates/calc/orderoption_list.html:28
-#: calc/templates/calc/service_list.html:28
-#: client/templates/client/client_list.html:28
-#, python-format
-msgid ""
-"\n"
-"                            No %(model_name)s available\n"
-"                        "
-msgstr ""
-"\n"
-"                            %(model_name)s не существует\n"
-"                        "
-
-#: calc/templates/calc/orderoption_detail.html:25
-#: calc/templates/calc/service_detail.html:27
-msgid "Total"
-msgstr "Итого"
 
 #: client/models.py:13
 msgid "Name"
@@ -211,7 +193,7 @@ msgstr "Информация о клиенте"
 msgid "Clients"
 msgstr "Клиенты"
 
-#: client/templates/client/client_detail.html:23
+#: client/tables.py:11 client/templates/client/client_detail.html:23
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
