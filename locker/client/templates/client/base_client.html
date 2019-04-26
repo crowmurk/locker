@@ -3,14 +3,17 @@
 
 {% block content %}
     <div class="row">
-        <section class="eight columns">
-            {% block client_content %}
+        <section class="ten columns">
+            {% block client_header %}
             {% endblock %}
         </section>
-        <section class="four columns">
-            {% block create_button %}{% endblock %}
+        <section class="two columns">
+            {% block client_button %}
+            {% endblock %}
         </section>
     </div>
+    {% block client_content %}
+    {% endblock %}
     {% if is_paginated %}
         <div class="row">
             <div class="twelve columns">

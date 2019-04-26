@@ -1,36 +1,20 @@
 {% extends "calc/base_calc.html" %}
 {% load i18n %}
+{% load django_tables2 %}
 {% load names %}
 
 {% block title %}
     {{ block.super }} - {{ view.model|verbose_name_plural }}
 {% endblock %}
 
-{% block create_button %}
+{% block calc_header %}
+    <h2>{{ view.model|verbose_name_plural }}</h2>
+{% endblock %}
+
+{% block calc_button %}
     <a href="{% url 'calc:orderoption:create' %}" class="button button-primary">{% trans "Create" %}</a>
 {% endblock %}
 
 {% block calc_content %}
-    <div class="offset-by-two ten columns">
-        <h2>{{ view.model|verbose_name_plural }}</h2>
-        <ul>
-            {% for orderoption in object_list %}
-                <li>
-                    <a href="{{ orderoption.get_absolute_url }}">{{ orderoption }}</a>
-                    <ul class=inline>
-                        <li><a href="{{ orderoption.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
-                        <li><a href="{{ orderoption.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
-                    </ul>
-                </li>
-            {% empty %}
-                <li>
-                    <em>
-                        {% blocktrans with model_name=view.model|verbose_name_plural %}
-                            No {{ model_name }} available
-                        {% endblocktrans %}
-                    </em>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+    {% render_table table %}
 {% endblock %}

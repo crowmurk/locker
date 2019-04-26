@@ -1,19 +1,21 @@
 from django.urls import reverse_lazy
 from django.views.generic import (
-    ListView,
     CreateView,
     DetailView,
     UpdateView,
     DeleteView
 )
 
+from django_tables2 import SingleTableView
+
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
+from .tables import OrderTable, ServiceTable, OrderOptionTable
 
 
-class OrderList(ListView):
+class OrderList(SingleTableView):
     model = Order
-    paginate_by = 7
+    table_class = OrderTable
 
 
 class OrderCreate(CreateView):
@@ -36,9 +38,9 @@ class OrderDelete(DeleteView):
     success_url = reverse_lazy('calc:order:list')
 
 
-class ServiceList(ListView):
+class ServiceList(SingleTableView):
     model = Service
-    paginate_by = 7
+    table_class = ServiceTable
 
 
 class ServiceCreate(CreateView):
@@ -61,9 +63,9 @@ class ServiceDelete(DeleteView):
     success_url = reverse_lazy('calc:service:list')
 
 
-class OrderOptionList(ListView):
+class OrderOptionList(SingleTableView):
     model = OrderOption
-    paginate_by = 7
+    table_class = OrderOptionTable
 
 
 class OrderOptionCreate(CreateView):

@@ -1,19 +1,22 @@
 from django.urls import reverse_lazy
 from django.views.generic import (
-    ListView,
     CreateView,
     DetailView,
     UpdateView,
     DeleteView
 )
 
+from django_tables2 import SingleTableView
+
 from .models import Client
+from .tables import ClientTable
 from .forms import ClientForm
 
+
 # Create your views here.
-class ClientList(ListView):
+class ClientList(SingleTableView):
     model = Client
-    paginate_by = 7
+    table_class = ClientTable
 
 
 class ClientCreate(CreateView):
