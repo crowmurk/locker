@@ -1,0 +1,25 @@
+{% extends "calc/base_calc.html" %}
+{% load i18n %}
+{% load forms %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }}
+    {% if order %}
+        - {% trans "Edit" %}
+    {% else %}
+        - {% trans "Create" %}
+    {% endif %}
+    {{ view.model|verbose_name|lower }}
+{% endblock %}
+
+{% block content %}
+    {% if order %}
+        {% trans "Edit" as action_verbose %}
+        {% form order.get_update_url action_verbose %}
+    {% else %}
+        {% trans "Create" as action_verbose %}
+        {% url 'calc:order:create' as form_url %}
+        {% form form_url action_verbose %}
+    {% endif %}
+{% endblock %}

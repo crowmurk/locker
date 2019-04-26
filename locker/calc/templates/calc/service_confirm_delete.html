@@ -1,0 +1,12 @@
+{% extends "calc/base_calc.html" %}
+{% load i18n %}
+{% load forms %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} - {% trans "Delete" %} {{ service|verbose_name|lower }}
+{% endblock %}
+
+{% block content %}
+    {% delete_form service.get_delete_url %}
+{% endblock %}

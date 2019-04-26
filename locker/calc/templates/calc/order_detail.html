@@ -1,0 +1,29 @@
+{% extends "calc/base_calc.html" %}
+{% load i18n %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} – {{ order|verbose_name }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h3>{{ order|verbose_name }} {{ order.pk }}:</h3>
+                <ul class="inline">
+                    <li><a href="{{ order.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
+                    <li><a href="{{ order.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
+                </ul>
+                <dl>
+                    <dt><strong>{% field_verbose_name order 'author' %}:</strong></dt>
+                    <dd>{{ order.author.get_full_name }}</dd>
+                    <dt><strong>{% field_verbose_name order 'client' %}:</strong></dt>
+                    <dd>{{ order.client }}</dd>
+                    <dt><strong>{% trans "Price" %}:</strong></dt>
+                    <dd>{{ order.price }}</dd>
+                </dl>
+            </div>
+        </div>
+    </article>
+{% endblock %}

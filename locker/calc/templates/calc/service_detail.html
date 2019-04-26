@@ -1,0 +1,33 @@
+{% extends "calc/base_calc.html" %}
+{% load i18n %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} – {{ service|verbose_name }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h3>{{ service|verbose_name }}:</h3>
+                <ul class="inline">
+                    <li><a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
+                    <li><a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
+                </ul>
+                <dl>
+                    <dt><strong>{% field_verbose_name service 'equipment' %}:</strong></dt>
+                    <dd>{{ service.equipment }}</dd>
+                    <dt><strong>{% field_verbose_name service 'equipment_price' %}:</strong></dt>
+                    <dd>{{ service.equipment_price }}</dd>
+                    <dt><strong>{% field_verbose_name service 'work' %}:</strong></dt>
+                    <dd>{{ service.work }}</dd>
+                    <dt><strong>{% field_verbose_name service 'work_price' %}:</strong></dt>
+                    <dd>{{ service.work_price }}</dd>
+                    <dt><strong>{% trans "Total" %}:</strong></dt>
+                    <dd>{{ service.price }}</dd>
+                </dl>
+            </div>
+        </div>
+    </article>
+{% endblock %}

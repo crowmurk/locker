@@ -41,6 +41,7 @@ LOCAL_APPS = [
     'core.apps.CoreConfig',
     'employee.apps.EmployeeConfig',
     'client.apps.ClientConfig',
+    'calc.apps.CalcConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

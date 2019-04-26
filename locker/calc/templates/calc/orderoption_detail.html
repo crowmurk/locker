@@ -1,0 +1,31 @@
+{% extends "calc/base_calc.html" %}
+{% load i18n %}
+{% load names %}
+
+{% block title %}
+    {{ block.super }} – {{ orderoption|verbose_name }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h3>{{ orderoption|verbose_name }}:</h3>
+                <ul class="inline">
+                    <li><a href="{{ orderoption.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
+                    <li><a href="{{ orderoption.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
+                </ul>
+                <dl>
+                    <dt><strong>{% field_verbose_name orderoption 'order' %}:</strong></dt>
+                    <dd>{{ orderoption.order }}</dd>
+                    <dt><strong>{% field_verbose_name orderoption 'service' %}:</strong></dt>
+                    <dd>{{ orderoption.service }}</dd>
+                    <dt><strong>{% field_verbose_name orderoption 'quantity' %}:</strong></dt>
+                    <dd>{{ orderoption.quantity }}</dd>
+                    <dt><strong>{% trans "Total" %}:</strong></dt>
+                    <dd>{{ orderoption.price }}</dd>
+                </dl>
+            </div>
+        </div>
+    </article>
+{% endblock %}
