@@ -1,5 +1,6 @@
 {% extends "client/base_client.html" %}
 {% load i18n %}
+{% load django_tables2 %}
 {% load names %}
 
 {% block title %}
@@ -30,5 +31,7 @@
                 </dl>
             </div>
         </div>
+        <h5>{% trans "Client orders" %}</h5>
+        {% render_table table %}
     </article>
 {% endblock %}

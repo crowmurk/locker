@@ -46,6 +46,7 @@ class OrderDetail(DetailView):
         context['table'] = OrderOptionTable(self.object.get_options())
         return context
 
+
 class OrderUpdate(OrderFormValidMixin, UpdateView):
     model = Order
     form_class = OrderForm

@@ -36,8 +36,11 @@ class Client(models.Model):
             name=self.name,
         )
 
+    def get_orders(self):
+        return self.orders.all()
+
     def _get_number_of_orders(self):
-        return len(self.orders.all())
+        return len(self.get_orders())
 
     number_of_orders = property(_get_number_of_orders)
 
