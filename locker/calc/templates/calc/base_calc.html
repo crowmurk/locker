@@ -3,17 +3,17 @@
 
 {% block content %}
     <div class="row">
-        <section class="ten columns">
+        <section class="eight columns">
             {% block calc_header %}
             {% endblock %}
         </section>
-        <section class="two columns">
+        <section class="u-pull-right">
             {% block calc_button %}
             {% endblock %}
         </section>
+    </div>
     {% block calc_content %}
     {% endblock %}
-    </div>
     {% if is_paginated %}
         <div class="row">
             <div class="twelve columns">

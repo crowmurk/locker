@@ -3,18 +3,23 @@
 {% load names %}
 
 {% block title %}
-    {{ block.super }} – {{ service|verbose_name }}
+    {{ block.super }} – {{ service|verbose_name }}: {{ service.equipment }}
 {% endblock %}
 
-{% block content %}
+{% block calc_header %}
+    <h5>{{ service|verbose_name }}: {{ service.equipment }}</h5>
+{% endblock %}
+
+{% block calc_button %}
+    <a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a>
+    <a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+{% endblock %}
+
+{% block calc_content %}
     <article>
         <div class="row">
-            <div class="offset-by-two eight columns">
-                <h3>{{ service|verbose_name }}:</h3>
-                <ul class="inline">
-                    <li><a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
-                    <li><a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
-                </ul>
+            <div class="one column"></div>
+            <div class="ten columns">
                 <dl>
                     <dt><strong>{% field_verbose_name service 'equipment' %}:</strong></dt>
                     <dd>{{ service.equipment }}</dd>

@@ -3,23 +3,30 @@
 {% load names %}
 
 {% block title %}
-    {{ block.super }} – {{ orderoption|verbose_name }}
+    {{ block.super }} – {{ orderoption|verbose_name }}: {{ orderoption.order.pk }}
 {% endblock %}
 
-{% block content %}
+{% block calc_header %}
+    <h5>{{ orderoption|verbose_name }}: {{ orderoption.order.pk }}</h5>
+{% endblock %}
+
+{% block calc_button %}
+    <a href="{{ orderoption.get_update_url }}" class="button">{% trans "Edit" %}</a>
+    <a href="{{ orderoption.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+{% endblock %}
+
+{% block calc_content %}
     <article>
         <div class="row">
-            <div class="offset-by-two eight columns">
-                <h3>{{ orderoption|verbose_name }}:</h3>
-                <ul class="inline">
-                    <li><a href="{{ orderoption.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
-                    <li><a href="{{ orderoption.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
-                </ul>
+            <div class="one column"></div>
+            <div class="ten columns">
                 <dl>
                     <dt><strong>{% field_verbose_name orderoption 'order' %}:</strong></dt>
-                    <dd>{{ orderoption.order }}</dd>
+                    <dd>{{ orderoption.order.pk }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'service' %}:</strong></dt>
-                    <dd>{{ orderoption.service }}</dd>
+                    <dd>{{ orderoption.service.equipment }}</dd>
+                    <dt><strong>{% trans "Price" %}:</strong></dt>
+                    <dd>{{ orderoption.service.price }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'quantity' %}:</strong></dt>
                     <dd>{{ orderoption.quantity }}</dd>
                     <dt><strong>{% trans "Total" %}:</strong></dt>

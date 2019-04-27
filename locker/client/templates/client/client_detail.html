@@ -6,15 +6,20 @@
     {{ block.super }} – {{ client|verbose_name }}: {{ client }}
 {% endblock %}
 
-{% block content %}
+{% block client_header %}
+    <h5>{{ client|verbose_name }}: {{ client.name }}</h5>
+{% endblock %}
+
+{% block client_button %}
+    <a href="{{ client.get_update_url }}" class="button">{% trans "Edit" %}</a>
+    <a href="{{ client.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+{% endblock %}
+
+{% block client_content %}
     <article>
         <div class="row">
-            <div class="offset-by-two eight columns">
-                <h3>{{ client|verbose_name }}:</h3>
-                <ul class="inline">
-                    <li><a href="{{ client.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
-                    <li><a href="{{ client.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
-                </ul>
+        <div class="one column"></div>
+            <div class="ten columns">
                 <dl>
                     <dt><strong>{% field_verbose_name client 'name' %}:</strong></dt>
                     <dd>{{ client.name }}</dd>
