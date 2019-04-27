@@ -14,3 +14,4 @@ class ClientTable(tables.Table):
     class Meta:
         model = Client
         exclude = ('id', 'slug')
+        empty_text = _("There are no records available")

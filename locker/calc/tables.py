@@ -16,6 +16,7 @@ class OrderTable(tables.Table):
 
     class Meta:
         model = Order
+        empty_text = _("There are no records available")
 
 
 class ServiceTable(tables.Table):
@@ -27,6 +28,7 @@ class ServiceTable(tables.Table):
     class Meta:
         model = Service
         exclude = ('id', )
+        empty_text = _("There are no records available")
 
 
 class OrderOptionTable(tables.Table):
@@ -47,3 +49,4 @@ class OrderOptionTable(tables.Table):
         model = OrderOption
         sequence = ('id', 'service', 'service_price', 'quantity', 'price')
         exclude = ('id', 'order')
+        empty_text = _("There are no records available")
