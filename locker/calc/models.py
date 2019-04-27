@@ -61,6 +61,12 @@ class Order(models.Model):
             kwargs={'pk': self.pk},
         )
 
+    def get_pdf_url(self):
+        return reverse(
+            'calc:order:pdf',
+            kwargs={'pk': self.pk},
+        )
+
     def get_update_url(self):
         return reverse(
             'calc:order:update',

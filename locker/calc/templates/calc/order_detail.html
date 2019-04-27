@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block calc_button %}
+    <a href="{{ order.get_pdf_url }}" class="button button-primary">{% trans "PDF" %}</a>
     <a href="{{ order.get_update_url }}" class="button">{% trans "Edit" %}</a>
     <a href="{{ order.get_delete_url }}" class="button">{% trans "Delete" %}</a>
 {% endblock %}

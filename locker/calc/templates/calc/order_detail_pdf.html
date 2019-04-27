@@ -1,0 +1,46 @@
+{% load staticfiles %}
+{% load i18n %}
+{% load django_tables2 %}
+{% load names %}
+
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>
+            {{ order|verbose_name }}_{{order.pk}}
+        </title>
+        <style type="text/css">
+            @font-face { font-family: DejaMono; src: url("{% static 'site/fonts/DejaVuSansMono.ttf' %}");}
+            html { font-family: DejaMono; src: url("{% static 'site/fonts/DejaVuSansMono.ttf' %}");}
+        </style>
+        <link rel="stylesheet" type="text/css" href="{% static 'site/style_pdf.css' %}">
+    </head>
+    <body>
+        <div id="header_content">
+            <div align="right">
+                {% trans "Document created" %}: {% now "j E Y H:i" %}
+            </div>
+        </div>
+
+        <h2 align="center">Locker calculator</h2>
+
+        <h3>{{ order|verbose_name }}: {{ order.pk }}</h3>
+
+        <strong>{% field_verbose_name order 'author' %}:</strong> {{ order.author.get_full_name }}
+        </BR>
+        <strong>{% field_verbose_name order 'client' %}:</strong> {{ order.client }}
+        </BR>
+        <strong>{% trans "Price" %}:</strong> {{ order.price }}
+        </BR>
+        <strong>{% field_verbose_name order 'created' %}:</strong> {{ order.created }}
+        </BR>
+        <strong>{% field_verbose_name order 'modified' %}:</strong> {{ order.modified }}
+        </BR> </BR>
+        <h4>{% trans "Order options:" %}</h4>
+
+        {% render_table table %}
+        <div id="footer_content">
+            &copy; {% now "Y" %} <a href="https://loker35.ru/">Locker</a>
+        </div>
+    </body>
+</html>

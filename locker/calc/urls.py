@@ -11,6 +11,7 @@ order = [
     path('<int:pk>/', views.OrderDetail.as_view(), name='detail'),
     path('<int:pk>/update/', views.OrderUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.OrderDelete.as_view(), name='delete'),
+    path('<int:pk>/order.pdf', views.OrderDetailPDF.as_view(), name='pdf')
 ]
 
 service = [
