@@ -5,6 +5,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from django.http import HttpResponseRedirect
 
 from django_tables2 import SingleTableView
 
@@ -13,12 +14,21 @@ from .forms import OrderForm, ServiceForm, OrderOptionForm
 from .tables import OrderTable, ServiceTable, OrderOptionTable
 
 
+class OrderFormValidMixin:
+    def form_valid(self, form):
+        """Переопределено для автоматического
+        добавления автора заказа
+        """
+        self.object = form.save(self.request)
+        return HttpResponseRedirect(self.get_success_url())
+
+
 class OrderList(SingleTableView):
     model = Order
     table_class = OrderTable
 
 
-class OrderCreate(CreateView):
+class OrderCreate(OrderFormValidMixin, CreateView):
     model = Order
     form_class = OrderForm
 
@@ -32,7 +42,7 @@ class OrderDetail(DetailView):
         context['table'] = OrderOptionTable(self.object.get_options())
         return context
 
-class OrderUpdate(UpdateView):
+class OrderUpdate(OrderFormValidMixin, UpdateView):
     model = Order
     form_class = OrderForm
 
