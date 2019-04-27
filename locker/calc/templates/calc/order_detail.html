@@ -20,7 +20,7 @@
     <article>
         <div class="row">
             <div class="one column"></div>
-            <div class="ten columns">
+            <div class="five columns">
                 <dl>
                     <dt><strong>{% field_verbose_name order 'author' %}:</strong></dt>
                     <dd>{{ order.author.get_full_name }}</dd>
@@ -28,6 +28,14 @@
                     <dd>{{ order.client }}</dd>
                     <dt><strong>{% trans "Price" %}:</strong></dt>
                     <dd>{{ order.price }}</dd>
+                </dl>
+            </div>
+            <div class="five columns">
+                <dl>
+                    <dt><strong>{% field_verbose_name order 'created' %}:</strong></dt>
+                    <dd>{{ order.created }}</dd>
+                    <dt><strong>{% field_verbose_name order 'modified' %}:</strong></dt>
+                    <dd>{{ order.modified }}</dd>
                 </dl>
             </div>
         </div>

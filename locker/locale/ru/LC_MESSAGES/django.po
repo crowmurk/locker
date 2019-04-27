@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 01:49+0300\n"
+"POT-Creation-Date: 2019-04-27 09:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,69 +20,77 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: calc/models.py:16
+#: calc/models.py:17
 msgid "Author"
 msgstr "Автор"
 
-#: calc/models.py:23 client/models.py:30
+#: calc/models.py:25 client/models.py:30
 msgid "Client"
 msgstr "Клиент"
 
-#: calc/models.py:27 calc/models.py:139
+#: calc/models.py:29
+msgid "Created"
+msgstr "Создан"
+
+#: calc/models.py:33
+msgid "Modified"
+msgstr "Изменен"
+
+#: calc/models.py:37 calc/models.py:146
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:28 templates/base.html:57
+#: calc/models.py:38 templates/base.html:57
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:32
+#: calc/models.py:42
 #, python-brace-format
 msgid "Order {id}: Author: {author} Client: {client} Price: {price}"
 msgstr "Заказ {id}: Автор: {author} Клиент: {client} Цена: {price}"
 
-#: calc/models.py:75
+#: calc/models.py:81
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/models.py:82
+#: calc/models.py:88
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
-#: calc/models.py:87
+#: calc/models.py:93
 msgid "Work"
 msgstr "Работа"
 
-#: calc/models.py:94
+#: calc/models.py:100
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:98 calc/models.py:146
+#: calc/models.py:104 calc/models.py:154
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:99 templates/base.html:59
+#: calc/models.py:105 templates/base.html:59
 msgid "Services"
 msgstr "Услуги"
 
-#: calc/models.py:104
+#: calc/models.py:110
 #, python-brace-format
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:151
+#: calc/models.py:159
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:155
+#: calc/models.py:163
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:156
+#: calc/models.py:164
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:160
+#: calc/models.py:168
 #, python-brace-format
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
@@ -159,7 +167,7 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Изменить"
 
-#: calc/templates/calc/order_detail.html:34
+#: calc/templates/calc/order_detail.html:42
 msgid "Order options"
 msgstr "Опции заказа"
 
@@ -232,11 +240,11 @@ msgstr "Профиль"
 msgid "Profiles"
 msgstr "Профили"
 
-#: locker/settings/base.py:111
+#: locker/settings/base.py:122
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:112
+#: locker/settings/base.py:123
 msgid "English"
 msgstr "Английский"
 

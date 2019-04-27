@@ -24,6 +24,14 @@ class Order(models.Model):
         related_name='orders',
         verbose_name=_('Client'),
     )
+    created = models.DateField(
+        auto_now_add=True,
+        verbose_name=_('Created'),
+    )
+    modified = models.DateField(
+        auto_now=True,
+        verbose_name=_('Modified'),
+    )
 
     class Meta:
         verbose_name = _('Order')
