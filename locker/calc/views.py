@@ -27,6 +27,10 @@ class OrderDetail(DetailView):
     model = Order
     form_class = OrderForm
 
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(object=self.object)
+        context['table'] = OrderOptionTable(self.object.get_options())
+        return context
 
 class OrderUpdate(UpdateView):
     model = Order

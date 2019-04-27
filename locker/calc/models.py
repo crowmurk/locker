@@ -46,6 +46,9 @@ class Order(models.Model):
 
     price = property(_get_price)
 
+    def get_options(self):
+        return self.orderoption_set.all()
+
     def get_absolute_url(self):
         return reverse(
             'calc:order:detail',
@@ -150,7 +153,7 @@ class OrderOption(models.Model):
 
     class Meta:
         verbose_name = _('Order option')
-        verbose_name_plural = _('Order options')
+        verbose_name_plural = _('Orders options')
         unique_together = (('order', 'service'),)
 
     def __str__(self):

@@ -1,20 +1,26 @@
 {% extends "calc/base_calc.html" %}
 {% load i18n %}
+{% load django_tables2 %}
 {% load names %}
 
 {% block title %}
-    {{ block.super }} – {{ order|verbose_name }}
+    {{ block.super }} – {{ order|verbose_name }}: {{ order.pk }}
 {% endblock %}
 
-{% block content %}
+{% block calc_header %}
+    <h5>{{ order|verbose_name }}: {{ order.pk }}</h5>
+{% endblock %}
+
+{% block calc_button %}
+    <a href="{{ order.get_update_url }}" class="button">{% trans "Edit" %}</a>
+    <a href="{{ order.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+{% endblock %}
+
+{% block calc_content %}
     <article>
         <div class="row">
-            <div class="offset-by-two eight columns">
-                <h3>{{ order|verbose_name }} {{ order.pk }}:</h3>
-                <ul class="inline">
-                    <li><a href="{{ order.get_update_url }}" class="button">{% trans "Edit" %}</a></li>
-                    <li><a href="{{ order.get_delete_url }}" class="button">{% trans "Delete" %}</a></li>
-                </ul>
+            <div class="one column"></div>
+            <div class="ten columns">
                 <dl>
                     <dt><strong>{% field_verbose_name order 'author' %}:</strong></dt>
                     <dd>{{ order.author.get_full_name }}</dd>
@@ -25,5 +31,7 @@
                 </dl>
             </div>
         </div>
+        <h5>{% trans "Order options" %}</h5>
+        {% render_table table %}
     </article>
 {% endblock %}

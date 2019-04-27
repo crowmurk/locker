@@ -46,4 +46,4 @@ class OrderOptionTable(tables.Table):
     class Meta:
         model = OrderOption
         sequence = ('id', 'service', 'service_price', 'quantity', 'price')
-        exclude = ('order', )
+        exclude = ('id', 'order')
