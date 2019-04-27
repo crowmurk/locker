@@ -6,17 +6,20 @@ from django.views.generic import (
     DeleteView
 )
 
-from django_tables2 import SingleTableView
+from django_tables2 import SingleTableMixin
+from django_filters.views import FilterView
 
 from .models import Client
 from .tables import ClientTable
 from .forms import ClientForm
+from .filters import ClientFilter
 
 
-# Create your views here.
-class ClientList(SingleTableView):
+class ClientList(SingleTableMixin, FilterView):
     model = Client
     table_class = ClientTable
+    filterset_class = ClientFilter
+    template_name = 'client/client_list.html'
 
 
 class ClientCreate(CreateView):

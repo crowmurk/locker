@@ -7,11 +7,13 @@ from django.views.generic import (
 )
 from django.http import HttpResponseRedirect
 
-from django_tables2 import SingleTableView
+from django_tables2 import SingleTableMixin
+from django_filters.views import FilterView
 
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
 from .tables import OrderTable, ServiceTable, OrderOptionTable
+from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
 
 
 class OrderFormValidMixin:
@@ -23,9 +25,11 @@ class OrderFormValidMixin:
         return HttpResponseRedirect(self.get_success_url())
 
 
-class OrderList(SingleTableView):
+class OrderList(SingleTableMixin, FilterView):
     model = Order
     table_class = OrderTable
+    filterset_class = OrderFilter
+    template_name = 'calc/order_list.html'
 
 
 class OrderCreate(OrderFormValidMixin, CreateView):
@@ -52,9 +56,11 @@ class OrderDelete(DeleteView):
     success_url = reverse_lazy('calc:order:list')
 
 
-class ServiceList(SingleTableView):
+class ServiceList(SingleTableMixin, FilterView):
     model = Service
     table_class = ServiceTable
+    filterset_class = ServiceFilter
+    template_name = 'calc/service_list.html'
 
 
 class ServiceCreate(CreateView):
@@ -77,9 +83,11 @@ class ServiceDelete(DeleteView):
     success_url = reverse_lazy('calc:service:list')
 
 
-class OrderOptionList(SingleTableView):
+class OrderOptionList(SingleTableMixin, FilterView):
     model = OrderOption
     table_class = OrderOptionTable
+    filterset_class = OrderOptionFilter
+    template_name = 'calc/orderoption_list.html'
 
 
 class OrderOptionCreate(CreateView):

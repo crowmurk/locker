@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 09:36+0300\n"
+"POT-Creation-Date: 2019-04-27 12:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,17 +95,21 @@ msgstr "Опции заказов"
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:14 calc/tables.py:40 calc/templates/calc/order_detail.html:29
+#: calc/tables.py:14 calc/tables.py:42 calc/templates/calc/order_detail.html:29
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/tables.py:23 calc/templates/calc/orderoption_detail.html:32
+#: calc/tables.py:19 calc/tables.py:31 calc/tables.py:52 client/tables.py:17
+msgid "There are no records available"
+msgstr "Записи не найдены или отсутствуют"
+
+#: calc/tables.py:24 calc/templates/calc/orderoption_detail.html:32
 #: calc/templates/calc/service_detail.html:32
 msgid "Total"
 msgstr "Итого"
 
-#: calc/tables.py:43
+#: calc/tables.py:45
 msgid "Sum"
 msgstr "Сумма"
 
@@ -182,7 +186,7 @@ msgstr "Опции заказа"
 #: calc/templates/calc/service_list.html:15
 #: client/templates/client/client_form.html:11
 #: client/templates/client/client_form.html:21
-#: client/templates/client/client_list.html:11
+#: client/templates/client/client_list.html:12
 msgid "Create"
 msgstr "Создать"
 
@@ -240,11 +244,11 @@ msgstr "Профиль"
 msgid "Profiles"
 msgstr "Профили"
 
-#: locker/settings/base.py:122
+#: locker/settings/base.py:124
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:123
+#: locker/settings/base.py:125
 msgid "English"
 msgstr "Английский"
 
