@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'global_login_required.GlobalLoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'locker.urls'
@@ -102,6 +103,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Login
 LOGIN_REDIRECT_URL = '/'
+
+# All but this views are login requred
+PUBLIC_VIEWS = [
+    'django.contrib.auth.views.LoginView',
+]
+
+# All but this paths are login requred
+PUBLIC_PATHS = [
+    r'^/i18n/setlang',
+]
 
 # Internationalization
 
