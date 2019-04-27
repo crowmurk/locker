@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 17:12+0300\n"
+"POT-Creation-Date: 2019-04-27 01:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Автор"
 msgid "Client"
 msgstr "Клиент"
 
-#: calc/models.py:27 calc/models.py:136
+#: calc/models.py:27 calc/models.py:139
 msgid "Order"
 msgstr "Заказ"
 
@@ -41,58 +41,59 @@ msgstr "Заказы"
 msgid "Order {id}: Author: {author} Client: {client} Price: {price}"
 msgstr "Заказ {id}: Автор: {author} Клиент: {client} Цена: {price}"
 
-#: calc/models.py:72
+#: calc/models.py:75
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/models.py:79
+#: calc/models.py:82
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
-#: calc/models.py:84
+#: calc/models.py:87
 msgid "Work"
 msgstr "Работа"
 
-#: calc/models.py:91
+#: calc/models.py:94
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:95 calc/models.py:143
+#: calc/models.py:98 calc/models.py:146
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:96 templates/base.html:59
+#: calc/models.py:99 templates/base.html:59
 msgid "Services"
 msgstr "Услуги"
 
-#: calc/models.py:101
+#: calc/models.py:104
 #, python-brace-format
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:148
+#: calc/models.py:151
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:152
+#: calc/models.py:155
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:153
-msgid "Order options"
-msgstr "Опции заказа"
+#: calc/models.py:156
+msgid "Orders options"
+msgstr "Опции заказов"
 
-#: calc/models.py:157
+#: calc/models.py:160
 #, python-brace-format
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:14 calc/tables.py:40 calc/templates/calc/order_detail.html:23
+#: calc/tables.py:14 calc/tables.py:40 calc/templates/calc/order_detail.html:29
+#: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/tables.py:23 calc/templates/calc/orderoption_detail.html:25
-#: calc/templates/calc/service_detail.html:27
+#: calc/tables.py:23 calc/templates/calc/orderoption_detail.html:32
+#: calc/templates/calc/service_detail.html:32
 msgid "Total"
 msgstr "Итого"
 
@@ -135,28 +136,32 @@ msgstr "Последняя"
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:16
 #: calc/templates/calc/orderoption_confirm_delete.html:7
-#: calc/templates/calc/orderoption_detail.html:16
+#: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/service_confirm_delete.html:7
-#: calc/templates/calc/service_detail.html:16
+#: calc/templates/calc/service_detail.html:15
 #: client/templates/client/client_confirm_delete.html:7
-#: client/templates/client/client_detail.html:16
+#: client/templates/client/client_detail.html:15
 #: core/templates/core/includes/confirm_delete_form.html:8
 msgid "Delete"
 msgstr "Удалить"
 
 #: calc/templates/calc/order_detail.html:15
 #: calc/templates/calc/order_form.html:9 calc/templates/calc/order_form.html:18
-#: calc/templates/calc/orderoption_detail.html:15
+#: calc/templates/calc/orderoption_detail.html:14
 #: calc/templates/calc/orderoption_form.html:9
 #: calc/templates/calc/orderoption_form.html:18
-#: calc/templates/calc/service_detail.html:15
+#: calc/templates/calc/service_detail.html:14
 #: calc/templates/calc/service_form.html:9
 #: calc/templates/calc/service_form.html:18
-#: client/templates/client/client_detail.html:15
+#: client/templates/client/client_detail.html:14
 #: client/templates/client/client_form.html:9
 #: client/templates/client/client_form.html:18
 msgid "Edit"
 msgstr "Изменить"
+
+#: calc/templates/calc/order_detail.html:34
+msgid "Order options"
+msgstr "Опции заказа"
 
 #: calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
@@ -193,7 +198,7 @@ msgstr "Информация о клиенте"
 msgid "Clients"
 msgstr "Клиенты"
 
-#: client/tables.py:11 client/templates/client/client_detail.html:23
+#: client/tables.py:11 client/templates/client/client_detail.html:28
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
