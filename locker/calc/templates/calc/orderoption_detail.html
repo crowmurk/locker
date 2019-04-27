@@ -3,11 +3,11 @@
 {% load names %}
 
 {% block title %}
-    {{ block.super }} – {{ orderoption|verbose_name }}: {{ orderoption.order.pk }}
+    {{ block.super }} – {{ orderoption|verbose_name }} {{ orderoption.order.pk }}: {{ orderoption.service.equipment }}
 {% endblock %}
 
 {% block calc_header %}
-    <h5>{{ orderoption|verbose_name }}: {{ orderoption.order.pk }}</h5>
+    <h5>{{ orderoption|verbose_name }} {{ orderoption.order.pk }}: {{ orderoption.service.equipment }}</h5>
 {% endblock %}
 
 {% block calc_button %}
