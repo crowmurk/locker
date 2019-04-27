@@ -13,6 +13,7 @@ class Order(models.Model):
         null=False,
         blank=False,
         on_delete=models.CASCADE,
+        related_name='orders',
         verbose_name=_('Author'),
     )
     client = models.ForeignKey(
@@ -20,6 +21,7 @@ class Order(models.Model):
         null=False,
         blank=False,
         on_delete=models.CASCADE,
+        related_name='orders',
         verbose_name=_('Client'),
     )
 
@@ -38,16 +40,12 @@ class Order(models.Model):
         )
 
     def _get_price(self):
-        return sum(
-            [item.price
-             for item in OrderOption.objects.filter(
-                 order__id=self.pk,
-             )])
+        return sum([item.price for item in self.get_options()])
 
     price = property(_get_price)
 
     def get_options(self):
-        return self.orderoption_set.all()
+        return self.options.all()
 
     def get_absolute_url(self):
         return reverse(
@@ -136,6 +134,7 @@ class OrderOption(models.Model):
         null=False,
         blank=False,
         on_delete=models.CASCADE,
+        related_name='options',
         verbose_name=_('Order'),
     )
     service = models.ForeignKey(
@@ -143,6 +142,7 @@ class OrderOption(models.Model):
         null=False,
         blank=False,
         on_delete=models.CASCADE,
+        related_name='options',
         verbose_name=_('Service'),
     )
     quantity = models.PositiveIntegerField(
