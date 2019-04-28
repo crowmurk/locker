@@ -7,79 +7,6 @@ from client.models import Client
 
 # Create your models here.
 
-class Order(models.Model):
-    author = models.ForeignKey(
-        User,
-        null=False,
-        blank=False,
-        on_delete=models.CASCADE,
-        related_name='orders',
-        verbose_name=_('Author'),
-    )
-    client = models.ForeignKey(
-        Client,
-        null=False,
-        blank=False,
-        on_delete=models.CASCADE,
-        related_name='orders',
-        verbose_name=_('Client'),
-    )
-    created = models.DateField(
-        auto_now_add=True,
-        verbose_name=_('Created'),
-    )
-    modified = models.DateField(
-        auto_now=True,
-        verbose_name=_('Modified'),
-    )
-
-    class Meta:
-        verbose_name = _('Order')
-        verbose_name_plural = _('Orders')
-        ordering = ['author', 'client']
-
-    def __str__(self):
-        return _("Order {id}: Author: {author}"
-                 " Client: {client} Price: {price}").format(
-            id=self.pk,
-            author=self.author.get_full_name(),
-            client=self.client,
-            price=self.price
-        )
-
-    def _get_price(self):
-        return sum([item.price for item in self.get_options()])
-
-    price = property(_get_price)
-
-    def get_options(self):
-        return self.options.all()
-
-    def get_absolute_url(self):
-        return reverse(
-            'calc:order:detail',
-            kwargs={'pk': self.pk},
-        )
-
-    def get_pdf_url(self):
-        return reverse(
-            'calc:order:pdf',
-            kwargs={'pk': self.pk},
-        )
-
-    def get_update_url(self):
-        return reverse(
-            'calc:order:update',
-            kwargs={'pk': self.pk},
-        )
-
-    def get_delete_url(self):
-        return reverse(
-            'calc:order:delete',
-            kwargs={'pk': self.pk},
-        )
-
-
 class Service(models.Model):
     equipment = models.CharField(
         blank=False,
@@ -138,6 +65,88 @@ class Service(models.Model):
     def get_delete_url(self):
         return reverse(
             'calc:service:delete',
+            kwargs={'pk': self.pk},
+        )
+
+
+class Order(models.Model):
+    author = models.ForeignKey(
+        User,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='orders',
+        verbose_name=_('Author'),
+    )
+    client = models.ForeignKey(
+        Client,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='orders',
+        verbose_name=_('Client'),
+    )
+
+    services = models.ManyToManyField(
+        Service,
+        related_name='orders',
+        through='OrderOption',
+        through_fields=('order', 'service'),
+        verbose_name=_('Services'),
+    )
+
+    created = models.DateField(
+        auto_now_add=True,
+        verbose_name=_('Created'),
+    )
+    modified = models.DateField(
+        auto_now=True,
+        verbose_name=_('Modified'),
+    )
+
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Orders')
+        ordering = ['author', 'client']
+
+    def __str__(self):
+        return _("Order {id}: Author: {author}"
+                 " Client: {client} Price: {price}").format(
+            id=self.pk,
+            author=self.author.get_full_name(),
+            client=self.client,
+            price=self.price
+        )
+
+    def _get_price(self):
+        return sum([item.price for item in self.get_options()])
+
+    price = property(_get_price)
+
+    def get_options(self):
+        return self.options.all()
+
+    def get_absolute_url(self):
+        return reverse(
+            'calc:order:detail',
+            kwargs={'pk': self.pk},
+        )
+
+    def get_pdf_url(self):
+        return reverse(
+            'calc:order:pdf',
+            kwargs={'pk': self.pk},
+        )
+
+    def get_update_url(self):
+        return reverse(
+            'calc:order:update',
+            kwargs={'pk': self.pk},
+        )
+
+    def get_delete_url(self):
+        return reverse(
+            'calc:order:delete',
             kwargs={'pk': self.pk},
         )
 
