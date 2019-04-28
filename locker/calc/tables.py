@@ -1,13 +1,14 @@
 from django.utils.translation import gettext_lazy as _
 
 import django_tables2 as tables
-from django_tables2.utils import A
 
 from .models import Order, Service, OrderOption
 
 
 class OrderTable(tables.Table):
-    id = tables.LinkColumn()
+    id = tables.LinkColumn(
+        verbose_name=_('Order'),
+    )
     author = tables.Column(accessor='author.get_full_name')
     client = tables.LinkColumn()
     price = tables.Column(
@@ -32,10 +33,11 @@ class ServiceTable(tables.Table):
 
 
 class OrderOptionTable(tables.Table):
+    order = tables.LinkColumn(
+        text=lambda record: record.order.pk,
+    )
     service = tables.LinkColumn(
-        'calc:service:detail',
         text=lambda record: record.service.equipment,
-        args=[A('service.pk')],
     )
     service_price = tables.Column(
         accessor='service.price',
@@ -47,6 +49,6 @@ class OrderOptionTable(tables.Table):
 
     class Meta:
         model = OrderOption
-        sequence = ('id', 'service', 'service_price', 'quantity', 'price')
-        exclude = ('id', 'order')
+        sequence = ('order', 'service', 'service_price', 'quantity', 'price')
+        exclude = ('id', )
         empty_text = _("There are no records available")

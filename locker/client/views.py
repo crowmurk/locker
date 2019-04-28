@@ -35,7 +35,7 @@ class ClientDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(object=self.object)
-        context['table'] = OrderTable(self.object.get_orders())
+        context['table'] = OrderTable(self.object.get_orders(), exclude=('client', ))
         return context
 
 

@@ -45,7 +45,7 @@ class OrderDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(object=self.object)
-        context['table'] = OrderOptionTable(self.object.get_options())
+        context['table'] = OrderOptionTable(self.object.get_options(), exclude=('order', ))
         return context
 
 
@@ -55,7 +55,7 @@ class OrderDetailPDF(PdfMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(object=self.object)
-        context['table'] = OrderOptionTable(self.object.get_options())
+        context['table'] = OrderOptionTable(self.object.get_options(), exclude=('order', ))
         return context
 
 
