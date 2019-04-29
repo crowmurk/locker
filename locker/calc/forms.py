@@ -4,9 +4,16 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.forms import widgets
 from django.utils.translation import gettext_lazy as _
+from django.forms import inlineformset_factory
 
 from client.models import Client
 from .models import Order, Service, OrderOption
+
+
+class ServiceForm(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = '__all__'
 
 
 class RelatedFieldWidgetCanAdd(widgets.Select):
@@ -37,7 +44,7 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        exclude = ('author', )
+        exclude = ('author', 'services')
 
     def save(self, request, commit=True):
         """Переопределено для автоматического
@@ -53,13 +60,16 @@ class OrderForm(forms.ModelForm):
         return order
 
 
-class ServiceForm(forms.ModelForm):
-    class Meta:
-        model = Service
-        fields = '__all__'
-
-
 class OrderOptionForm(forms.ModelForm):
     class Meta:
         model = OrderOption
         fields = '__all__'
+
+
+OrderOptionFormSet = inlineformset_factory(
+    Order,
+    Order.services.through,
+    form=OrderOptionForm,
+    can_delete=True,
+    extra=1,
+)
