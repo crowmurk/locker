@@ -19,6 +19,14 @@
     color: #dd1144;
 }
 
+.error {
+    color: #dd1144;
+}
+
+.error input, .error select {
+border: 2px #dd1144 solid;
+}
+
 .helptext {
     display: block;
     padding: 0;
