@@ -4,6 +4,26 @@ from core.templatetags.names import verbose_name
 
 register = Library()
 
+@register.inclusion_tag(
+    'core/includes/formset_table.html',
+    takes_context=True,
+)
+def formset_table(context, *args, **kwargs):
+    """Тег представления formset как таблицы
+    """
+    formset = context.get('formset')
+
+    if not formset:
+        formset = (args[0] if len(args) > 0
+                   else kwargs.get('action'))
+
+    if formset is None:
+        raise TemplateSyntaxError(
+            "formset_table template tag requires "
+            "at least one argument: formset.")
+
+    return {'formset': formset, }
+
 
 @register.inclusion_tag(
     'core/includes/form.html',
@@ -20,6 +40,7 @@ def form(context, *args, **kwargs):
     method = (args[2] if len(args) > 2
               else kwargs.get('method'))
     form = context.get('form')
+    formset = context.get('formset')
     view = context.get('view')
 
     if hasattr(view, 'model'):
@@ -38,7 +59,9 @@ def form(context, *args, **kwargs):
         'action': action,
         'action_verbose': action_verbose,
         'form': form,
-        'method': method}
+        'formset': formset,
+        'method': method,
+    }
 
 
 @register.inclusion_tag(
