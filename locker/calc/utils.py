@@ -61,12 +61,12 @@ class OrderFormMixin:
             context_data['formset'] = OrderOptionFormSet(
                 self.request.POST,
                 instance=self.object,
-                prefix='order_options'
+                prefix='order_options',
             )
         else:
             context_data['formset'] = OrderOptionFormSet(
                 instance=self.object,
-                prefix='order_options'
+                prefix='order_options',
             )
         return context_data
 
