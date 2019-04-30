@@ -71,5 +71,5 @@ OrderOptionFormSet = inlineformset_factory(
     Order.services.through,
     form=OrderOptionForm,
     can_delete=True,
-    extra=1,
+    extra=0,
 )
