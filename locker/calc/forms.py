@@ -19,7 +19,7 @@ class ServiceForm(forms.ModelForm):
 class RelatedFieldWidgetCanAdd(widgets.Select):
     """Append add button to Select widget
     """
-    def __init__(self, related_model, related_url=None, *args, **kwargs):
+    def __init__(self, related_model, *args, related_url=None, **kwargs):
         super(RelatedFieldWidgetCanAdd, self).__init__(*args, **kwargs)
         self.related_url = related_url
 
@@ -39,7 +39,11 @@ class OrderForm(forms.ModelForm):
     client = forms.ModelChoiceField(
         required=True,
         queryset=Client.objects.all(),
-        widget=RelatedFieldWidgetCanAdd(Client, related_url="client:create"),
+        widget=RelatedFieldWidgetCanAdd(
+            Client,
+            related_url="client:create",
+        ),
+        label=_('Client'),
     )
 
     class Meta:
