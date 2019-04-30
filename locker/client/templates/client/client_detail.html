@@ -26,14 +26,14 @@
                     <dd>{{ client.name }}</dd>
                     <dt><strong>{% field_verbose_name client 'details' %}:</strong></dt>
                     <dd>{{ client.details }}</dd>
-                    <dt><strong>{% trans "Number of orders" %}:</strong></dt>
+                    <dt><strong>{% field_verbose_name client 'orders' %}:</strong></dt>
                     <dd>{{ client.number_of_orders }}</dd>
                 </dl>
             </div>
         </div>
         <div class="row">
             <div class="six columns">
-                <h5>{% trans "Client orders" %}</h5>
+                <h5>{% field_verbose_name client 'orders' %}</h5>
             </div>
             <div class="u-pull-right">
                 <a href="{% url 'client:createorder' client_slug=client.slug %}" class="button">{% trans "Create" %}</a>

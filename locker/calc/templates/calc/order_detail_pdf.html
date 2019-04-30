@@ -36,7 +36,7 @@
         </BR>
         <strong>{% field_verbose_name order 'modified' %}:</strong> {{ order.modified }}
         </BR> </BR>
-        <h4>{% trans "Order options:" %}</h4>
+        <h4>{% field_verbose_name order 'services' %}</h4>
 
         {% render_table table %}
         <div id="footer_content">
