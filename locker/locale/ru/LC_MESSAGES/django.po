@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 21:02+0300\n"
+"POT-Creation-Date: 2019-04-30 21:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/forms.py:25 calc/templates/calc/order_form.html:11
+#: calc/forms.py:32 calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
 #: calc/templates/calc/order_list.html:15
 #: calc/templates/calc/orderoption_form.html:11
@@ -39,6 +39,10 @@ msgstr "Калькулятор"
 #: client/templates/client/client_list.html:11
 msgid "Create"
 msgstr "Создать"
+
+#: calc/forms.py:46 calc/models.py:87 client/models.py:30
+msgid "Client"
+msgstr "Клиент"
 
 #: calc/models.py:14
 msgid "Equipment"
@@ -60,7 +64,7 @@ msgstr "Стоимость работы"
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:38 calc/models.py:95 templates/base.html:59
+#: calc/models.py:38 calc/models.py:95 templates/base.html:60
 msgid "Services"
 msgstr "Услуги"
 
@@ -72,10 +76,6 @@ msgstr "Оборудование: {equipment} Цена: {price}"
 #: calc/models.py:79
 msgid "Author"
 msgstr "Автор"
-
-#: calc/models.py:87 client/models.py:30
-msgid "Client"
-msgstr "Клиент"
 
 #: calc/models.py:100
 msgid "Created"
@@ -89,7 +89,7 @@ msgstr "Изменен"
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:109 templates/base.html:57
+#: calc/models.py:109 templates/base.html:58
 msgid "Orders"
 msgstr "Заказы"
 
@@ -196,17 +196,9 @@ msgstr "PDF"
 msgid "Edit"
 msgstr "Изменить"
 
-#: calc/templates/calc/order_detail.html:43
-msgid "Order options"
-msgstr "Опции заказа"
-
 #: calc/templates/calc/order_detail_pdf.html:21
 msgid "Document created"
 msgstr "Документ создан"
-
-#: calc/templates/calc/order_detail_pdf.html:39
-msgid "Order options:"
-msgstr "Опции заказа:"
 
 #: calc/templates/calc/order_list.html:22
 #: calc/templates/calc/orderoption_list.html:22
@@ -215,7 +207,7 @@ msgstr "Опции заказа:"
 msgid "Filter"
 msgstr "Фильтр"
 
-#: client/apps.py:7 client/models.py:31 templates/base.html:58
+#: client/apps.py:7 client/models.py:31 templates/base.html:59
 msgid "Clients"
 msgstr "Клиенты"
 
@@ -235,13 +227,9 @@ msgstr "Детали"
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: client/tables.py:11 client/templates/client/client_detail.html:29
+#: client/tables.py:11
 msgid "Number of orders"
 msgstr "Кличество заказов"
-
-#: client/templates/client/client_detail.html:36
-msgid "Client orders"
-msgstr "Заказы клиента"
 
 #: core/templates/core/includes/confirm_delete_form.html:6
 msgid "Are you sure you want to delete"
@@ -250,6 +238,10 @@ msgstr "Вы действительно хотите удалить"
 #: core/templates/core/includes/confirm_delete_form.html:7
 msgid "Cancel"
 msgstr "Отмена"
+
+#: core/templates/core/includes/formset_table.html:79
+msgid "Add"
+msgstr "Добавить"
 
 #: core/validators.py:15
 #, python-format
@@ -333,11 +325,11 @@ msgstr "Ошибка сервера"
 msgid "Do not mistake the one who does nothing."
 msgstr "Никогда не ошибается тот, кто ничего не делает."
 
-#: templates/base.html:26
+#: templates/base.html:27
 msgid "LogOut"
 msgstr "Выйти"
 
-#: templates/base.html:28 templates/registration/login.html:37
+#: templates/base.html:29 templates/registration/login.html:37
 msgid "LogIn"
 msgstr "Войти"
 
@@ -377,3 +369,6 @@ msgstr "В разработке"
 #: templates/site/underconstruction.html:13
 msgid "Sorry, this section is under construction."
 msgstr "Извините, раздел в разработке."
+
+#~ msgid "Client orders"
+#~ msgstr "Заказы клиента"
