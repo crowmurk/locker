@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 09:18+0300\n"
+"POT-Creation-Date: 2019-05-01 22:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,14 +26,14 @@ msgstr "Калькулятор"
 
 #: calc/forms.py:33 calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
-#: calc/templates/calc/order_list.html:15
+#: calc/templates/calc/order_list.html:17
 #: calc/templates/calc/orderoption_form.html:11
 #: calc/templates/calc/orderoption_form.html:21
 #: calc/templates/calc/orderoption_list.html:15
 #: calc/templates/calc/service_form.html:11
 #: calc/templates/calc/service_form.html:21
 #: calc/templates/calc/service_list.html:15
-#: client/templates/client/client_detail.html:39
+#: client/templates/client/client_detail.html:40
 #: client/templates/client/client_form.html:11
 #: client/templates/client/client_form.html:21
 #: client/templates/client/client_list.html:11
@@ -119,22 +119,22 @@ msgstr "Опции заказов"
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:15 calc/tables.py:45 calc/templates/calc/order_detail.html:32
+#: calc/tables.py:15 calc/tables.py:58 calc/templates/calc/order_detail.html:32
 #: calc/templates/calc/order_detail_pdf.html:33
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/tables.py:21 calc/tables.py:33 calc/tables.py:55 client/tables.py:17
+#: calc/tables.py:34 calc/tables.py:46 calc/tables.py:68 client/tables.py:17
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
-#: calc/tables.py:26 calc/templates/calc/orderoption_detail.html:32
+#: calc/tables.py:39 calc/templates/calc/orderoption_detail.html:32
 #: calc/templates/calc/service_detail.html:32
 msgid "Total"
 msgstr "Итого"
 
-#: calc/tables.py:48
+#: calc/tables.py:61
 msgid "Sum"
 msgstr "Сумма"
 
@@ -172,12 +172,14 @@ msgstr "Последняя"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:17
+#: calc/templates/calc/order_list.html:29
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/service_confirm_delete.html:7
 #: calc/templates/calc/service_detail.html:15
 #: client/templates/client/client_confirm_delete.html:7
-#: client/templates/client/client_detail.html:16
+#: client/templates/client/client_detail.html:17
+#: client/templates/client/client_detail.html:44
 #: core/templates/core/includes/confirm_delete_form.html:8
 msgid "Delete"
 msgstr "Удалить"
@@ -194,7 +196,7 @@ msgstr "PDF"
 #: calc/templates/calc/service_detail.html:14
 #: calc/templates/calc/service_form.html:9
 #: calc/templates/calc/service_form.html:18
-#: client/templates/client/client_detail.html:15
+#: client/templates/client/client_detail.html:16
 #: client/templates/client/client_form.html:9
 #: client/templates/client/client_form.html:18
 msgid "Edit"
@@ -204,7 +206,7 @@ msgstr "Изменить"
 msgid "Document created"
 msgstr "Документ создан"
 
-#: calc/templates/calc/order_list.html:22
+#: calc/templates/calc/order_list.html:25
 #: calc/templates/calc/orderoption_list.html:22
 #: calc/templates/calc/service_list.html:22
 #: client/templates/client/client_list.html:22
