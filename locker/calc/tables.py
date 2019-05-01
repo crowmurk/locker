@@ -14,6 +14,19 @@ class OrderTable(tables.Table):
     price = tables.Column(
         verbose_name=_("Price"),
     )
+    delete = tables.CheckBoxColumn(
+        accessor="pk",
+        attrs={
+            'th__input': {
+                'name': 'select-table-items',
+                'onclick': 'toggle_rows(this, "delete-table-items", "checkbox", "delete-table-items-button", "submit")',
+            },
+            'td__input': {
+                'name': 'delete-table-items',
+                'onclick': 'toggle_row("delete-table-items", "checkbox", "delete-table-items-button", "submit")',
+            },
+        },
+    )
 
     class Meta:
         model = Order

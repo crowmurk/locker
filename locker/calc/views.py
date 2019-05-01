@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -49,6 +50,14 @@ class OrderList(SingleTableMixin, FilterView):
     table_class = OrderTable
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
+
+    def post(self, request, *args, **kwargs):
+        pks = request.POST.getlist("delete-table-items")
+        button = request.POST.getlist("delete-table-items-button")
+        if pks and button:
+            selected_objects = self.model.objects.filter(pk__in=pks)
+            selected_objects.delete()
+        return HttpResponseRedirect(request.path)
 
 
 class OrderCreate(OrderCreateAddClientInContext, OrderFormMixin, CreateView):

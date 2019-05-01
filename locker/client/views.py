@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -10,6 +11,7 @@ from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 
 from calc.tables import OrderTable
+from calc.models import Order
 
 from .models import Client
 from .tables import ClientTable
@@ -37,6 +39,14 @@ class ClientDetail(DetailView):
         context = super(DetailView, self).get_context_data(object=self.object)
         context['table'] = OrderTable(self.object.get_orders(), exclude=('client', ))
         return context
+
+    def post(self, request, *args, **kwargs):
+        pks = request.POST.getlist("delete-table-items")
+        button = request.POST.getlist("delete-table-items-button")
+        if pks and button:
+            selected_objects = Order.objects.filter(pk__in=pks)
+            selected_objects.delete()
+        return HttpResponseRedirect(request.path)
 
 
 class ClientUpdate(UpdateView):

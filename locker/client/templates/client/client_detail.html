@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
+{% load forms %}
 
 {% block title %}
     {{ block.super }} – {{ client|verbose_name }}: {{ client }}
@@ -39,6 +40,9 @@
                 <a href="{% url 'client:createorder' client_slug=client.slug %}" class="button">{% trans "Create" %}</a>
             </div>
         </div>
-        {% render_table table %}
+        {% if table %}
+            {% trans "Delete" as action_verbose %}
+            {% table_delete table button_class='button button-primary' action_verbose=action_verbose %}
+        {% endif %}
     </article>
 {% endblock %}

@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import Client
 from .forms import OrderOptionFormSet
 
+
 class OrderCreateAddClientInContext:
     # Имя переданного аргумента в URLConf,
     # содержащего значение slug
