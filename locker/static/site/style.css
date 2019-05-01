@@ -307,3 +307,18 @@ th, td {
 table tr:hover {
     background-color: AliceBlue;
 }
+
+.button:disabled,
+button:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+input[type="button"]:disabled,
+.button.button-primary:disabled,
+button.button-primary:disabled,
+input[type="submit"].button-primary:disabled,
+input[type="reset"].button-primary:disabled,
+input[type="button"].button-primary:disabled {
+  border: 1px solid grey;
+  background-color: grey;
+  color: lightgrey;
+}

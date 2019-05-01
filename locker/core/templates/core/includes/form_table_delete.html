@@ -1,0 +1,15 @@
+{% load staticfiles %}
+{% load django_tables2 %}
+
+<form acrion="{{ action|default:'' }}" method="{{ method|default:'post' }}">
+    {% csrf_token %}
+    {% render_table table %}
+    <button type="{{ button_type|default:'submit' }}"
+            class="{{ button_class|default:'button' }}"
+            name="{{ button_name|default:'delete-table-items-button' }}"
+            value="{{ button_value|default:'delete-table-items' }}"
+            disabled>
+        {{ action_verbose|default:'Submit' }}
+    </button>
+</form>
+<script type="text/javascript" src="{% static 'site/js/table-delete.js' %}" defer></script>

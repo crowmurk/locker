@@ -5,6 +5,46 @@ from core.templatetags.names import verbose_name
 register = Library()
 
 @register.inclusion_tag(
+    'core/includes/form_table_delete.html',
+    takes_context=True,
+)
+def table_delete(context, *args, **kwargs):
+    """Тег представления таблицы с удаляемыми полями
+    """
+    request = context.get('request')
+
+    table = context.get('table')
+    if not table:
+        table = (args[0] if len(args) > 0
+                 else kwargs.get('table'))
+
+    if table is None:
+        raise TemplateSyntaxError(
+            "table_delete template tag requires "
+            "at least one argument: table.")
+
+    action = kwargs.get('action', '')
+    method = kwargs.get('method', 'post')
+    button_type = kwargs.get('button_type', 'submit')
+    button_class = kwargs.get('button_class', 'button')
+    button_name = kwargs.get('button_name', 'delete-table-items-button')
+    button_value = kwargs.get('button_value', 'delete-table-items')
+    action_verbose = kwargs.get('action_verbose', 'Submit')
+
+    return {
+        'request': request,
+        'action': action,
+        'method': method,
+        'table': table,
+        'button_type': button_type,
+        'button_class': button_class,
+        'button_name': button_name,
+        'button_value': button_value,
+        'action_verbose': action_verbose,
+    }
+
+
+@register.inclusion_tag(
     'core/includes/formset_table.html',
     takes_context=True,
 )
@@ -15,7 +55,7 @@ def formset_table(context, *args, **kwargs):
 
     if not formset:
         formset = (args[0] if len(args) > 0
-                   else kwargs.get('action'))
+                   else kwargs.get('formset'))
 
     if formset is None:
         raise TemplateSyntaxError(
