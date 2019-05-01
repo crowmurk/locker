@@ -17,6 +17,7 @@ class OrderTable(tables.Table):
 
     class Meta:
         model = Order
+        exclude = ('factor', )
         empty_text = _("There are no records available")
 
 

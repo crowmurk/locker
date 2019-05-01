@@ -13,7 +13,6 @@ def validate_json(value):
     except ValueError as e:
         raise ValidationError(
             _('An error was founded in %(value)s template: %(message)s'),
-            code='invalid',
             params={'value': value, 'message': e, },
         )
 
@@ -25,6 +24,13 @@ def validate_slug(value):
         # Будет совпадение с url представлений объекта
         raise ValidationError(
             _('Slug must not be "%(slug)s"'),
-            code='invalid',
             params={'slug': value, },
+        )
+
+def validate_positive(value):
+    """Проверяет числовое поле на значения большее 0
+    """
+    if value <= 0:
+        raise ValidationError(
+            _('This value must be grater than zero'),
         )

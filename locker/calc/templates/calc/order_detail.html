@@ -27,6 +27,8 @@
                     <dd>{{ order.author.get_full_name }}</dd>
                     <dt><strong>{% field_verbose_name order 'client' %}:</strong></dt>
                     <dd><a href="{{ order.client.get_absolute_url }}">{{ order.client }}</a></dd>
+                    <dt><strong>{% field_verbose_name order 'factor' %}:</strong></dt>
+                    <dd>{{ order.factor }}</a></dd>
                     <dt><strong>{% trans "Price" %}:</strong></dt>
                     <dd>{{ order.price }}</dd>
                 </dl>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-30 21:22+0300\n"
+"POT-Creation-Date: 2019-05-01 09:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/forms.py:32 calc/templates/calc/order_form.html:11
+#: calc/forms.py:33 calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
 #: calc/templates/calc/order_list.html:15
 #: calc/templates/calc/orderoption_form.html:11
@@ -40,97 +40,101 @@ msgstr "Калькулятор"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:46 calc/models.py:87 client/models.py:30
+#: calc/forms.py:47 calc/models.py:91 client/models.py:30
 msgid "Client"
 msgstr "Клиент"
 
-#: calc/models.py:14
+#: calc/models.py:18
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/models.py:21
+#: calc/models.py:25
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
-#: calc/models.py:26
+#: calc/models.py:30
 msgid "Work"
 msgstr "Работа"
 
-#: calc/models.py:33
+#: calc/models.py:37
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:37 calc/models.py:169
+#: calc/models.py:41 calc/models.py:180
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:38 calc/models.py:95 templates/base.html:60
+#: calc/models.py:42 calc/models.py:98 templates/base.html:60
 msgid "Services"
 msgstr "Услуги"
 
-#: calc/models.py:43
+#: calc/models.py:47
 #, python-brace-format
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:79
+#: calc/models.py:83
 msgid "Author"
 msgstr "Автор"
 
-#: calc/models.py:100
+#: calc/models.py:102
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:104
+#: calc/models.py:106
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:108 calc/models.py:161 calc/tables.py:10
+#: calc/models.py:115
+msgid "Factor"
+msgstr "Множитель"
+
+#: calc/models.py:119 calc/models.py:172 calc/tables.py:10
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:109 templates/base.html:58
+#: calc/models.py:120 templates/base.html:58
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:113
+#: calc/models.py:124
 #, python-brace-format
 msgid "Order {id}: Author: {author} Client: {client} Price: {price}"
 msgstr "Заказ {id}: Автор: {author} Клиент: {client} Цена: {price}"
 
-#: calc/models.py:174
+#: calc/models.py:185
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:178
+#: calc/models.py:189
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:179
+#: calc/models.py:190
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:183
+#: calc/models.py:194
 #, python-brace-format
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:15 calc/tables.py:44 calc/templates/calc/order_detail.html:30
+#: calc/tables.py:15 calc/tables.py:45 calc/templates/calc/order_detail.html:32
 #: calc/templates/calc/order_detail_pdf.html:33
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/tables.py:20 calc/tables.py:32 calc/tables.py:54 client/tables.py:17
+#: calc/tables.py:21 calc/tables.py:33 calc/tables.py:55 client/tables.py:17
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
-#: calc/tables.py:25 calc/templates/calc/orderoption_detail.html:32
+#: calc/tables.py:26 calc/templates/calc/orderoption_detail.html:32
 #: calc/templates/calc/service_detail.html:32
 msgid "Total"
 msgstr "Итого"
 
-#: calc/tables.py:47
+#: calc/tables.py:48
 msgid "Sum"
 msgstr "Сумма"
 
@@ -248,10 +252,14 @@ msgstr "Добавить"
 msgid "An error was founded in %(value)s template: %(message)s"
 msgstr "Шаблон %(value)s содержит ошибку: %(message)s"
 
-#: core/validators.py:27
+#: core/validators.py:26
 #, python-format
 msgid "Slug must not be \"%(slug)s\""
 msgstr "Slug не может быть \"%(slug)s\""
+
+#: core/validators.py:35
+msgid "This value must be grater than zero"
+msgstr "Это значение должно быть больше нуля"
 
 #: employee/admin.py:28 employee/models.py:14
 msgid "Middle name"
@@ -369,6 +377,3 @@ msgstr "В разработке"
 #: templates/site/underconstruction.html:13
 msgid "Sorry, this section is under construction."
 msgstr "Извините, раздел в разработке."
-
-#~ msgid "Client orders"
-#~ msgstr "Заказы клиента"

@@ -1,7 +1,11 @@
+from decimal import Decimal
+
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+
+from core.validators import validate_positive
 
 from client.models import Client
 
@@ -86,7 +90,6 @@ class Order(models.Model):
         related_name='orders',
         verbose_name=_('Client'),
     )
-
     services = models.ManyToManyField(
         Service,
         related_name='orders',
@@ -94,7 +97,6 @@ class Order(models.Model):
         through_fields=('order', 'service'),
         verbose_name=_('Services'),
     )
-
     created = models.DateField(
         auto_now_add=True,
         verbose_name=_('Created'),
@@ -102,6 +104,15 @@ class Order(models.Model):
     modified = models.DateField(
         auto_now=True,
         verbose_name=_('Modified'),
+    )
+    factor = models.FloatField(
+        null=False,
+        blank=False,
+        default=1,
+        validators=[
+            validate_positive,
+        ],
+        verbose_name=_('Factor'),
     )
 
     class Meta:
@@ -112,10 +123,10 @@ class Order(models.Model):
     def __str__(self):
         return _("Order {id}: Author: {author}"
                  " Client: {client} Price: {price}").format(
-            id=self.pk,
-            author=self.author.get_full_name(),
-            client=self.client,
-            price=self.price
+                     id=self.pk,
+                     author=self.author.get_full_name(),
+                     client=self.client,
+                     price=self.price,
         )
 
     def _get_price(self):
@@ -180,15 +191,18 @@ class OrderOption(models.Model):
         unique_together = (('order', 'service'),)
 
     def __str__(self):
-        return _("Order {order} option: {option} Quantity: {quantity} Total: {total}").format(
-            order=self.order.pk,
-            option=self.service,
-            quantity=self.quantity,
-            total=self.price,
+        return _("Order {order} option: {option}"
+                 " Quantity: {quantity} Total: {total}").format(
+                     order=self.order.pk,
+                     option=self.service,
+                     quantity=self.quantity,
+                     total=self.price,
         )
 
     def _get_price(self):
-        return self.service.price * self.quantity
+        factor = Decimal(self.order.factor)
+        result = (self.service.equipment_price + self.service.work_price * factor) * self.quantity
+        return Decimal(result).quantize(Decimal('0.01'))
 
     price = property(_get_price)
 
