@@ -3,6 +3,7 @@ import json
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+
 def validate_json(value):
     """Проверяет текстовое поле
     на соответствие формату json
@@ -26,6 +27,7 @@ def validate_slug(value):
             _('Slug must not be "%(slug)s"'),
             params={'slug': value, },
         )
+
 
 def validate_positive(value):
     """Проверяет числовое поле на значения большее 0
