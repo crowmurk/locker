@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
+{% load forms %}
 
 {% block title %}
     {{ block.super }} - {{ view.model|verbose_name_plural }}
@@ -16,11 +17,14 @@
 {% endblock %}
 
 {% block client_content %}
-{% if filter %}
-    <form action="" method="get" class="inline">
-        {{ filter.form.as_table }}
-        <input value="{% trans "Filter" %}" type="submit" />
-    </form>
-{% endif %}
-    {% render_table table %}
+    {% if filter %}
+        <form action="" method="get" class="inline">
+            {{ filter.form.as_table }}
+            <input value="{% trans "Filter" %}" type="submit" />
+        </form>
+    {% endif %}
+    {% if table %}
+        {% trans "Delete" as action_verbose %}
+        {% table_delete table button_class='button button-primary' action_verbose=action_verbose %}
+    {% endif %}
 {% endblock %}
