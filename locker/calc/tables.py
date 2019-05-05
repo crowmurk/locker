@@ -2,31 +2,17 @@ from django.utils.translation import gettext_lazy as _
 
 import django_tables2 as tables
 
+from core.tables import CheckBoxDeleteColumn
+
 from .models import Order, Service, OrderOption
 
 
 class OrderTable(tables.Table):
-    id = tables.LinkColumn(
-        verbose_name=_('Order'),
-    )
+    id = tables.LinkColumn(verbose_name=_('Order'))
     author = tables.Column(accessor='author.get_full_name')
     client = tables.LinkColumn()
-    price = tables.Column(
-        verbose_name=_("Price"),
-    )
-    delete = tables.CheckBoxColumn(
-        accessor="pk",
-        attrs={
-            'th__input': {
-                'name': 'select-table-items',
-                'onclick': 'toggle_rows(this, "delete-table-items", "checkbox", "delete-table-items-button", "submit")',
-            },
-            'td__input': {
-                'name': 'delete-table-items',
-                'onclick': 'toggle_row("delete-table-items", "checkbox", "delete-table-items-button", "submit")',
-            },
-        },
-    )
+    price = tables.Column(verbose_name=_("Price"))
+    delete = CheckBoxDeleteColumn(accessor="pk")
 
     class Meta:
         model = Order
@@ -35,10 +21,9 @@ class OrderTable(tables.Table):
 
 
 class ServiceTable(tables.Table):
-    price = tables.Column(
-        verbose_name=_("Total"),
-    )
+    price = tables.Column(verbose_name=_("Total"))
     equipment = tables.LinkColumn()
+    delete = CheckBoxDeleteColumn(accessor="pk")
 
     class Meta:
         model = Service
@@ -47,19 +32,14 @@ class ServiceTable(tables.Table):
 
 
 class OrderOptionTable(tables.Table):
-    order = tables.LinkColumn(
-        text=lambda record: record.order.pk,
-    )
-    service = tables.LinkColumn(
-        text=lambda record: record.service.equipment,
-    )
+    order = tables.LinkColumn(text=lambda record: record.order.pk)
+    service = tables.LinkColumn(text=lambda record: record.service.equipment)
     service_price = tables.Column(
         accessor='service.price',
         verbose_name=_('Price')
     )
-    price = tables.Column(
-        verbose_name=_("Sum"),
-    )
+    price = tables.Column(verbose_name=_("Sum"))
+    delete = CheckBoxDeleteColumn(accessor="pk")
 
     class Meta:
         model = OrderOption

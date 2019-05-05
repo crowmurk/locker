@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
+{% load forms %}
 
 {% block title %}
     {{ block.super }} – {{ order|verbose_name }}: {{ order.pk }}
@@ -43,6 +44,9 @@
             </div>
         </div>
         <h5>{% field_verbose_name order 'services' %}</h5>
-        {% render_table table %}
+        {% if table %}
+            {% trans "Delete" as action_verbose %}
+            {% table_delete table button_class='button button-primary' action_verbose=action_verbose %}
+        {% endif %}
     </article>
 {% endblock %}
