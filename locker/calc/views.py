@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -11,6 +10,8 @@ from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
 
+from core.views import DeleteColumnMixin
+
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
 from .tables import OrderTable, ServiceTable, OrderOptionTable
@@ -18,7 +19,7 @@ from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
 from .utils import OrderCreateAddClientInContext, OrderFormMixin
 
 
-class ServiceList(SingleTableMixin, FilterView):
+class ServiceList(SingleTableMixin, DeleteColumnMixin, FilterView):
     model = Service
     table_class = ServiceTable
     filterset_class = ServiceFilter
@@ -45,19 +46,11 @@ class ServiceDelete(DeleteView):
     success_url = reverse_lazy('calc:service:list')
 
 
-class OrderList(SingleTableMixin, FilterView):
+class OrderList(SingleTableMixin, DeleteColumnMixin, FilterView):
     model = Order
     table_class = OrderTable
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
-
-    def post(self, request, *args, **kwargs):
-        pks = request.POST.getlist("delete-table-items")
-        button = request.POST.getlist("delete-table-items-button")
-        if pks and button:
-            selected_objects = self.model.objects.filter(pk__in=pks)
-            selected_objects.delete()
-        return HttpResponseRedirect(request.path)
 
 
 class OrderCreate(OrderCreateAddClientInContext, OrderFormMixin, CreateView):
@@ -65,8 +58,9 @@ class OrderCreate(OrderCreateAddClientInContext, OrderFormMixin, CreateView):
     form_class = OrderForm
 
 
-class OrderDetail(DetailView):
+class OrderDetail(DetailView, DeleteColumnMixin):
     model = Order
+    related_model = OrderOption
     form_class = OrderForm
 
     def get_context_data(self, **kwargs):
@@ -95,7 +89,7 @@ class OrderDelete(DeleteView):
     success_url = reverse_lazy('calc:order:list')
 
 
-class OrderOptionList(SingleTableMixin, FilterView):
+class OrderOptionList(SingleTableMixin, DeleteColumnMixin, FilterView):
     model = OrderOption
     table_class = OrderOptionTable
     filterset_class = OrderOptionFilter
