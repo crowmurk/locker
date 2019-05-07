@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from .models import Order, Service, OrderOption
 
@@ -6,15 +7,41 @@ from .models import Order, Service, OrderOption
 
 class OrderOptionInline(admin.StackedInline):
     model = OrderOption
-    extra = 1
+    extra = 0
 
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderOptionInline, )
+    list_display = (
+        'id',
+        'get_author',
+        'client',
+        'created',
+        'modified',
+        'factor',
+        'get_price',
+    )
+    search_fields = ('author__last_name', 'client__name',)
+
+    def get_price(self, instance):
+        return instance.price
+
+    get_price.short_description = _('Price')
+
+    def get_author(self, instance):
+        return instance.author.get_full_name()
+
+    get_author.short_description = _('Author')
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    inlines = (OrderOptionInline, )
+    list_display = (
+        'equipment',
+        'equipment_price',
+        'work',
+        'work_price',
+    )
+    search_fields = ('equipment', 'work')
 
 
 admin.site.register(Service, ServiceAdmin)

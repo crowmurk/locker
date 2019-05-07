@@ -144,3 +144,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Admin config
+
+ADMIN_SITE_HEADER = _("Locker administration")
+
+ADMIN_SITE_TITLE = _("Locker site admin")
+
+ADMIN_INDEX_TITLE = _('Site administration')
