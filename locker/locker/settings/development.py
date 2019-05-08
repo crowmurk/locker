@@ -100,12 +100,12 @@ LOGGING = {
 # Сообщения отображаются в консоли
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Поле 'From' если не указано
-DEFAULT_FROM_EMAIL = 'no-reply@locker.local'
+DEFAULT_FROM_EMAIL = 'no-reply@loker.local'
 # Поле 'From' если отправлено ADMINS и MANAGERS
-SERVER_EMAIL = 'contact@locker.local'
+SERVER_EMAIL = 'contact@loker.local'
 # Префикс темы сообщения
-EMAIL_SUBJECT_PREFIX = '[Locker calculator] '
+EMAIL_SUBJECT_PREFIX = '[Loker calculator] '
 # Поле 'To' если отправлено MANAGERS
-MANAGERS = (('Us', 'ourselves@locker.local'),)
+MANAGERS = (('Us', 'ourselves@loker.local'),)
 # Поле 'To' если отправлено ADMINS
-ADMINS = (('Admin', 'admin@locker.local'),)
+ADMINS = (('Admin', 'admin@loker.local'),)

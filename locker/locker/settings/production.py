@@ -67,15 +67,15 @@ LOGGING = {
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/var/log/httpd/django.mail'
 # Поле 'From' если не указано
-DEFAULT_FROM_EMAIL = 'no-reply@locker.local'
+DEFAULT_FROM_EMAIL = 'no-reply@loker.local'
 # Поле 'From' если отправлено ADMINS и MANAGERS
-SERVER_EMAIL = 'contact@locker.local'
+SERVER_EMAIL = 'contact@loker.local'
 # Префикс темы сообщения
-EMAIL_SUBJECT_PREFIX = '[Locker Calculator] '
+EMAIL_SUBJECT_PREFIX = '[Loker Calculator] '
 # Поле 'To' если отправлено MANAGERS
-MANAGERS = (('Us', 'ourselves@locker.local'),)
+MANAGERS = (('Us', 'ourselves@loker.local'),)
 # Поле 'To' если отправлено ADMINS
-ADMINS = (('Admin', 'admin@locker.local'),)
+ADMINS = (('Admin', 'admin@loker.local'),)
 
 # # Сообщения отправляются по smtp
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -84,7 +84,7 @@ ADMINS = (('Admin', 'admin@locker.local'),)
 # # Поле 'From' если отправлено ADMINS и MANAGERS
 # SERVER_EMAIL = 'my_support_mail@gmail.com'
 # # Префикс темы сообщения
-# EMAIL_SUBJECT_PREFIX = '[Mining Statistic] '
+# EMAIL_SUBJECT_PREFIX = '[Loker Calculator] '
 # # Поле 'To' если отправлено MANAGERS
 # MANAGERS = (('Us', 'my_secret_mail@gmail.com'),)
 # # Поле 'To' если отправлено ADMINS

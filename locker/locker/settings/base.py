@@ -147,8 +147,8 @@ STATICFILES_DIRS = (
 
 # Admin config
 
-ADMIN_SITE_HEADER = _("Locker administration")
+ADMIN_SITE_HEADER = _("Loker administration")
 
-ADMIN_SITE_TITLE = _("Locker site admin")
+ADMIN_SITE_TITLE = _("Loker site admin")
 
 ADMIN_INDEX_TITLE = _('Site administration')
