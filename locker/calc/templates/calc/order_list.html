@@ -26,6 +26,6 @@
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}
-        {% table_delete table button_class='button button-primary' action_verbose=action_verbose %}
+        {% action_table_form table button_name='action-table-delete-button' button_class='button button-primary' action_verbose=action_verbose %}
     {% endif %}
 {% endblock %}

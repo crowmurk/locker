@@ -2,7 +2,7 @@ from django.utils.translation import gettext_lazy as _
 
 import django_tables2 as tables
 
-from core.tables import CheckBoxDeleteColumn
+from core.tables import CheckBoxActionColumn
 
 from .models import Order, Service, OrderOption
 
@@ -12,7 +12,10 @@ class OrderTable(tables.Table):
     author = tables.Column(accessor='author.get_full_name')
     client = tables.LinkColumn()
     price = tables.Column(verbose_name=_("Price"))
-    delete = CheckBoxDeleteColumn(accessor="pk")
+    delete = CheckBoxActionColumn(
+        accessor="pk",
+        script={'button_name': 'action-table-delete-button', },
+    )
 
     class Meta:
         model = Order
@@ -23,7 +26,10 @@ class OrderTable(tables.Table):
 class ServiceTable(tables.Table):
     price = tables.Column(verbose_name=_("Total"))
     equipment = tables.LinkColumn()
-    delete = CheckBoxDeleteColumn(accessor="pk")
+    delete = CheckBoxActionColumn(
+        accessor="pk",
+        script={'button_name': 'action-table-delete-button', },
+    )
 
     class Meta:
         model = Service
@@ -47,7 +53,10 @@ class OrderOptionTable(tables.Table):
         verbose_name=_('Price')
     )
     price = tables.Column(verbose_name=_("Sum"))
-    delete = CheckBoxDeleteColumn(accessor="pk")
+    delete = CheckBoxActionColumn(
+        accessor="pk",
+        script={'button_name': 'action-table-delete-button', },
+    )
 
     class Meta:
         model = OrderOption
