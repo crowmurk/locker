@@ -5,11 +5,11 @@ from core.templatetags.names import verbose_name
 register = Library()
 
 @register.inclusion_tag(
-    'core/includes/form_table_delete.html',
+    'core/includes/action_table_form.html',
     takes_context=True,
 )
-def table_delete(context, *args, **kwargs):
-    """Тег представления таблицы с удаляемыми полями
+def action_table_form(context, *args, **kwargs):
+    """Тег формы таблицы с выбираемыми строками
     """
     request = context.get('request')
 
@@ -20,15 +20,15 @@ def table_delete(context, *args, **kwargs):
 
     if table is None:
         raise TemplateSyntaxError(
-            "table_delete template tag requires "
+            "action_table template tag requires "
             "at least one argument: table.")
 
     action = kwargs.get('action', '')
     method = kwargs.get('method', 'post')
     button_type = kwargs.get('button_type', 'submit')
     button_class = kwargs.get('button_class', 'button')
-    button_name = kwargs.get('button_name', 'delete-table-items-button')
-    button_value = kwargs.get('button_value', 'delete-table-items')
+    button_name = kwargs.get('button_name', 'action-table-button')
+    button_value = kwargs.get('button_value', 'action-column-item')
     action_verbose = kwargs.get('action_verbose', 'Submit')
 
     return {
@@ -105,7 +105,7 @@ def form(context, *args, **kwargs):
 
 
 @register.inclusion_tag(
-    'core/includes/confirm_delete_form.html',
+    'core/includes/delete_form.html',
     takes_context=True,
 )
 def delete_form(context, *args, **kwargs):

@@ -6,10 +6,10 @@
     {% render_table table %}
     <button type="{{ button_type|default:'submit' }}"
             class="{{ button_class|default:'button' }}"
-            name="{{ button_name|default:'delete-table-items-button' }}"
-            value="{{ button_value|default:'delete-table-items' }}"
+            name="{{ button_name|default:'action-table-button' }}"
+            value="{{ button_value|default:'action-column-item' }}"
             disabled>
         {{ action_verbose|default:'Submit' }}
     </button>
 </form>
-<script type="text/javascript" src="{% static 'site/js/table-delete.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/action-table.js' %}" defer></script>

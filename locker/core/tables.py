@@ -4,31 +4,49 @@ import django_tables2 as tables
 from django_tables2.utils import AttributeDict
 
 
-class CheckBoxDeleteColumn(tables.CheckBoxColumn):
+class CheckBoxActionColumn(tables.CheckBoxColumn):
+    """Добавляет к таблице столбец для выделения строк:
+
+    Параметр script настраивает js скрипт для множественного
+    выделения строк:
+
+        function_name - имя функции в скрипте
+            (скрипт должен присутствовать в шаблоне)
+        header_name - значение name элемента в заголовке таблицы
+        selection_name - значение name элементов столбца выделения
+        selection_type - тип элементов столбца выделения
+
+    Если таблица используется в форме с кнопкой возможно задать
+    параметры кнопки для управления её состоянием (включена/выключена).
+    Если хотя бы один из параметров undefined - кнопка отсутствует:
+
+        button_name - параметр name кнопки
+        button_type - параметр type кнопки
+    """
     script = {
-        'script_name': 'toggle_rows',
-        'header_name': 'delete-table-items-header',
-        'selection_name': 'delete-table-items',
+        'function_name': 'select_rows',
+        'header_name': 'action-column-header',
+        'selection_name': 'action-column-item',
         'selection_type': 'checkbox',
-        'button_name': 'delete-table-items-button',
+        'button_name': 'undefined',
         'button_type': 'submit'
     }
 
     def __init__(self, script=dict(), **kwargs):
         self.script.update(script)
-        super(CheckBoxDeleteColumn, self).__init__(**kwargs)
+        super(CheckBoxActionColumn, self).__init__(**kwargs)
 
     @property
     def header(self):
         default = {
             'name': self.script.get('header_name'),
             'type': self.script.get('selection_type'),
-            'onclick': '{script_name}(this,'
+            'onclick': '{function_name}(this,'
             ' {{selectionName: "{selection_name}",'
             ' selectionType: "{selection_type}",'
             ' buttonName: "{button_name}",'
             ' buttonType: "{button_type}"}})'.format(
-                script_name=self.script.get('script_name'),
+                function_name=self.script.get('function_name'),
                 selection_name=self.script.get('selection_name'),
                 selection_type=self.script.get('selection_type'),
                 button_name=self.script.get('button_name'),
@@ -46,12 +64,12 @@ class CheckBoxDeleteColumn(tables.CheckBoxColumn):
             'name': self.script.get('selection_name'),
             'type': self.script.get('selection_type'),
             'value': value,
-            'onclick': '{script_name}(undefined,'
+            'onclick': '{function_name}(undefined,'
             ' {{selectionName: "{selection_name}",'
             ' selectionType: "{selection_type}",'
             ' buttonName: "{button_name}",'
             ' buttonType: "{button_type}"}})'.format(
-                script_name=self.script.get('script_name'),
+                function_name=self.script.get('function_name'),
                 selection_name=self.script.get('selection_name'),
                 selection_type=self.script.get('selection_type'),
                 button_name=self.script.get('button_name'),

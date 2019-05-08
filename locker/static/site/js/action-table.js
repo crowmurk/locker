@@ -1,11 +1,11 @@
-function toggle_rows(source=undefined, options={}) {
+function select_rows(source=undefined, options={}) {
     /* source = undefined - no header selector
      *
      * options = {} - default options:
+     *      options.selectionName = 'action-column-item' - row selectors names
      *      options.selectionType = 'checkbox' - row selector type
-     *      options.selectionName = 'delete-table-items' - row selectors names
-     *      options.buttonType = 'submit' - delete button type
-     *      options.buttonName = 'delete-table-items-button' - delete button name
+     *      options.buttonName = 'action-table-button' - action button name
+     *      options.buttonType = 'submit' - action button type
      *
      * options.selectionName  or selectionType = undefined - no rows checkboxes
      * options.buttonName or buttonType = undefined - no button to toggle */
@@ -13,9 +13,9 @@ function toggle_rows(source=undefined, options={}) {
     if (arguments.length != 2) {return}
 
     // Default variables
-    var selectionName = 'selectionName' in options ? options.selectionName: 'delete-table-items',
+    var selectionName = 'selectionName' in options ? options.selectionName: 'action-column-item',
         selectionType = 'selectionType' in options ? options.selectionType: 'checkbox',
-        buttonName = 'buttonName' in options ? options.buttonName: 'delete-table-items-button',
+        buttonName = 'buttonName' in options ? options.buttonName: 'action-table-button',
         buttonType = 'buttonType' in options ? options.buttonType: 'submit';
 
     // Rows checkboxes to toggle if not undefined explicitly
