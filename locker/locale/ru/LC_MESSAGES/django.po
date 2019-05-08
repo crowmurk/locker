@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-07 06:52+0300\n"
+"POT-Creation-Date: 2019-05-08 22:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,14 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: calc/admin.py:29 calc/tables.py:14 calc/tables.py:39
+#: calc/admin.py:29 calc/tables.py:14 calc/tables.py:53
 #: calc/templates/calc/order_detail.html:33
 #: calc/templates/calc/order_detail_pdf.html:33
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:34 calc/models.py:83
+#: calc/admin.py:34 calc/models.py:89
 msgid "Author"
 msgstr "Автор"
 
@@ -51,7 +51,7 @@ msgstr "Калькулятор"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:47 calc/models.py:91 client/models.py:30
+#: calc/forms.py:47 calc/models.py:97 client/models.py:30
 msgid "Client"
 msgstr "Клиент"
 
@@ -71,71 +71,75 @@ msgstr "Работа"
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:41 calc/models.py:180
+#: calc/models.py:43
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: calc/models.py:47 calc/models.py:186
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:42 calc/models.py:98 templates/base.html:60
+#: calc/models.py:48 calc/models.py:104 templates/base.html:60
 msgid "Services"
 msgstr "Услуги"
 
-#: calc/models.py:47
+#: calc/models.py:53
 #, python-brace-format
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:102
+#: calc/models.py:108
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:106
+#: calc/models.py:112
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:115
+#: calc/models.py:121
 msgid "Factor"
-msgstr "Множитель"
+msgstr "Коэффициент"
 
-#: calc/models.py:119 calc/models.py:172 calc/tables.py:11
+#: calc/models.py:125 calc/models.py:178 calc/tables.py:11
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:120 templates/base.html:58
+#: calc/models.py:126 templates/base.html:58
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:124
+#: calc/models.py:130
 #, python-brace-format
 msgid "Order {id}: Author: {author} Client: {client} Price: {price}"
 msgstr "Заказ {id}: Автор: {author} Клиент: {client} Цена: {price}"
 
-#: calc/models.py:185
+#: calc/models.py:191
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:189
+#: calc/models.py:195
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:190
+#: calc/models.py:196
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:194
+#: calc/models.py:200
 #, python-brace-format
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:20 calc/tables.py:31 calc/tables.py:48 client/tables.py:20
+#: calc/tables.py:23 calc/tables.py:45 calc/tables.py:65 client/tables.py:23
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
-#: calc/tables.py:24 calc/templates/calc/orderoption_detail.html:32
-#: calc/templates/calc/service_detail.html:32
+#: calc/tables.py:27 calc/templates/calc/orderoption_detail.html:32
+#: calc/templates/calc/service_detail.html:34
 msgid "Total"
 msgstr "Итого"
 
-#: calc/tables.py:41
+#: calc/tables.py:55
 msgid "Sum"
 msgstr "Сумма"
 
@@ -185,7 +189,7 @@ msgstr "Последняя"
 #: client/templates/client/client_detail.html:17
 #: client/templates/client/client_detail.html:44
 #: client/templates/client/client_list.html:27
-#: core/templates/core/includes/confirm_delete_form.html:8
+#: core/templates/core/includes/delete_form.html:8
 msgid "Delete"
 msgstr "Удалить"
 
@@ -242,11 +246,11 @@ msgstr "Детали"
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: core/templates/core/includes/confirm_delete_form.html:6
+#: core/templates/core/includes/delete_form.html:6
 msgid "Are you sure you want to delete"
 msgstr "Вы действительно хотите удалить"
 
-#: core/templates/core/includes/confirm_delete_form.html:7
+#: core/templates/core/includes/delete_form.html:7
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -268,7 +272,7 @@ msgstr "Slug не может быть \"%(slug)s\""
 msgid "This value must be grater than zero"
 msgstr "Это значение должно быть больше нуля"
 
-#: employee/admin.py:13 employee/models.py:18
+#: employee/admin.py:13 employee/models.py:17
 msgid "Profile"
 msgstr "Профиль"
 
@@ -284,7 +288,7 @@ msgstr "Права пользователя"
 msgid "Important dates"
 msgstr "Важные даты"
 
-#: employee/admin.py:51 employee/models.py:15
+#: employee/admin.py:51 employee/models.py:14
 msgid "Middle name"
 msgstr "Отчество"
 
@@ -292,7 +296,7 @@ msgstr "Отчество"
 msgid "Employees"
 msgstr "Работники"
 
-#: employee/models.py:19
+#: employee/models.py:18
 msgid "Profiles"
 msgstr "Профили"
 
@@ -305,12 +309,12 @@ msgid "English"
 msgstr "Английский"
 
 #: locker/settings/base.py:150
-msgid "Locker administration"
-msgstr "Администрирование Locker"
+msgid "Loker administration"
+msgstr "Администрирование Loker"
 
 #: locker/settings/base.py:152
-msgid "Locker site admin"
-msgstr "Администрирование сайта Locker"
+msgid "Loker site admin"
+msgstr "Администрирование сайта Loker"
 
 #: locker/settings/base.py:154
 msgid "Site administration"
