@@ -36,11 +36,13 @@ class OrderAdmin(admin.ModelAdmin):
 
 class ServiceAdmin(admin.ModelAdmin):
     list_display = (
+        'rating',
         'equipment',
         'equipment_price',
         'work',
         'work_price',
     )
+    list_display_links = ('equipment', )
     search_fields = ('equipment', 'work')
 
 
