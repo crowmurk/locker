@@ -36,6 +36,12 @@ class Service(models.Model):
         decimal_places=2,
         verbose_name=_('Work price'),
     )
+    rating = models.PositiveIntegerField(
+        blank=False,
+        null=False,
+        default=0,
+        verbose_name=_('Rating'),
+    )
 
     class Meta:
         verbose_name = _('Service')

@@ -27,6 +27,14 @@ class ServiceTable(tables.Table):
 
     class Meta:
         model = Service
+        sequence = (
+            'rating',
+            'equipment',
+            'equipment_price',
+            'work',
+            'work_price',
+            'price',
+        )
         exclude = ('id', )
         empty_text = _("There are no records available")
 
