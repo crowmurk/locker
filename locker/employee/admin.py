@@ -50,6 +50,11 @@ class UserAdmin(BaseUserAdmin):
 
     get_middle_name.short_description = _('Middle name')
 
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(UserAdmin, self).get_inline_instances(request, obj)
+
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
