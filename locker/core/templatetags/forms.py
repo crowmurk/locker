@@ -73,6 +73,8 @@ def form(context, *args, **kwargs):
     """Тег формы создания и изменения объекта.
     """
     # Формируем контекст для шаблона формы
+    request = context.get('request')
+
     action = (args[0] if len(args) > 0
               else kwargs.get('action'))
     action_verbose = (args[1] if len(args) > 1
@@ -81,6 +83,7 @@ def form(context, *args, **kwargs):
               else kwargs.get('method'))
     form = context.get('form')
     formset = context.get('formset')
+    table = context.get('table')
     view = context.get('view')
 
     if hasattr(view, 'model'):
@@ -96,10 +99,12 @@ def form(context, *args, **kwargs):
             "which is a URL.")
 
     return {
+        'request': request,
         'action': action,
         'action_verbose': action_verbose,
         'form': form,
         'formset': formset,
+        'table': table,
         'method': method,
     }
 
