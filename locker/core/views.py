@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 
 class DeleteColumnMixin:
     related_model = None
-    delete_button = "action-table-delete-button"
+    delete_button = "action-table-button"
 
     def post(self, request, *args, **kwargs):
         button = request.POST.get(self.delete_button)
