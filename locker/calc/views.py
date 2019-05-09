@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -14,7 +15,12 @@ from core.views import DeleteColumnMixin
 
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
-from .tables import OrderTable, ServiceTable, OrderOptionTable
+from .tables import (
+    OrderTable,
+    OrderCreateServiceTable,
+    ServiceTable,
+    OrderOptionTable,
+)
 from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
 from .utils import OrderCreateAddClientInContext, OrderFormMixin
 
@@ -53,9 +59,29 @@ class OrderList(SingleTableMixin, DeleteColumnMixin, FilterView):
     template_name = 'calc/order_list.html'
 
 
-class OrderCreate(OrderCreateAddClientInContext, OrderFormMixin, CreateView):
+class OrderCreate(OrderCreateAddClientInContext, CreateView):
     model = Order
     form_class = OrderForm
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderCreate, self).get_context_data()
+        context['table'] = OrderCreateServiceTable(Service.objects.all())
+        return context
+
+    def form_valid(self, form):
+        """Переопределено для автоматического
+        добавления автора заказа  и опций
+        """
+
+        if form.is_valid():
+            self.object = form.save(self.request)
+            pks = self.request.POST.getlist('add')
+            if pks:
+                for service in Service.objects.filter(pk__in=pks):
+                    self.object.services.add(service)
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
 
 
 class OrderDetail(DetailView, DeleteColumnMixin):

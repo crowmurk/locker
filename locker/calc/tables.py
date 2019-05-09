@@ -23,6 +23,27 @@ class OrderTable(tables.Table):
         empty_text = _("There are no records available")
 
 
+class OrderCreateServiceTable(tables.Table):
+    equipment = tables.LinkColumn()
+    price = tables.Column(verbose_name=_("Total"))
+    add = tables.CheckBoxColumn(accessor="pk")
+
+    class Meta:
+        model = Service
+        sequence = (
+            'rating',
+            'equipment',
+            'work',
+            'price',
+        )
+        exclude = (
+            'id',
+            'equipment_price',
+            'work_price',
+        )
+        empty_text = _("There are no records available")
+
+
 class ServiceTable(tables.Table):
     price = tables.Column(verbose_name=_("Total"))
     equipment = tables.LinkColumn()

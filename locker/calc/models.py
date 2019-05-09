@@ -188,6 +188,7 @@ class OrderOption(models.Model):
     quantity = models.PositiveIntegerField(
         blank=False,
         null=False,
+        default=1,
         verbose_name=_('Quantity'),
     )
 
