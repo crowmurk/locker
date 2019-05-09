@@ -46,7 +46,7 @@
         <h5>{% field_verbose_name order 'services' %}</h5>
         {% if table %}
             {% trans "Delete" as action_verbose %}
-            {% action_table_form table button_name='action-table-delete-button' button_class='button button-primary' action_verbose=action_verbose %}
+            {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
         {% endif %}
     </article>
 {% endblock %}

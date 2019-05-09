@@ -14,7 +14,7 @@ class OrderTable(tables.Table):
     price = tables.Column(verbose_name=_("Price"))
     delete = CheckBoxActionColumn(
         accessor="pk",
-        script={'button_name': 'action-table-delete-button', },
+        script={'button_name': 'action-table-button', },
     )
 
     class Meta:
@@ -28,7 +28,7 @@ class ServiceTable(tables.Table):
     equipment = tables.LinkColumn()
     delete = CheckBoxActionColumn(
         accessor="pk",
-        script={'button_name': 'action-table-delete-button', },
+        script={'button_name': 'action-table-button', },
     )
 
     class Meta:
@@ -55,7 +55,7 @@ class OrderOptionTable(tables.Table):
     price = tables.Column(verbose_name=_("Sum"))
     delete = CheckBoxActionColumn(
         accessor="pk",
-        script={'button_name': 'action-table-delete-button', },
+        script={'button_name': 'action-table-button', },
     )
 
     class Meta:

@@ -14,7 +14,7 @@ class ClientTable(tables.Table):
     )
     delete = CheckBoxActionColumn(
         accessor="pk",
-        script={'button_name': 'action-table-delete-button', },
+        script={'button_name': 'action-table-button', },
     )
 
     class Meta:
