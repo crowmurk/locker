@@ -51,6 +51,30 @@ class OrderForm(forms.ModelForm):
         model = Order
         exclude = ('author', 'services')
 
+    def clean(self):
+        cleaned_data = super().clean()
+
+        # Заданный объект должен соответвовать клиенту
+        client = cleaned_data['client']
+        branch = cleaned_data['branch']
+
+        if client != branch.client:
+            self.add_error(
+                'branch',
+                forms.ValidationError(
+                    _('%(client)s client does not own'
+                      ' %(branch)s (%(address)s) branch'),
+                    code='invalid',
+                    params={
+                        'client': client,
+                        'branch': branch.name,
+                        'address': branch.address,
+                    },
+                ),
+            )
+
+        return cleaned_data
+
     def save(self, request, commit=True):
         """Переопределено для автоматического
         добавления автора заказа

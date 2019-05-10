@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from core.validators import validate_positive
 
-from client.models import Client
+from client.models import Client, Branch
 
 # Create your models here.
 
@@ -95,6 +95,14 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name='orders',
         verbose_name=_('Client'),
+    )
+    branch = models.ForeignKey(
+        Branch,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='orders',
+        verbose_name=_('Branch'),
     )
     services = models.ManyToManyField(
         Service,

@@ -10,6 +10,11 @@ from .models import Order, Service, OrderOption
 class OrderTable(tables.Table):
     id = tables.LinkColumn(verbose_name=_('Order'))
     author = tables.Column(accessor='author.get_full_name')
+    branch = tables.LinkColumn(text=lambda record: record.branch.name)
+    address = tables.Column(
+        accessor='branch.address',
+        verbose_name=_('Address'),
+    )
     client = tables.LinkColumn()
     price = tables.Column(verbose_name=_("Price"))
     delete = CheckBoxActionColumn(
@@ -19,6 +24,16 @@ class OrderTable(tables.Table):
 
     class Meta:
         model = Order
+        sequence = (
+            'id',
+            'author',
+            'client',
+            'branch',
+            'address',
+            'created',
+            'modified',
+            'price',
+        )
         exclude = ('factor', )
         empty_text = _("There are no records available")
 

@@ -30,6 +30,8 @@
         </BR>
         <strong>{% field_verbose_name order 'client' %}:</strong> {{ order.client }}
         </BR>
+        <strong>{% field_verbose_name order 'branch' %}:</strong> {{ order.branch.name }} ({{ order.branch.address }})
+        </BR>
         <strong>{% trans "Price" %}:</strong> {{ order.price }}
         </BR>
         <strong>{% field_verbose_name order 'created' %}:</strong> {{ order.created }}

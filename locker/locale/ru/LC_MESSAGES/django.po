@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-10 08:27+0300\n"
+"POT-Creation-Date: 2019-05-10 15:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,9 +20,9 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: calc/admin.py:29 calc/tables.py:14 calc/tables.py:74
-#: calc/templates/calc/order_detail.html:33
-#: calc/templates/calc/order_detail_pdf.html:33
+#: calc/admin.py:29 calc/tables.py:19 calc/tables.py:89
+#: calc/templates/calc/order_detail.html:36
+#: calc/templates/calc/order_detail_pdf.html:35
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
@@ -59,6 +59,11 @@ msgstr "Создать"
 msgid "Client"
 msgstr "Клиент"
 
+#: calc/forms.py:65
+#, python-format
+msgid "%(client)s client does not own %(branch)s (%(address)s) branch"
+msgstr "Объект %(branch)s (%(address)s) не принадлежит клиенту %(client)s"
+
 #: calc/models.py:18
 msgid "Equipment"
 msgstr "Оборудование"
@@ -79,11 +84,11 @@ msgstr "Стоимость работы"
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:47 calc/models.py:186
+#: calc/models.py:47 calc/models.py:194
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:48 calc/models.py:104 templates/base.html:60
+#: calc/models.py:48 calc/models.py:112 templates/base.html:60
 msgid "Services"
 msgstr "Услуги"
 
@@ -92,60 +97,68 @@ msgstr "Услуги"
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:108
+#: calc/models.py:105 client/models.py:89
+msgid "Branch"
+msgstr "Объект"
+
+#: calc/models.py:116
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:112
+#: calc/models.py:120
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:121
+#: calc/models.py:129
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:125 calc/models.py:178 calc/tables.py:11
+#: calc/models.py:133 calc/models.py:186 calc/tables.py:11
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:126 templates/base.html:58
+#: calc/models.py:134 templates/base.html:58
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:130
+#: calc/models.py:138
 #, python-brace-format
 msgid "Order {id}: Author: {author} Client: {client} Price: {price}"
 msgstr "Заказ {id}: Автор: {author} Клиент: {client} Цена: {price}"
 
-#: calc/models.py:192
+#: calc/models.py:200
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:196
+#: calc/models.py:204
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:197
+#: calc/models.py:205
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:201
+#: calc/models.py:209
 #, python-brace-format
 msgid "Order {order} option: {option} Quantity: {quantity} Total: {total}"
 msgstr "Опция заказа {order}: {option} Количество: {quantity} Итого: {total}"
 
-#: calc/tables.py:23 calc/tables.py:44 calc/tables.py:66 calc/tables.py:86
-#: client/tables.py:23 client/tables.py:39
+#: calc/tables.py:16 client/models.py:85
+msgid "Address"
+msgstr "Адрес"
+
+#: calc/tables.py:38 calc/tables.py:59 calc/tables.py:81 calc/tables.py:101
+#: client/tables.py:23 client/tables.py:40
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
-#: calc/tables.py:28 calc/tables.py:48
+#: calc/tables.py:43 calc/tables.py:63
 #: calc/templates/calc/orderoption_detail.html:32
 #: calc/templates/calc/service_detail.html:34
 msgid "Total"
 msgstr "Итого"
 
-#: calc/tables.py:76
+#: calc/tables.py:91
 msgid "Sum"
 msgstr "Сумма"
 
@@ -183,7 +196,7 @@ msgstr "Последняя"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
-#: calc/templates/calc/order_detail.html:48
+#: calc/templates/calc/order_detail.html:51
 #: calc/templates/calc/order_list.html:28
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
@@ -259,14 +272,6 @@ msgstr "Детали"
 #: client/models.py:26
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
-
-#: client/models.py:85
-msgid "Address"
-msgstr "Адрес"
-
-#: client/models.py:89
-msgid "Branch"
-msgstr "Объект"
 
 #: client/models.py:90
 msgid "Branches"
