@@ -2,7 +2,7 @@ function select_rows(source=undefined, options={}) {
     /* source = undefined - no header selector
      *
      * options = {} - default options:
-     *      options.selectionName = 'action-column-item' - row selectors names
+     *      options.selectionName = 'action-table-column-item' - row selectors names
      *      options.selectionType = 'checkbox' - row selector type
      *      options.buttonName = 'action-table-button' - action button name
      *      options.buttonType = 'submit' - action button type
@@ -13,7 +13,7 @@ function select_rows(source=undefined, options={}) {
     if (arguments.length != 2) {return}
 
     // Default variables
-    var selectionName = 'selectionName' in options ? options.selectionName: 'action-column-item',
+    var selectionName = 'selectionName' in options ? options.selectionName: 'action-table-column-item',
         selectionType = 'selectionType' in options ? options.selectionType: 'checkbox',
         buttonName = 'buttonName' in options ? options.buttonName: 'action-table-button',
         buttonType = 'buttonType' in options ? options.buttonType: 'submit';

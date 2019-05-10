@@ -13,10 +13,11 @@ def action_table_form(context, *args, **kwargs):
     """
     request = context.get('request')
 
-    table = context.get('table')
+    table = (args[0] if len(args) > 0
+             else kwargs.get('table'))
+
     if not table:
-        table = (args[0] if len(args) > 0
-                 else kwargs.get('table'))
+        table = context.get('table')
 
     if table is None:
         raise TemplateSyntaxError(
@@ -28,7 +29,7 @@ def action_table_form(context, *args, **kwargs):
     button_type = kwargs.get('button_type', 'submit')
     button_class = kwargs.get('button_class', 'button')
     button_name = kwargs.get('button_name', 'action-table-button')
-    button_value = kwargs.get('button_value', 'action-column-item')
+    button_value = kwargs.get('button_value', 'action-table-column-item')
     action_verbose = kwargs.get('action_verbose', 'Submit')
 
     return {

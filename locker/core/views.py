@@ -1,16 +1,33 @@
+from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponseRedirect
 
 # Create your views here.
 
-class DeleteColumnMixin:
-    related_model = None
-    delete_button = "action-table-button"
+class ActionTableDeleteMixin:
+    action_table_model = None
+    action_table_button = "action-table-button"
+    action_table_multitables = dict()
 
     def post(self, request, *args, **kwargs):
-        button = request.POST.get(self.delete_button)
-        pks = request.POST.getlist(button)
-        if pks:
-            model = self.related_model if self.related_model else self.model
-            selected_objects = model.objects.filter(pk__in=pks)
-            selected_objects.delete()
+        actions = dict()
+        if self.action_table_model:
+            actions.update({self.action_table_button: self.action_table_model, })
+        actions.update(self.action_table_multitables)
+
+        if not actions:
+            raise ImproperlyConfigured(
+                "You must specify action_table_model or action_table_multitables"
+                " in {class_name} for configure {mixin_name}".format(
+                    class_name=self.__class__,
+                    mixin_name=__class__.__name__,
+                )
+            )
+
+        for button_name, model in actions.items():
+            button = request.POST.get(button_name)
+            pks = request.POST.getlist(button)
+            if pks:
+                selected_objects = model.objects.filter(pk__in=pks)
+                selected_objects.delete()
+
         return HttpResponseRedirect(request.path)

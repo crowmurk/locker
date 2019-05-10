@@ -23,16 +23,15 @@ class CheckBoxActionColumn(tables.CheckBoxColumn):
         button_name - параметр name кнопки
         button_type - параметр type кнопки
     """
-    script = {
-        'function_name': 'select_rows',
-        'header_name': 'action-column-header',
-        'selection_name': 'action-column-item',
-        'selection_type': 'checkbox',
-        'button_name': 'undefined',
-        'button_type': 'submit'
-    }
-
     def __init__(self, script=dict(), **kwargs):
+        self.script = {
+            'function_name': 'select_rows',
+            'header_name': 'action-table-column-header',
+            'selection_name': 'action-table-column-item',
+            'selection_type': 'checkbox',
+            'button_name': 'undefined',
+            'button_type': 'submit'
+        }
         self.script.update(script)
         super(CheckBoxActionColumn, self).__init__(**kwargs)
 
