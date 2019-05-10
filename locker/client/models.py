@@ -77,6 +77,7 @@ class Branch(models.Model):
     )
     name = models.CharField(
         max_length=120,
+        blank=False,
         verbose_name=_('Name'),
     )
     address = models.TextField(
