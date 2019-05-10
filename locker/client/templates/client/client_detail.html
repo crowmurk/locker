@@ -34,15 +34,27 @@
         </div>
         <div class="row">
             <div class="six columns">
+                <h5>{% field_verbose_name client 'branches' %}</h5>
+            </div>
+            <div class="u-pull-right">
+                <a href="{% url 'client:branch:create' client_slug=client.slug %}" class="button">{% trans "Create" %}</a>
+            </div>
+        </div>
+        {% if tables.1 %}
+            {% trans "Delete" as action_verbose %}
+            {% action_table_form tables.1 button_class='button button-primary' button_name='branch-table-button' button_value='branch-table-column-item' action_verbose=action_verbose %}
+        {% endif %}
+        <div class="row">
+            <div class="six columns">
                 <h5>{% field_verbose_name client 'orders' %}</h5>
             </div>
             <div class="u-pull-right">
                 <a href="{% url 'client:createorder' client_slug=client.slug %}" class="button">{% trans "Create" %}</a>
             </div>
         </div>
-        {% if table %}
+        {% if tables.0 %}
             {% trans "Delete" as action_verbose %}
-            {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+            {% action_table_form tables.0 button_class='button button-primary' action_verbose=action_verbose %}
         {% endif %}
     </article>
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "client/base_client.html" %}
+{% load i18n %}
+{% load names %}
+{% load forms %}
+
+{% block title %}
+    {{ block.super }} – {{ branch|verbose_name }}: {{ branch }}
+{% endblock %}
+
+{% block client_header %}
+    <h5>{{ branch|verbose_name }}: {{ branch.name }}</h5>
+{% endblock %}
+
+{% block client_button %}
+    <a href="{{ branch.get_update_url }}" class="button">{% trans "Edit" %}</a>
+    <a href="{{ branch.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+{% endblock %}
+
+{% block client_content %}
+    <article>
+        <div class="row">
+            <div class="one column"></div>
+            <div class="ten columns">
+                <dl>
+                    <dt><strong>{% field_verbose_name branch 'client' %}:</strong></dt>
+                    <dd><a href="{{ branch.client.get_absolute_url }}">{{ branch.client }}</a></dd>
+                    <dt><strong>{% field_verbose_name branch 'name' %}:</strong></dt>
+                    <dd>{{ branch.name }}</dd>
+                    <dt><strong>{% field_verbose_name branch 'address' %}:</strong></dt>
+                    <dd>{{ branch.address }}</dd>
+                </dl>
+            </div>
+        </div>
+    </article>
+{% endblock %}
