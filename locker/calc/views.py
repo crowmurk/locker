@@ -11,7 +11,7 @@ from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
 
-from core.views import DeleteColumnMixin
+from core.views import ActionTableDeleteMixin
 
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
@@ -25,8 +25,9 @@ from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
 from .utils import OrderCreateAddClientInContext, OrderFormMixin
 
 
-class ServiceList(SingleTableMixin, DeleteColumnMixin, FilterView):
+class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Service
+    action_table_model = Service
     table_class = ServiceTable
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
@@ -52,27 +53,26 @@ class ServiceDelete(DeleteView):
     success_url = reverse_lazy('calc:service:list')
 
 
-class OrderList(SingleTableMixin, DeleteColumnMixin, FilterView):
+class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Order
+    action_table_model = Order
     table_class = OrderTable
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
 
 
-class OrderCreate(OrderCreateAddClientInContext, CreateView):
+class OrderCreate(OrderCreateAddClientInContext, SingleTableMixin, CreateView):
     model = Order
+    table_class = OrderCreateServiceTable
     form_class = OrderForm
 
-    def get_context_data(self, **kwargs):
-        context = super(OrderCreate, self).get_context_data()
-        context['table'] = OrderCreateServiceTable(Service.objects.all())
-        return context
+    def get_table_data(self):
+        return Service.objects.all()
 
     def form_valid(self, form):
         """Переопределено для автоматического
         добавления автора заказа  и опций
         """
-
         if form.is_valid():
             self.object = form.save(self.request)
             pks = self.request.POST.getlist('add')
@@ -84,25 +84,24 @@ class OrderCreate(OrderCreateAddClientInContext, CreateView):
             return self.render_to_response(self.get_context_data(form=form))
 
 
-class OrderDetail(DetailView, DeleteColumnMixin):
+class OrderDetail(SingleTableMixin, ActionTableDeleteMixin, DetailView):
     model = Order
-    related_model = OrderOption
+    table_class = OrderOptionTable
+    action_table_model = OrderOption
     form_class = OrderForm
 
-    def get_context_data(self, **kwargs):
-        context = super(DetailView, self).get_context_data(object=self.object)
-        context['table'] = OrderOptionTable(self.object.get_options(), exclude=('order', ))
-        return context
+    def get_table_data(self):
+        return self.object.get_options()
+
+    def get_table_kwargs(self):
+        return {'exclude': ('order',), }
 
 
-class OrderDetailPDF(PdfMixin, DetailView):
-    model = Order
+class OrderDetailPDF(PdfMixin, OrderDetail):
     template_name = "calc/order_detail_pdf.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(DetailView, self).get_context_data(object=self.object)
-        context['table'] = OrderOptionTable(self.object.get_options(), exclude=('order', ))
-        return context
+    def get_table_kwargs(self):
+        return {'exclude': ('order', 'delete', ), }
 
 
 class OrderUpdate(OrderFormMixin, UpdateView):
@@ -115,8 +114,9 @@ class OrderDelete(DeleteView):
     success_url = reverse_lazy('calc:order:list')
 
 
-class OrderOptionList(SingleTableMixin, DeleteColumnMixin, FilterView):
+class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = OrderOption
+    action_table_model = OrderOption
     table_class = OrderOptionTable
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'

@@ -4,7 +4,6 @@ from .models import Order, Service, OrderOption
 
 
 class OrderFilter(django_filters.FilterSet):
-
     class Meta:
         model = Order
         fields = {
@@ -13,7 +12,6 @@ class OrderFilter(django_filters.FilterSet):
 
 
 class ServiceFilter(django_filters.FilterSet):
-
     class Meta:
         model = Service
         fields = {
@@ -22,7 +20,6 @@ class ServiceFilter(django_filters.FilterSet):
 
 
 class OrderOptionFilter(django_filters.FilterSet):
-
     class Meta:
         model = OrderOption
         fields = {
