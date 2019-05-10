@@ -24,6 +24,7 @@ class ClientTable(tables.Table):
 
 
 class BranchTable(tables.Table):
+    client = tables.LinkColumn()
     name = tables.LinkColumn()
     delete = CheckBoxActionColumn(
         accessor="pk",

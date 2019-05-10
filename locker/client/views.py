@@ -75,6 +75,11 @@ class BranchList(
     filterset_class = BranchFilter
     template_name = 'client/branch_list.html'
 
+    def get_table_data(self):
+        client_slug = self.kwargs.get(self.client_slug_url_kwarg)
+        client = Client.objects.get(slug__iexact=client_slug)
+        return client.get_branches()
+
 
 class BranchCreate(BranchGetObjectMixin, ClientContextMixin, CreateView):
     model = Branch
