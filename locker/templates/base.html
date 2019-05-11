@@ -10,12 +10,14 @@
                 Loker calculator
             {% endblock %}
         </title>
-        <link rel="stylesheet" type="text/css" href="{% static 'site/normalize.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'site/skeleton.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'site/jquery-ui-1.12.1.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'site/style.css' %}">
-        <script type="text/javascript" src="{% static 'site/js/jquery-3.4.0.min.js' %}" defer></script>
-        <script type="text/javascript" src="{% static 'site/js/jquery-ui-1.12.1.min.js' %}" defer></script>
+        <link rel="icon" href="{% static 'site/images/favicon.ico' %}" type="image/x-icon">
+        <link rel="shortcut icon" href="{% static 'site/images/favicon.ico' %}" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/skeleton.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/jquery-ui.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/style.css' %}">
+        <script type="text/javascript" src="{% static 'site/js/jquery.min.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'site/js/jquery-ui.min.js' %}" defer></script>
         {% block head %}
         {% endblock %}
     </head>
