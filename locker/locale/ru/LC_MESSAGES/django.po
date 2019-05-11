@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-10 15:55+0300\n"
+"POT-Creation-Date: 2019-05-11 12:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,14 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
+#: calc/filters.py:21
+msgid "DD.MM.YYYY"
+msgstr "ДД.ММ.ГГГГ"
+
+#: calc/filters.py:59 calc/models.py:47 calc/models.py:194
+msgid "Service"
+msgstr "Услуга"
+
 #: calc/forms.py:33 calc/templates/calc/order_form.html:11
 #: calc/templates/calc/order_form.html:21
 #: calc/templates/calc/order_list.html:16
@@ -46,7 +54,7 @@ msgstr "Калькулятор"
 #: calc/templates/calc/service_list.html:16
 #: client/templates/client/branch_form.html:11
 #: client/templates/client/branch_form.html:21
-#: client/templates/client/branch_list.html:12
+#: client/templates/client/branch_list.html:13
 #: client/templates/client/client_detail.html:40
 #: client/templates/client/client_detail.html:52
 #: client/templates/client/client_form.html:11
@@ -55,7 +63,8 @@ msgstr "Калькулятор"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:47 calc/models.py:97 client/models.py:30 client/models.py:76
+#: calc/forms.py:47 calc/models.py:97 client/filters.py:16 client/filters.py:59
+#: client/models.py:30 client/models.py:76
 msgid "Client"
 msgstr "Клиент"
 
@@ -84,11 +93,7 @@ msgstr "Стоимость работы"
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:47 calc/models.py:194
-msgid "Service"
-msgstr "Услуга"
-
-#: calc/models.py:48 calc/models.py:112 templates/base.html:60
+#: calc/models.py:48 calc/models.py:112 templates/base.html:61
 msgid "Services"
 msgstr "Услуги"
 
@@ -97,7 +102,7 @@ msgstr "Услуги"
 msgid "Equipment: {equipment} Price: {price}"
 msgstr "Оборудование: {equipment} Цена: {price}"
 
-#: calc/models.py:105 client/models.py:89
+#: calc/models.py:105 client/filters.py:64 client/models.py:89
 msgid "Branch"
 msgstr "Объект"
 
@@ -117,7 +122,7 @@ msgstr "Коэффициент"
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:134 templates/base.html:58
+#: calc/models.py:134 client/filters.py:21 templates/base.html:58
 msgid "Orders"
 msgstr "Заказы"
 
@@ -197,13 +202,13 @@ msgstr "Последняя"
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
 #: calc/templates/calc/order_detail.html:51
-#: calc/templates/calc/order_list.html:28
+#: calc/templates/calc/order_list.html:24
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
-#: calc/templates/calc/orderoption_list.html:27
+#: calc/templates/calc/orderoption_list.html:24
 #: calc/templates/calc/service_confirm_delete.html:7
 #: calc/templates/calc/service_detail.html:15
-#: calc/templates/calc/service_list.html:27
+#: calc/templates/calc/service_list.html:24
 #: client/templates/client/branch_confirm_delete.html:7
 #: client/templates/client/branch_detail.html:16
 #: client/templates/client/branch_list.html:28
@@ -211,7 +216,7 @@ msgstr "Последняя"
 #: client/templates/client/client_detail.html:17
 #: client/templates/client/client_detail.html:44
 #: client/templates/client/client_detail.html:56
-#: client/templates/client/client_list.html:28
+#: client/templates/client/client_list.html:24
 #: core/templates/core/includes/delete_form.html:8
 msgid "Delete"
 msgstr "Удалить"
@@ -241,19 +246,12 @@ msgstr "Изменить"
 msgid "Document created"
 msgstr "Документ создан"
 
-#: calc/templates/calc/order_list.html:24
-#: calc/templates/calc/orderoption_list.html:23
-#: calc/templates/calc/service_list.html:23
-#: client/templates/client/branch_list.html:24
-#: client/templates/client/client_list.html:24
-msgid "Filter"
-msgstr "Фильтр"
-
 #: client/admin.py:15 client/tables.py:13
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
-#: client/apps.py:7 client/models.py:31 templates/base.html:59
+#: client/apps.py:7 client/models.py:31
+#: client/templates/client/branch_list.html:15 templates/base.html:59
 msgid "Clients"
 msgstr "Клиенты"
 
@@ -273,7 +271,7 @@ msgstr "Детали"
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: client/models.py:90
+#: client/models.py:90 templates/base.html:60
 msgid "Branches"
 msgstr "Объекты"
 
@@ -284,6 +282,10 @@ msgstr "Вы действительно хотите удалить"
 #: core/templates/core/includes/delete_form.html:7
 msgid "Cancel"
 msgstr "Отмена"
+
+#: core/templates/core/includes/filter_table_form.html:45
+msgid "Filter"
+msgstr "Фильтр"
 
 #: core/templates/core/includes/formset_table.html:79
 msgid "Add"
