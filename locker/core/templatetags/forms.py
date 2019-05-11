@@ -5,6 +5,27 @@ from core.templatetags.names import verbose_name
 register = Library()
 
 @register.inclusion_tag(
+    'core/includes/filter_table_form.html',
+    takes_context=True,
+)
+def filter_table_form(context, *args, **kwargs):
+    """Тег представления filter form как таблицы
+    """
+    filter_form = context.get('filter')
+
+    if not filter_form:
+        filter_form = (args[0] if len(args) > 0
+                       else kwargs.get('filter'))
+
+    if filter_form is None:
+        raise TemplateSyntaxError(
+            "filter_table template tag requires "
+            "at least one argument: filter.")
+
+    return {'filter': filter_form, }
+
+
+@register.inclusion_tag(
     'core/includes/action_table_form.html',
     takes_context=True,
 )
