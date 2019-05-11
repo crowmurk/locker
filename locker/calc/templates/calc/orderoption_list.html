@@ -18,10 +18,7 @@
 
 {% block calc_content %}
     {% if filter %}
-        <form action="" method="get" class="inline">
-            {{ filter.form.as_table }}
-            <input value="{% trans "Filter" %}" type="submit" />
-        </form>
+        {% filter_table_form filter %}
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}
