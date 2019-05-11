@@ -31,7 +31,7 @@ def get_unique_slug(instance, slug_field, *slugable, unique=True):
     slug = slugify('-'.join(slugable), allow_unicode=True)
 
     # Значения slug конфликтуют с url
-    conflict = slug in ('create', 'update', 'delete')
+    conflict = slug in ('create', 'update', 'delete', 'branch', 'createorder')
 
     if unique:
         # При необходимости проверям slug на уникальность
