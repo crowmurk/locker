@@ -1,4 +1,5 @@
 {% extends "calc/base_calc.html" %}
+{% load staticfiles %}
 {% load i18n %}
 {% load forms %}
 {% load names %}
@@ -22,4 +23,5 @@
         {% url 'calc:order:create' as form_url %}
         {% form form_url action_verbose %}
     {% endif %}
+    <script type="text/javascript" src="{% static 'site/js/order-form.js' %}" defer></script>
 {% endblock %}
