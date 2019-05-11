@@ -9,7 +9,11 @@
 {% endblock %}
 
 {% block client_button %}
-    <a href="{% url 'client:branch:create' client_slug=client.slug %}" class="button button-primary">{% trans "Create" %}</a>
+    {% if client.slug %}
+        <a href="{% url 'client:branch:create' client_slug=client.slug %}" class="button button-primary">{% trans "Create" %}</a>
+    {% else %}
+        <a href="{% url 'client:list' %}" class="button">{% trans "Clients" %}</a>
+    {% endif %}
 {% endblock %}
 
 {% block client_header %}
@@ -18,11 +22,7 @@
 
 {% block client_content %}
     {% if filter %}
-        <form action="" method="get" class="inline">
-            {% csrf_token %}
-            {{ filter.form.as_table }}
-            <input value="{% trans "Filter" %}" type="submit" />
-        </form>
+        {% filter_table_form filter %}
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}

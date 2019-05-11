@@ -7,7 +7,7 @@ from django.views.generic import (
     DeleteView
 )
 
-from django_tables2 import SingleTableMixin, MultiTableMixin
+from django_tables2 import SingleTableView, SingleTableMixin, MultiTableMixin
 from django_filters.views import FilterView
 
 from core.views import ActionTableDeleteMixin
@@ -62,8 +62,6 @@ class ClientDelete(DeleteView):
 
 
 class BranchList(
-        BranchGetObjectMixin,
-        ClientContextMixin,
         SingleTableMixin,
         ActionTableDeleteMixin,
         FilterView,
@@ -73,6 +71,19 @@ class BranchList(
     action_table_button = 'branch-table-button'
     table_class = BranchTable
     filterset_class = BranchFilter
+    template_name = 'client/branch_list.html'
+
+
+class BranchListClient(
+        BranchGetObjectMixin,
+        ClientContextMixin,
+        SingleTableView,
+        ActionTableDeleteMixin,
+):
+    model = Branch
+    action_table_model = Branch
+    action_table_button = 'branch-table-button'
+    table_class = BranchTable
     template_name = 'client/branch_list.html'
 
     def get_table_data(self):

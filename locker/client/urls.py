@@ -7,7 +7,7 @@ from . import views
 app_name = 'client'
 
 branch = [
-    path('', views.BranchList.as_view(), name='list'),
+    path('', views.BranchListClient.as_view(), name='list'),
     path('create/', views.BranchCreate.as_view(), name='create'),
     path('<int:pk>/', views.BranchDetail.as_view(), name='detail'),
     path('<int:pk>/update/', views.BranchUpdate.as_view(), name='update'),
@@ -16,6 +16,7 @@ branch = [
 
 urlpatterns = [
     path('', views.ClientList.as_view(), name='list'),
+    path('branch/', views.BranchList.as_view(), name='branch'),
     path('create/', views.ClientCreate.as_view(), name='create'),
     re_path(r'^(?P<slug>[\w-]+)/$', views.ClientDetail.as_view(), name='detail'),
     re_path(r'^(?P<slug>[\w-]+)/update/$', views.ClientUpdate.as_view(), name='update'),
