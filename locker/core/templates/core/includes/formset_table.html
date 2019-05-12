@@ -14,6 +14,7 @@
             </thead>
             <tbody id="formset_table">
         {% endif %}
+
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
                 <tr>
@@ -23,19 +24,34 @@
                 </tr>
             {% endfor %}
         {% endif %}
+
+        {% if form.hidden_fields %}
+            {% for hidden in form.hidden_fields %}
+                <tr style="display: none;">
+                    <td colspan="{{ form.visible_fields | length }}">
+                        {{ hidden }}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+            <tr>
+                {% for field in form.visible_fields %}
+                    <td>
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endif %}
+
         <tr>
             {% for field in form.visible_fields %}
                 <td>
-                    {% if forloop.first %}
-                        {% for hidden in form.hidden_fields %}
-                            {{ hidden }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if field.errors %}
-                        {% for error in field.errors %}
-                            <span class="error">{{ error }}</span>
-                        {% endfor %}
-                    {% endif %}
                     {{ field }}
                 </td>
             {% endfor %}
@@ -45,6 +61,7 @@
     {% endfor %}
         </tbody>
 </table>
+
 <table>
     <tbody id="empty_form" style="display:none">
         {% if formset.empty_form.non_field_errors %}
@@ -56,24 +73,40 @@
                 </tr>
             {% endfor %}
         {% endif %}
+
+        {% if formset.empty_form.hidden_fields %}
+            {% for hidden in formset.empty_form.hidden_fields %}
+                <tr style="display: none;">
+                    <td colspan="{{ formset.empty_form.visible_fields | length }}">
+                        {{ hidden }}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if formset.empty_form.errors %}
+            <tr>
+                {% for field in formset.empty_form.visible_fields %}
+                    <td>
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endif %}
+
         <tr>
             {% for field in formset.empty_form.visible_fields %}
                 <td>
-                    {% if forloop.first %}
-                        {% for hidden in formset.empty_form.hidden_fields %}
-                            {{ hidden }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if field.errors %}
-                        {% for error in field.errors %}
-                            <span class="error">{{ error }}</span>
-                        {% endfor %}
-                    {% endif %}
                     {{ field }}
                 </td>
             {% endfor %}
         </tr>
     </tbody>
 </table>
+
 <script type="text/javascript" src="{% static 'site/js/formset-dynamic.js' %}" defer></script>
 <input type="button" value="{% trans 'Add' %}" onclick="add_form('{{ formset.prefix }}', 'empty_form', 'formset_table')">

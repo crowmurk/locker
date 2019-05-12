@@ -19,20 +19,31 @@
                     </tr>
                 {% endfor %}
             {% endif %}
-            <tr>
-                {% for field in filter.form.visible_fields %}
-                    <td>
-                        {% for hidden in filter.form.hidden_fields %}
+
+            {% if filter.form.hidden_fields %}
+                {% for hidden in filter.form.hidden_fields %}
+                    <tr style="display: none;">
+                        <td colspan="{{ filter.form.visible_fields | length }}">
                             {{ hidden }}
-                        {% endfor %}
-                        {% if field.errors %}
-                            {% for error in field.errors %}
-                                <span class="error">{{ error }}</span>
-                            {% endfor %}
-                        {% endif %}
-                    </td>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tr>
+            {% endif %}
+
+            {% if filter.form.errors %}
+                <tr>
+                    {% for field in filter.form.visible_fields %}
+                        <td>
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <span class="error">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endif %}
+
             <tr>
                 {% for field in filter.form.visible_fields %}
                     <td>
