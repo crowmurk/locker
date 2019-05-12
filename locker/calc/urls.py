@@ -8,6 +8,7 @@ app_name = 'calc'
 
 order = [
     path('', views.OrderList.as_view(), name='list'),
+    path('orders.pdf', views.OrderListPDF.as_view(), name='listpdf'),
     path('create/', views.OrderCreate.as_view(), name='create'),
     path('<int:pk>/', views.OrderDetail.as_view(), name='detail'),
     path('<int:pk>/update/', views.OrderUpdate.as_view(), name='update'),

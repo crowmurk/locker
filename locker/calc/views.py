@@ -61,6 +61,13 @@ class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     template_name = 'calc/order_list.html'
 
 
+class OrderListPDF(PdfMixin, OrderList):
+    template_name = "calc/order_list_pdf.html"
+
+    def get_table_kwargs(self):
+        return {'exclude': ('delete', ), }
+
+
 class OrderCreate(OrderCreateAddClientInContext, SingleTableMixin, CreateView):
     model = Order
     table_class = OrderCreateServiceTable

@@ -1,0 +1,66 @@
+{% load staticfiles %}
+{% load i18n %}
+{% load django_tables2 %}
+{% load names %}
+{% load forms %}
+
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>
+            {{ view.model|verbose_name_plural }}
+        </title>
+        <style type="text/css">
+            @font-face { font-family: DejaMono; src: url("{% static 'site/fonts/DejaVuSansMono.ttf' %}");}
+            html { font-family: DejaMono; src: url("{% static 'site/fonts/DejaVuSansMono.ttf' %}");}
+        </style>
+        <link rel="stylesheet" type="text/css" href="{% static 'site/css/style_pdf.css' %}">
+    </head>
+    <body>
+        <div id="header_content">
+            <div align="right">
+                {% trans "Document created" %}: {% now "j E Y H:i" %}
+            </div>
+        </div>
+
+        <h2 align="center">Loker calculator</h2>
+        {% if filter %}
+            {% trans "no" as empty_filter_value %}
+            <h4>{% trans 'Filter options:' %}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        {% for field in filter.form.visible_fields %}
+                            <th>{{ field.label }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for field in filter.form.visible_fields %}
+                            <td>
+                                {% if field|form_field_name == 'RangeWidget' %}
+                                    {% for value in field.value %}
+                                        {{ value|default:empty_filter_value }}
+                                        {% if not forloop.last %} - {% endif %}
+                                    {% empty %}
+                                        {{ empty_filter_value }}
+                                    {% endfor %}
+                                {% else %}
+                                    {{ field.value|default:empty_filter_value }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+
+        <h4>{{ view.model|verbose_name_plural }}:</h4>
+        {% render_table table %}
+
+        <div id="footer_content">
+            &copy; {% now "Y" %} <a href="https://loker35.ru/">Loker</a>
+        </div>
+    </body>
+</html>
