@@ -7,7 +7,7 @@ $(document).ready(
         created_min.attr( 'autocomplete', 'off' );
         created_max.attr( 'autocomplete', 'off' );
         created_min.datepicker({dateFormat: 'dd.mm.yy', maxDate: 0 });
-        created_max.datepicker({dateFormat: 'dd.mm.yy',  minDate: 0 });
+        created_max.datepicker({dateFormat: 'dd.mm.yy',  maxDate: 0 });
     });
 
 $(document).ready(
