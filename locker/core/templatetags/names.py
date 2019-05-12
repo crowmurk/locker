@@ -32,3 +32,10 @@ def field_verbose_name(obj, field):
     except AttributeError:
         return ''
     return getattr(related_model_meta, 'verbose_name_plural', '')
+
+
+@register.filter
+def form_field_name(obj):
+    """Фильтр получает имя класса поля формы
+    """
+    return obj.field.widget.__class__.__name__
