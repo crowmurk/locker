@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-12 11:35+0300\n"
+"POT-Creation-Date: 2019-05-12 17:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr "Услуга"
 
 #: calc/forms.py:33 calc/templates/calc/order_form.html:12
 #: calc/templates/calc/order_form.html:22
-#: calc/templates/calc/order_list.html:17
+#: calc/templates/calc/order_list.html:18
 #: calc/templates/calc/orderoption_form.html:11
 #: calc/templates/calc/orderoption_form.html:21
 #: calc/templates/calc/orderoption_list.html:16
@@ -202,7 +202,7 @@ msgstr "Последняя"
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
 #: calc/templates/calc/order_detail.html:51
-#: calc/templates/calc/order_list.html:25
+#: calc/templates/calc/order_list.html:26
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/orderoption_list.html:24
@@ -222,6 +222,7 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: calc/templates/calc/order_detail.html:16
+#: calc/templates/calc/order_list.html:17
 msgid "PDF"
 msgstr "PDF"
 
@@ -244,8 +245,17 @@ msgid "Edit"
 msgstr "Изменить"
 
 #: calc/templates/calc/order_detail_pdf.html:21
+#: calc/templates/calc/order_list_pdf.html:22
 msgid "Document created"
 msgstr "Документ создан"
+
+#: calc/templates/calc/order_list_pdf.html:28
+msgid "no"
+msgstr "нет"
+
+#: calc/templates/calc/order_list_pdf.html:29
+msgid "Filter options:"
+msgstr "Настройки фильтра:"
 
 #: client/admin.py:15 client/tables.py:13
 msgid "Number of orders"
