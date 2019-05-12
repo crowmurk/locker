@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.urls import path, include
 
 from . import views
@@ -16,10 +17,16 @@ order = [
 
 service = [
     path('', views.ServiceList.as_view(), name='list'),
-    path('create/', views.ServiceCreate.as_view(), name='create'),
+    path('create/',
+         permission_required('is_superuser')(views.ServiceCreate.as_view()),
+         name='create'),
     path('<int:pk>/', views.ServiceDetail.as_view(), name='detail'),
-    path('<int:pk>/update/', views.ServiceUpdate.as_view(), name='update'),
-    path('<int:pk>/delete/', views.ServiceDelete.as_view(), name='delete'),
+    path('<int:pk>/update/',
+         permission_required('is_superuser')(views.ServiceUpdate.as_view()),
+         name='update'),
+    path('<int:pk>/delete/',
+         permission_required('is_superuser')(views.ServiceDelete.as_view()),
+         name='delete'),
 ]
 
 orderoption = [
