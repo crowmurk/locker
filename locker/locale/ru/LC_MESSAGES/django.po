@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-12 17:25+0300\n"
+"POT-Creation-Date: 2019-05-13 10:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,7 @@ msgstr "Услуга"
 #: calc/templates/calc/service_form.html:11
 #: calc/templates/calc/service_form.html:21
 #: calc/templates/calc/service_list.html:16
+#: client/templates/client/branch_detail.html:39
 #: client/templates/client/branch_form.html:11
 #: client/templates/client/branch_form.html:21
 #: client/templates/client/branch_list.html:13
@@ -211,6 +212,7 @@ msgstr "Последняя"
 #: calc/templates/calc/service_list.html:24
 #: client/templates/client/branch_confirm_delete.html:7
 #: client/templates/client/branch_detail.html:16
+#: client/templates/client/branch_detail.html:43
 #: client/templates/client/branch_list.html:28
 #: client/templates/client/client_confirm_delete.html:7
 #: client/templates/client/client_detail.html:17
