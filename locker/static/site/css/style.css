@@ -319,7 +319,7 @@ button.button-primary:disabled,
 input[type="submit"].button-primary:disabled,
 input[type="reset"].button-primary:disabled,
 input[type="button"].button-primary:disabled {
-  border: 1px solid grey;
-  background-color: grey;
+  border: 1px solid lightgrey;
+  background-color: transparent;
   color: lightgrey;
 }
