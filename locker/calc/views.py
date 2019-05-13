@@ -22,7 +22,7 @@ from .tables import (
     OrderOptionTable,
 )
 from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
-from .utils import OrderCreateAddClientInContext, OrderFormMixin
+from .utils import OrderCreateClientMixin, OrderFormMixin
 
 
 class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
@@ -68,7 +68,7 @@ class OrderListPDF(PdfMixin, OrderList):
         return {'exclude': ('delete', ), }
 
 
-class OrderCreate(OrderCreateAddClientInContext, SingleTableMixin, CreateView):
+class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
     model = Order
     table_class = OrderCreateServiceTable
     form_class = OrderForm
