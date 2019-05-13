@@ -31,5 +31,17 @@
                 </dl>
             </div>
         </div>
+        <div class="row">
+            <div class="six columns">
+                <h5>{% field_verbose_name branch 'orders' %}</h5>
+            </div>
+            <div class="u-pull-right">
+                <a href="{% url 'client:branch:createorder' client_slug=branch.client.slug branch_pk=branch.pk %}" class="button">{% trans "Create" %}</a>
+            </div>
+        </div>
+        {% if table %}
+            {% trans "Delete" as action_verbose %}
+            {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+        {% endif %}
     </article>
 {% endblock %}

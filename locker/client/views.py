@@ -129,9 +129,29 @@ class BranchCreate(BranchGetObjectMixin, ClientContextMixin, CreateView):
         return initial
 
 
-class BranchDetail(BranchGetObjectMixin, ClientContextMixin, DetailView):
+class BranchDetail(
+        BranchGetObjectMixin,
+        ClientContextMixin,
+        SingleTableMixin,
+        ActionTableDeleteMixin,
+        DetailView,
+):
     model = Branch
     form_class = BranchForm
+    action_table_model = Order
+    table_class = OrderTable
+
+    def get_table_kwargs(self):
+        return {
+            'exclude': ('client', 'branch', 'address', )
+        }
+
+    def get_table_data(self):
+        client_slug = self.kwargs.get(self.client_slug_url_kwarg)
+        return Order.objects.filter(
+            client__slug__iexact=client_slug,
+            branch=self.object,
+        )
 
 
 class BranchUpdate(BranchGetObjectMixin, ClientContextMixin, UpdateView):

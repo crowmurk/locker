@@ -12,6 +12,7 @@ branch = [
     path('<int:pk>/', views.BranchDetail.as_view(), name='detail'),
     path('<int:pk>/update/', views.BranchUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.BranchDelete.as_view(), name='delete'),
+    path('<int:branch_pk>/createorder/', OrderCreate.as_view(), name='createorder'),
 ]
 
 urlpatterns = [
