@@ -1,3 +1,17 @@
+function get_branch_options(branches) {
+    // Compose branch selection options
+    var options = '<option value="">---------</option>';
+    for (var i = 0; i < branches.length; i++) {
+        options += [
+            '<option value="', branches[i].pk, '">',
+            branches[i].fields['name'],
+            ' (', branches[i].fields['address'], ')',
+            '</option>'
+        ].join('');
+    }
+    return options
+}
+
 $(document).ready(
     function() {
         var client_select = $("select[name='client'][id='id_client']")
@@ -9,23 +23,13 @@ $(document).ready(
         }
         else {
             // In edit Order form
-            var current_branch = branch_select.val()
+            var current_branch_selection = branch_select.val()
             // Get client related branches in JSON
             var url = "/client/" + $(client_select).val() + "/jsonbranch";
             $.getJSON(url, function(branches) {
-                // Compose branch selection options
-                var options = '<option value="">---------</option>';
-                for (var i = 0; i < branches.length; i++) {
-                    options += [
-                        '<option value="', branches[i].pk, '">',
-                        branches[i].fields['name'],
-                        ' (', branches[i].fields['address'], ')',
-                        '</option>'
-                    ].join('');
-                }
                 // Set branch selection options
-                $(branch_select).html(options);
-                $(branch_select).val(current_branch)
+                $(branch_select).html(get_branch_options(branches));
+                $(branch_select).val(current_branch_selection);
             });
         }
 
@@ -48,18 +52,8 @@ $(document).ready(
                 // Get client related branches in JSON
                 var url = "/client/" + $(this).val() + "/jsonbranch";
                 $.getJSON(url, function(branches) {
-                    // Compose branch selection options
-                    var options = '<option value="">---------</option>';
-                    for (var i = 0; i < branches.length; i++) {
-                        options += [
-                            '<option value="', branches[i].pk, '">',
-                            branches[i].fields['name'],
-                            ' (', branches[i].fields['address'], ')',
-                            '</option>'
-                        ].join('');
-                    }
                     // Set branch selection options
-                    $(branch_select).html(options);
+                    $(branch_select).html(get_branch_options(branches));
                     $(branch_select).attr('disabled', false);
                 });
             }
