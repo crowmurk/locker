@@ -36,6 +36,7 @@ THIRD_PARTY_APPS = [
     'django_tables2',
     'django_extensions',
     'django_filters',
+    'import_export',
 ]
 
 LOCAL_APPS = [

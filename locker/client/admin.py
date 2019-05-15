@@ -1,11 +1,21 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
+from import_export.admin import ImportExportModelAdmin
+from import_export.resources import ModelResource
+
 from .models import Client
 
 # Register your models here.
 
-class ClientAdmin(admin.ModelAdmin):
+class ClientResource(ModelResource):
+    class Meta:
+        model = Client
+        exclude = ('slug', )
+
+
+class ClientAdmin(ImportExportModelAdmin):
+    resource_class = ClientResource
     list_display = ('name', 'details', 'get_number_of_orders')
     search_fields = ('name', 'details')
 

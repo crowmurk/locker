@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
+from import_export.admin import ImportExportModelAdmin
+from import_export.resources import ModelResource
+
 from .models import Order, Service, OrderOption
 
 # Register your models here.
@@ -34,7 +37,13 @@ class OrderAdmin(admin.ModelAdmin):
     get_author.short_description = _('Author')
 
 
-class ServiceAdmin(admin.ModelAdmin):
+class ServiceResource(ModelResource):
+    class Meta:
+        model = Service
+
+
+class ServiceAdmin(ImportExportModelAdmin):
+    resource_class = ServiceResource
     list_display = (
         'rating',
         'equipment',
