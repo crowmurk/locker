@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-13 10:44+0300\n"
+"POT-Creation-Date: 2019-05-15 07:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,8 +44,8 @@ msgid "Service"
 msgstr "Услуга"
 
 #: calc/forms.py:33 calc/templates/calc/order_form.html:12
-#: calc/templates/calc/order_form.html:22
-#: calc/templates/calc/order_list.html:18
+#: calc/templates/calc/order_form.html:28
+#: calc/templates/calc/order_list.html:24
 #: calc/templates/calc/orderoption_form.html:11
 #: calc/templates/calc/orderoption_form.html:21
 #: calc/templates/calc/orderoption_list.html:16
@@ -94,7 +94,7 @@ msgstr "Стоимость работы"
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:48 calc/models.py:112 templates/base.html:65
+#: calc/models.py:48 calc/models.py:112 templates/base.html:63
 msgid "Services"
 msgstr "Услуги"
 
@@ -123,7 +123,7 @@ msgstr "Коэффициент"
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/models.py:134 client/filters.py:21 templates/base.html:62
+#: calc/models.py:134 client/filters.py:21 templates/base.html:60
 msgid "Orders"
 msgstr "Заказы"
 
@@ -203,7 +203,7 @@ msgstr "Последняя"
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
 #: calc/templates/calc/order_detail.html:51
-#: calc/templates/calc/order_list.html:26
+#: calc/templates/calc/order_list.html:32
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/orderoption_list.html:24
@@ -224,13 +224,13 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: calc/templates/calc/order_detail.html:16
-#: calc/templates/calc/order_list.html:17
+#: calc/templates/calc/order_list.html:23
 msgid "PDF"
 msgstr "PDF"
 
 #: calc/templates/calc/order_detail.html:17
 #: calc/templates/calc/order_form.html:10
-#: calc/templates/calc/order_form.html:19
+#: calc/templates/calc/order_form.html:25
 #: calc/templates/calc/orderoption_detail.html:14
 #: calc/templates/calc/orderoption_form.html:9
 #: calc/templates/calc/orderoption_form.html:18
@@ -264,7 +264,7 @@ msgid "Number of orders"
 msgstr "Кличество заказов"
 
 #: client/apps.py:7 client/models.py:31
-#: client/templates/client/branch_list.html:15 templates/base.html:63
+#: client/templates/client/branch_list.html:15 templates/base.html:61
 msgid "Clients"
 msgstr "Клиенты"
 
@@ -284,7 +284,7 @@ msgstr "Детали"
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: client/models.py:90 templates/base.html:64
+#: client/models.py:90 templates/base.html:62
 msgid "Branches"
 msgstr "Объекты"
 
@@ -414,11 +414,11 @@ msgstr "Ошибка сервера"
 msgid "Do not mistake the one who does nothing."
 msgstr "Никогда не ошибается тот, кто ничего не делает."
 
-#: templates/base.html:31
+#: templates/base.html:29
 msgid "LogOut"
 msgstr "Выйти"
 
-#: templates/base.html:33 templates/registration/login.html:37
+#: templates/base.html:31 templates/registration/login.html:37
 msgid "LogIn"
 msgstr "Войти"
 
