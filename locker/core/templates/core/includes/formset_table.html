@@ -1,18 +1,18 @@
 {% load staticfiles %}
 {% load i18n %}
 
-<table>
+<table id="{{ formset.prefix }}_table">
     {{ formset.management_form }}
     {% for form in formset.forms %}
         {% if forloop.first %}
-            <thead>
+            <thead id="{{ formset.prefix }}_table_head">
                 <tr>
                     {% for field in form.visible_fields %}
                         <th>{{ field.label }}</th>
                     {% endfor %}
                 </tr>
             </thead>
-            <tbody id="formset_table">
+            <tbody id="{{ formset.prefix }}_table_body">
         {% endif %}
 
         {% if form.non_field_errors %}
@@ -57,13 +57,13 @@
             {% endfor %}
         </tr>
     {% empty %}
-        <tbody id="formset_table">
+        <tbody id="{{ formset.prefix }}_table">
     {% endfor %}
         </tbody>
 </table>
 
-<table>
-    <tbody id="empty_form" style="display:none">
+<table id="{{ formset.prefix }}_empty_form_table">
+    <tbody id="{{ formset.prefix }}_empty_form_table_body" style="display:none">
         {% if formset.empty_form.non_field_errors %}
             {% for error in formset.empty_form.non_field_errors %}
                 <tr>
@@ -109,4 +109,4 @@
 </table>
 
 <script type="text/javascript" src="{% static 'site/js/formset-dynamic.js' %}" defer></script>
-<input type="button" value="{% trans 'Add' %}" onclick="add_form('{{ formset.prefix }}', 'empty_form', 'formset_table')">
+<input type="button" value="{% trans 'Add' %}" onclick="add_form('{{ formset.prefix }}', '{{ formset.prefix }}_empty_form_table_body', '{{ formset.prefix }}_table_body')">
