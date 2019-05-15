@@ -4,9 +4,14 @@ from django.utils.translation import gettext_lazy as _
 from import_export.admin import ImportExportModelAdmin
 from import_export.resources import ModelResource
 
-from .models import Client
+from .models import Client, Branch
 
 # Register your models here.
+
+class BranchInline(admin.StackedInline):
+    model = Branch
+    extra = 0
+
 
 class ClientResource(ModelResource):
     class Meta:
@@ -16,6 +21,7 @@ class ClientResource(ModelResource):
 
 class ClientAdmin(ImportExportModelAdmin):
     resource_class = ClientResource
+    inlines = (BranchInline, )
     list_display = ('name', 'details', 'get_number_of_orders')
     search_fields = ('name', 'details')
 
