@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-15 07:29+0300\n"
+"POT-Creation-Date: 2019-05-16 10:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,14 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: calc/admin.py:29 calc/tables.py:19 calc/tables.py:89
+#: calc/admin.py:32 calc/tables.py:19 calc/tables.py:89
 #: calc/templates/calc/order_detail.html:36
 #: calc/templates/calc/order_detail_pdf.html:35
 #: calc/templates/calc/orderoption_detail.html:28
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:34 calc/models.py:89
+#: calc/admin.py:37 calc/models.py:89
 msgid "Author"
 msgstr "Автор"
 
@@ -36,7 +36,7 @@ msgid "Calculator"
 msgstr "Калькулятор"
 
 #: calc/filters.py:21
-msgid "DD.MM.YYYY"
+msgid "MM/DD/YYYY"
 msgstr "ДД.ММ.ГГГГ"
 
 #: calc/filters.py:59 calc/models.py:47 calc/models.py:194
@@ -46,8 +46,8 @@ msgstr "Услуга"
 #: calc/forms.py:33 calc/templates/calc/order_form.html:12
 #: calc/templates/calc/order_form.html:28
 #: calc/templates/calc/order_list.html:24
-#: calc/templates/calc/orderoption_form.html:11
-#: calc/templates/calc/orderoption_form.html:21
+#: calc/templates/calc/orderoption_form.html:12
+#: calc/templates/calc/orderoption_form.html:28
 #: calc/templates/calc/orderoption_list.html:16
 #: calc/templates/calc/service_form.html:11
 #: calc/templates/calc/service_form.html:21
@@ -232,8 +232,8 @@ msgstr "PDF"
 #: calc/templates/calc/order_form.html:10
 #: calc/templates/calc/order_form.html:25
 #: calc/templates/calc/orderoption_detail.html:14
-#: calc/templates/calc/orderoption_form.html:9
-#: calc/templates/calc/orderoption_form.html:18
+#: calc/templates/calc/orderoption_form.html:10
+#: calc/templates/calc/orderoption_form.html:25
 #: calc/templates/calc/service_detail.html:14
 #: calc/templates/calc/service_form.html:9
 #: calc/templates/calc/service_form.html:18
@@ -259,7 +259,7 @@ msgstr "нет"
 msgid "Filter options:"
 msgstr "Настройки фильтра:"
 
-#: client/admin.py:15 client/tables.py:13
+#: client/admin.py:31 client/tables.py:13
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
@@ -346,23 +346,23 @@ msgstr "Работники"
 msgid "Profiles"
 msgstr "Профили"
 
-#: locker/settings/base.py:123
+#: locker/settings/base.py:124
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:124
+#: locker/settings/base.py:125
 msgid "English"
 msgstr "Английский"
 
-#: locker/settings/base.py:150
+#: locker/settings/base.py:151
 msgid "Loker administration"
 msgstr "Администрирование Loker"
 
-#: locker/settings/base.py:152
+#: locker/settings/base.py:153
 msgid "Loker site admin"
 msgstr "Администрирование сайта Loker"
 
-#: locker/settings/base.py:154
+#: locker/settings/base.py:155
 msgid "Site administration"
 msgstr "Администрирование сайта"
 
