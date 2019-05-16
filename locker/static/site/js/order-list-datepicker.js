@@ -3,11 +3,13 @@ $(document).ready(
         // Assign datepicker to filter date fields
         var created_min = $("input[name='created_min']")
         var created_max = $("input[name='created_max']")
+        var current_language = $("select[name='language']").val()
 
-        created_min.attr( 'autocomplete', 'off' );
-        created_max.attr( 'autocomplete', 'off' );
-        created_min.datepicker({dateFormat: 'dd.mm.yy', maxDate: 0 });
-        created_max.datepicker({dateFormat: 'dd.mm.yy',  maxDate: 0 });
+        created_min.attr('autocomplete', 'off');
+        created_max.attr('autocomplete', 'off');
+
+        created_min.datepicker($.extend({maxDate: 0, }, $.datepicker.regional[current_language]));
+        created_max.datepicker($.extend({maxDate: 0, }, $.datepicker.regional[current_language]));
     });
 
 $(document).ready(

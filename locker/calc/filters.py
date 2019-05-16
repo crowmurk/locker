@@ -18,7 +18,7 @@ class OrderFilter(FilterSet):
     client = CharFilter(method='client_filter')
     created = DateFromToRangeFilter(
         widget=RangeWidget(
-            attrs={'placeholder': _('DD.MM.YYYY')},
+            attrs={'placeholder': _('MM/DD/YYYY')},
         ),
     )
 
