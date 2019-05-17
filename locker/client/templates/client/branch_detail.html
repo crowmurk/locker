@@ -36,7 +36,7 @@
                 <h5>{% field_verbose_name branch 'orders' %}</h5>
             </div>
             <div class="u-pull-right">
-                <a href="{% url 'client:branch:createorder' client_slug=branch.client.slug branch_pk=branch.pk %}" class="button">{% trans "Create" %}</a>
+                <a href="{% url 'client:branch:order_create' client_slug=branch.client.slug branch_pk=branch.pk %}" class="button">{% trans "Create" %}</a>
             </div>
         </div>
         {% if table %}
