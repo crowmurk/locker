@@ -9,7 +9,10 @@ from .models import Order, Service, OrderOption
 
 class OrderTable(tables.Table):
     id = tables.LinkColumn(verbose_name=_('Order'))
-    author = tables.Column(accessor='author.get_full_name')
+    author = tables.Column(
+        accessor='author.get_full_name',
+        order_by=('author.first_name', 'author.last_name', ),
+    )
     branch = tables.LinkColumn(text=lambda record: record.branch.name)
     address = tables.Column(
         accessor='branch.address',
