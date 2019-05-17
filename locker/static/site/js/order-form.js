@@ -49,6 +49,7 @@ $(document).ready(function() {
         if ($(this).val() == '') {
             // Disable branch selector when no client selected
             $(branch_select).val('');
+            $(branch_select).trigger('change')
             $(branch_select).attr('disabled', true);
         }
         else {
