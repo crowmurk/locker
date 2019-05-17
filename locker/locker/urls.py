@@ -26,8 +26,9 @@ urlpatterns = [
     path('', RedirectView.as_view(
         pattern_name='calc:order:list',
         permanent=False)),
-    path('client/', include(('client.urls', 'client'))),
+    path('client/', include('client.urls')),
     path('calc/', include('calc.urls')),
+    path('api/', include('api.urls')),
     path('underconstruction/', TemplateView.as_view(
         template_name='site/underconstruction.html'),
         name='underconstruction'),

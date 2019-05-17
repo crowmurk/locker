@@ -1,8 +1,5 @@
-from django.core import serializers
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -62,23 +59,6 @@ class ClientUpdate(UpdateView):
 class ClientDelete(DeleteView):
     model = Client
     success_url = reverse_lazy('client:list')
-
-
-class ClientBranchJson(View):
-    def get(self, request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        client = get_object_or_404(
-            Client,
-            pk=pk
-        )
-        branches = Branch.objects.all().filter(client=client)
-        json_branches = serializers.serialize(
-            "json",
-            branches,
-        )
-        return HttpResponse(
-            json_branches,
-            content_type="application/json; encoding=utf-8")
 
 
 class BranchList(

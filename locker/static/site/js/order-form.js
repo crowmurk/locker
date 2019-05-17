@@ -31,7 +31,7 @@ $(document).ready(function() {
         // In edit Order form
         var current_branch_selection = branch_select.val();
         // Get client related branches in JSON
-        var url = "/client/" + $(client_select).val() + "/jsonbranch";
+        var url = "/api/client/" + $(client_select).val() + "/branch/json";
         $.getJSON(url, function(branches) {
             // Set branch selection options
             $(branch_select).html(get_branch_options(branches));
@@ -53,7 +53,7 @@ $(document).ready(function() {
         }
         else {
             // Get client related branches in JSON
-            var url = "/client/" + $(this).val() + "/jsonbranch";
+            var url = "/api/client/" + $(this).val() + "/branch/json";
             $.getJSON(url, function(branches) {
                 // Set branch selection options
                 $(branch_select).html(get_branch_options(branches));

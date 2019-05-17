@@ -41,6 +41,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'core.apps.CoreConfig',
+    'api.apps.ApiConfig',
     'employee.apps.EmployeeConfig',
     'client.apps.ClientConfig',
     'calc.apps.CalcConfig',
