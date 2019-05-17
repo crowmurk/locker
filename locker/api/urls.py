@@ -4,6 +4,15 @@ from . import views
 
 app_name = 'api'
 
+client = [
+    path('<int:pk>/branch/json/', views.ClientBranchJson.as_view(), name='branch_json'),
+]
+
+calc = [
+]
+
 urlpatterns = [
-    path('client/<int:pk>/branch/json/', views.ClientBranchJson.as_view(), name='branch_json'),
+    path('user/autocomplete', views.UserListJson.as_view(), name='user_autocomplete'),
+    path('client/', include((client, 'client'))),
+    path('calc/', include((calc, 'calc'))),
 ]

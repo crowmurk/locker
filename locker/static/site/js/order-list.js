@@ -14,6 +14,18 @@ $(document).ready(
 
 $(document).ready(
     function() {
+        // Add autocomplete to filter author field
+        var url = "/api/user/autocomplete";
+        $.getJSON(url, function(users) {
+            $("input[type='text'][name='author']").autocomplete({
+                source: users,
+                select: function() {$(this).parents("form").submit();}
+            });
+        });
+    });
+
+$(document).ready(
+    function() {
         // Auto submit form when dates changed
         $("input[name='created_min']").change(function() {
             $(this).parents("form").submit();
