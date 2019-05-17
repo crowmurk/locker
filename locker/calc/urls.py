@@ -8,12 +8,12 @@ app_name = 'calc'
 
 order = [
     path('', views.OrderList.as_view(), name='list'),
-    path('orders.pdf', views.OrderListPDF.as_view(), name='listpdf'),
+    path('orders.pdf', views.OrderListPDF.as_view(), name='list_pdf'),
     path('create/', views.OrderCreate.as_view(), name='create'),
     path('<int:pk>/', views.OrderDetail.as_view(), name='detail'),
+    path('<int:pk>/order.pdf', views.OrderDetailPDF.as_view(), name='detail_pdf'),
     path('<int:pk>/update/', views.OrderUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.OrderDelete.as_view(), name='delete'),
-    path('<int:pk>/order.pdf', views.OrderDetailPDF.as_view(), name='pdf')
 ]
 
 service = [

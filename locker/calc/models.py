@@ -159,7 +159,7 @@ class Order(models.Model):
 
     def get_pdf_url(self):
         return reverse(
-            'calc:order:pdf',
+            'calc:order:detail_pdf',
             kwargs={'pk': self.pk},
         )
 

@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{% url 'calc:order:listpdf' %}?{{ request.GET.urlencode }}" class="button">{% trans "PDF" %}</a>
+    <a href="{% url 'calc:order:list_pdf' %}?{{ request.GET.urlencode }}" class="button">{% trans "PDF" %}</a>
     <a href="{% url 'calc:order:create' %}" class="button button-primary">{% trans "Create" %}</a>
 {% endblock %}
 
