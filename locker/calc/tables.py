@@ -43,7 +43,7 @@ class OrderTable(tables.Table):
 
 class OrderCreateServiceTable(tables.Table):
     equipment = tables.LinkColumn()
-    price = tables.Column(verbose_name=_("Total"))
+    price = tables.Column(verbose_name=_("Price"))
     add = tables.CheckBoxColumn(accessor="pk")
 
     class Meta:
@@ -63,7 +63,6 @@ class OrderCreateServiceTable(tables.Table):
 
 
 class ServiceTable(tables.Table):
-    price = tables.Column(verbose_name=_("Total"))
     equipment = tables.LinkColumn()
     delete = CheckBoxActionColumn(
         accessor="pk",

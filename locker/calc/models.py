@@ -49,7 +49,7 @@ class Service(models.Model):
         decimal_places=2,
         editable=False,
         default=0,
-        verbose_name=_('Price'),
+        verbose_name=_('Total'),
     )
 
     class Meta:
