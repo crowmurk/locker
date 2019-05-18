@@ -26,6 +26,9 @@ class ClientTable(tables.Table):
 class BranchTable(tables.Table):
     client = tables.LinkColumn()
     name = tables.LinkColumn()
+    number_of_orders = tables.Column(
+        verbose_name=_("Number of orders"),
+    )
     delete = CheckBoxActionColumn(
         accessor="pk",
         script={'button_name': 'branch-table-button',

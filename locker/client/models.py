@@ -9,8 +9,8 @@ from core.validators import validate_slug
 class ClientManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().annotate(
-            number_of_orders=models.Count('orders'),
-        )
+            number_of_orders=models.Count('orders', distinct=True)).annotate(
+                number_of_branches=models.Count('branches', distinct=True))
 
 
 class Client(models.Model):
@@ -70,6 +70,13 @@ class Client(models.Model):
         )
 
 
+class BranchManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().annotate(
+            number_of_orders=models.Count('orders'),
+        )
+
+
 class Branch(models.Model):
     client = models.ForeignKey(
         Client,
@@ -88,6 +95,8 @@ class Branch(models.Model):
         blank=False,
         verbose_name=_('Address'),
     )
+
+    objects = BranchManager()
 
     class Meta:
         verbose_name = _('Branch')

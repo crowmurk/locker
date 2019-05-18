@@ -27,6 +27,8 @@
                     <dd>{{ client.name }}</dd>
                     <dt><strong>{% field_verbose_name client 'details' %}:</strong></dt>
                     <dd>{{ client.details }}</dd>
+                    <dt><strong>{% field_verbose_name client 'branches' %}:</strong></dt>
+                    <dd>{{ client.number_of_branches }}</dd>
                     <dt><strong>{% field_verbose_name client 'orders' %}:</strong></dt>
                     <dd>{{ client.number_of_orders }}</dd>
                 </dl>
