@@ -42,6 +42,15 @@ class Service(models.Model):
         default=0,
         verbose_name=_('Rating'),
     )
+    price = models.DecimalField(
+        null=False,
+        blank=False,
+        max_digits=9,
+        decimal_places=2,
+        editable=False,
+        default=0,
+        verbose_name=_('Price'),
+    )
 
     class Meta:
         verbose_name = _('Service')
@@ -55,10 +64,9 @@ class Service(models.Model):
             price=self.price,
         )
 
-    def _get_price(self):
-        return self.equipment_price + self.work_price
-
-    price = property(_get_price)
+    def save(self, *args, **kwargs):
+        self.price = self.equipment_price + self.work_price
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(
