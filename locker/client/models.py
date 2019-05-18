@@ -6,6 +6,13 @@ from core.validators import validate_slug
 
 # Create your models here.
 
+class ClientManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().annotate(
+            number_of_orders=models.Count('orders'),
+        )
+
+
 class Client(models.Model):
     name = models.CharField(
         max_length=120,
@@ -26,6 +33,8 @@ class Client(models.Model):
         help_text=_('Details regarding the client'),
     )
 
+    objects = ClientManager()
+
     class Meta:
         verbose_name = _('Client')
         verbose_name_plural = _('Clients')
@@ -41,11 +50,6 @@ class Client(models.Model):
 
     def get_branches(self):
         return self.branches.all()
-
-    def _get_number_of_orders(self):
-        return len(self.get_orders())
-
-    number_of_orders = property(_get_number_of_orders)
 
     def get_absolute_url(self):
         return reverse(
