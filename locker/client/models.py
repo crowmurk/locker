@@ -45,6 +45,22 @@ class Client(models.Model):
             name=self.name,
         )
 
+    @property
+    def number_of_branches(self):
+        return self.branches.count()
+
+    @number_of_branches.setter
+    def number_of_branches(self, value):
+        pass
+
+    @property
+    def number_of_orders(self):
+        return self.orders.count()
+
+    @number_of_orders.setter
+    def number_of_orders(self, value):
+        pass
+
     def get_orders(self):
         return self.orders.all()
 
@@ -110,6 +126,14 @@ class Branch(models.Model):
             address=self.address,
             client=self.client.name,
         )
+
+    @property
+    def number_of_orders(self):
+        return self.orders.count()
+
+    @number_of_orders.setter
+    def number_of_orders(self, value):
+        pass
 
     def get_absolute_url(self):
         return reverse(
