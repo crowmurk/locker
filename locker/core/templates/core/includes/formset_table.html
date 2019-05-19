@@ -51,7 +51,7 @@
 
         <tr>
             {% for field in form.visible_fields %}
-                <td>
+                <td style="text-align: left;">
                     {{ field }}
                 </td>
             {% endfor %}
@@ -100,7 +100,7 @@
 
         <tr>
             {% for field in formset.empty_form.visible_fields %}
-                <td>
+                <td style="text-align: left;">
                     {{ field }}
                 </td>
             {% endfor %}
