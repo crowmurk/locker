@@ -315,6 +315,18 @@ table tr:hover {
     background-color: AliceBlue;
 }
 
+/* Add table order sort ndicator */
+
+.asc.orderable:after{
+    color: grey;
+    content: '▴';
+}
+
+.desc.orderable:after{
+    color: grey;
+    content: '▾';
+}
+
 .button:disabled,
 button:disabled,
 input[type="submit"]:disabled,
