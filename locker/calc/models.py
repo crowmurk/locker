@@ -87,6 +87,23 @@ class Service(models.Model):
         )
 
 
+class OrderManager(models.Manager):
+    def get_queryset(self):
+        equipment_price = models.F('options__service__equipment_price')
+        work_price = models.F('options__service__work_price')
+        factor = models.F('options__order__factor')
+        quantity = models.F('options__quantity')
+
+        price = models.ExpressionWrapper(
+            (equipment_price + work_price * factor) * quantity,
+            output_field=models.DecimalField(
+                max_digits=9,
+                decimal_places=2,
+            ),
+        )
+        return super().get_queryset().annotate(price=models.Sum(price))
+
+
 class Order(models.Model):
     author = models.ForeignKey(
         User,
@@ -137,6 +154,8 @@ class Order(models.Model):
         verbose_name=_('Factor'),
     )
 
+    objects = OrderManager()
+
     class Meta:
         verbose_name = _('Order')
         verbose_name_plural = _('Orders')
@@ -151,10 +170,13 @@ class Order(models.Model):
                      price=self.price,
         )
 
-    def _get_price(self):
+    @property
+    def price(self):
         return sum([item.price for item in self.get_options()])
 
-    price = property(_get_price)
+    @price.setter
+    def price(self, value):
+        pass
 
     def get_options(self):
         return self.options.all()
@@ -184,6 +206,23 @@ class Order(models.Model):
         )
 
 
+class OrderOptionManager(models.Manager):
+    def get_queryset(self):
+        equipment_price = models.F('service__equipment_price')
+        work_price = models.F('service__work_price')
+        factor = models.F('order__factor')
+        quantity = models.F('quantity')
+
+        price = models.ExpressionWrapper(
+            (equipment_price + work_price * factor) * quantity,
+            output_field=models.DecimalField(
+                max_digits=9,
+                decimal_places=2,
+            ),
+        )
+        return super().get_queryset().annotate(price=price)
+
+
 class OrderOption(models.Model):
     order = models.ForeignKey(
         Order,
@@ -208,6 +247,8 @@ class OrderOption(models.Model):
         verbose_name=_('Quantity'),
     )
 
+    objects = OrderOptionManager()
+
     class Meta:
         verbose_name = _('Order option')
         verbose_name_plural = _('Orders options')
@@ -222,12 +263,15 @@ class OrderOption(models.Model):
                      total=self.price,
         )
 
-    def _get_price(self):
+    @property
+    def price(self):
         factor = Decimal(self.order.factor)
         result = (self.service.equipment_price + self.service.work_price * factor) * self.quantity
-        return Decimal(result).quantize(Decimal('0.01'))
+        return result.quantize(Decimal('0.01'))
 
-    price = property(_get_price)
+    @price.setter
+    def price(self, value):
+        pass
 
     def get_absolute_url(self):
         return reverse(
