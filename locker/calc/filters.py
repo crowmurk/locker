@@ -56,7 +56,7 @@ class ServiceFilter(FilterSet):
 class OrderOptionFilter(FilterSet):
     order = NumberFilter()
     equipment = CharFilter(
-        label=_('Service'),
+        label=_('Option'),
         field_name='service__equipment',
         lookup_expr='icontains',
     )
