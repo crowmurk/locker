@@ -59,8 +59,9 @@ class Service(models.Model):
         unique_together = (('equipment', 'work'),)
 
     def __str__(self):
-        return _("Equipment: {equipment} Price: {price}").format(
+        return _("{equipment} Work: {work} Price: {price}").format(
             equipment=self.equipment,
+            work=self.work,
             price=self.price,
         )
 
@@ -162,12 +163,12 @@ class Order(models.Model):
         ordering = ['author', 'client']
 
     def __str__(self):
-        return _("Order {id}: Author: {author}"
-                 " Client: {client} Price: {price}").format(
-                     id=self.pk,
-                     author=self.author.get_full_name(),
-                     client=self.client,
-                     price=self.price,
+        return _("Order {id}: {client} ({branch}: {address})").format(
+            id=self.pk,
+            client=self.client.name,
+            branch=self.branch.name,
+            address=self.branch.address,
+            price=self.price,
         )
 
     @property
@@ -255,12 +256,12 @@ class OrderOption(models.Model):
         unique_together = (('order', 'service'),)
 
     def __str__(self):
-        return _("Order {order} option: {option}"
-                 " Quantity: {quantity} Total: {total}").format(
+        return _("Order: {order} Option: {service}"
+                 " Quantity: {quantity} Sum: {price}").format(
                      order=self.order.pk,
-                     option=self.service,
+                     service=self.service.equipment,
                      quantity=self.quantity,
-                     total=self.price,
+                     price=self.price,
         )
 
     @property
