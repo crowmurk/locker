@@ -13,12 +13,16 @@ class OrderTable(tables.Table):
         accessor='author.get_full_name',
         order_by=('author.first_name', 'author.last_name', ),
     )
-    branch = tables.LinkColumn(text=lambda record: record.branch.name)
+    branch = tables.LinkColumn(
+        text=lambda record: record.branch.name,
+    )
     address = tables.Column(
         accessor='branch.address',
         verbose_name=_('Address'),
     )
-    client = tables.LinkColumn()
+    client = tables.LinkColumn(
+        text=lambda record: record.client.name,
+    )
     price = tables.Column(verbose_name=_("Price"))
     delete = CheckBoxActionColumn(
         accessor="pk",
@@ -84,8 +88,13 @@ class ServiceTable(tables.Table):
 
 
 class OrderOptionTable(tables.Table):
-    order = tables.LinkColumn(text=lambda record: record.order.pk)
-    service = tables.LinkColumn(text=lambda record: record.service.equipment)
+    order = tables.LinkColumn(
+        text=lambda record: record.order.pk,
+    )
+    service = tables.LinkColumn(
+        text=lambda record: record.service.equipment,
+        verbose_name=_('Option'),
+    )
     service_price = tables.Column(
         accessor='service.price',
         verbose_name=_('Price')
@@ -98,6 +107,12 @@ class OrderOptionTable(tables.Table):
 
     class Meta:
         model = OrderOption
-        sequence = ('order', 'service', 'service_price', 'quantity', 'price')
+        sequence = (
+            'order',
+            'service',
+            'service_price',
+            'quantity',
+            'price',
+        )
         exclude = ('id', )
         empty_text = _("There are no records available")
