@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 14:22+0300\n"
+"POT-Creation-Date: 2019-05-20 19:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,38 +170,6 @@ msgstr "Записи не найдены или отсутствуют"
 #: calc/tables.py:102 calc/templates/calc/orderoption_detail.html:32
 msgid "Sum"
 msgstr "Сумма"
-
-#: calc/templates/calc/base_calc.html:22
-#: client/templates/client/base_client.html:22
-msgid "First"
-msgstr "Первая"
-
-#: calc/templates/calc/base_calc.html:23
-#: client/templates/client/base_client.html:23
-msgid "Previous"
-msgstr "Предыдущая"
-
-#: calc/templates/calc/base_calc.html:26
-#: client/templates/client/base_client.html:26
-#, python-format
-msgid ""
-"\n"
-"                            Page %(page)s of %(pages)s\n"
-"                        "
-msgstr ""
-"\n"
-"                            Страница %(page)s из %(pages)s\n"
-"                        "
-
-#: calc/templates/calc/base_calc.html:31
-#: client/templates/client/base_client.html:31
-msgid "Next"
-msgstr "Следующая"
-
-#: calc/templates/calc/base_calc.html:32
-#: client/templates/client/base_client.html:32
-msgid "Last"
-msgstr "Последняя"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
@@ -465,9 +433,3 @@ msgstr "В разработке"
 #: templates/site/underconstruction.html:13
 msgid "Sorry, this section is under construction."
 msgstr "Извините, раздел в разработке."
-
-#~ msgid "{name} Details: {details} Branches: {branches} Orders: {orders}"
-#~ msgstr "{name} Детали: {details} Объекты: {branches} Заказы: {orders}"
-
-#~ msgid "{name} Address: {address} Client: {client} Orders: {orders}"
-#~ msgstr "{name} Адрес: {address} Клиент: {client} Заказы: {orders}"
