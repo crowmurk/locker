@@ -65,7 +65,10 @@ class OrderListPDF(PdfMixin, OrderList):
     template_name = "calc/order_list_pdf.html"
 
     def get_table_kwargs(self):
-        return {'exclude': ('delete', ), }
+        return {
+            'exclude': ('delete', ),
+            'order_by': 'id',
+        }
 
 
 class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
