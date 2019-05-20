@@ -1,3 +1,5 @@
+/* Django Unleashed
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .desktop {
     display: none;
 }
@@ -286,37 +288,74 @@ body>footer li{
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
 
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Add disabled button */
+.button.disabled,
+.button:disabled,
+button:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled,
+input[type="button"]:disabled,
+.button.button-primary.disabled,
+.button.button-primary:disabled,
+input[type="submit"].button-primary:disabled,
+input[type="reset"].button-primary:disabled,
+input[type="button"].button-primary:disabled {
+  border: 1px solid lightgrey;
+  background-color: transparent;
+  color: lightgrey;
+}
 
-/* Поле множественного выбора */
+/* Input
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+select,
+input {
+  margin-bottom: 0rem;
+}
+
 select[multiple] {
     height: auto;
 }
-
-/* Поле ввода текста */
 
 textarea {
     height: auto;
     width: 100%;
 }
 
-/* Переопределяем стили таблиц */
+/* selection2 style */
+.select2-selection__rendered {
+    line-height: 38px !important;
+}
 
+.select2-container .select2-selection--single {
+    height: 38px !important;
+}
+
+.select2-selection__arrow {
+    height: 38px !important;
+}
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 table {
     width:100%;
 }
+
 table, th, td {
     border-collapse: collapse;
 }
+
 th, td {
     padding: 3px;
     text-align: center;
 }
+
 table tr:hover {
-    background-color: AliceBlue;
+    background-color: #F6F6F6;
 }
 
-/* Add table order sort ndicator */
-
+/* Add table sort indicator */
 .asc.orderable:after{
     color: grey;
     content: '▴';
@@ -327,32 +366,27 @@ table tr:hover {
     content: '▾';
 }
 
-.button:disabled,
-button:disabled,
-input[type="submit"]:disabled,
-input[type="reset"]:disabled,
-input[type="button"]:disabled,
-.button.button-primary:disabled,
-button.button-primary:disabled,
-input[type="submit"].button-primary:disabled,
-input[type="reset"].button-primary:disabled,
-input[type="button"].button-primary:disabled {
-  border: 1px solid lightgrey;
-  background-color: transparent;
-  color: lightgrey;
+/* DataTables buttons */
+.dataTables_wrapper .button {
+    padding: 0 15px;
+    border-color: transparent;
 }
 
-select,
-input {
-  margin-bottom: 0rem;
+.dataTables_wrapper .button:hover {
+    border-color: #888;
 }
 
-.select2-selection__rendered {
-    line-height: 38px !important;
+.dataTables_wrapper .button-primary {
+    color: #1EAEDB;
+    background-color: transparent;
 }
-.select2-container .select2-selection--single {
-    height: 38px !important;
+
+.dataTables_wrapper .button-primary:hover {
+    color: #1EAEDB;
+    background-color: transparent;
+    border-color: #1EAEDB;
 }
-.select2-selection__arrow {
-    height: 38px !important;
+
+.dataTables_wrapper .button.disabled:hover {
+    border-color: lightgrey;
 }
