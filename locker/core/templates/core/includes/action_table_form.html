@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% load django_tables2 %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'site/css/datatables.min.css' %}">
 <form acrion="{{ action|default:'' }}" method="{{ method|default:'post' }}">
     {% csrf_token %}
     {% render_table table %}
@@ -13,3 +14,4 @@
     </button>
 </form>
 <script type="text/javascript" src="{% static 'site/js/action-table.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/datatables.min.js' %}" defer></script>
