@@ -2,7 +2,6 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
-{% load forms %}
 
 <html>
     <head>
@@ -39,16 +38,7 @@
                     <tr>
                         {% for field in filter.form.visible_fields %}
                             <td>
-                                {% if field|form_field_name == 'RangeWidget' %}
-                                    {% for value in field.value %}
-                                        {{ value|default:empty_filter_value }}
-                                        {% if not forloop.last %} - {% endif %}
-                                    {% empty %}
-                                        {{ empty_filter_value }}
-                                    {% endfor %}
-                                {% else %}
-                                    {{ field.value|default:empty_filter_value }}
-                                {% endif %}
+                                {{ field.value|default:empty_filter_value }}
                             </td>
                         {% endfor %}
                     </tr>

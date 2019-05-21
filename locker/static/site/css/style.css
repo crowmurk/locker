@@ -355,6 +355,12 @@ table tr:hover {
     background-color: #F6F6F6;
 }
 
+table td input,
+table td select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Add table sort indicator */
 .asc.orderable:after{
     color: grey;

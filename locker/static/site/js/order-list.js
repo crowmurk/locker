@@ -1,8 +1,8 @@
 $(document).ready(
     function() {
         // Assign datepicker to filter date fields
-        var created_min = $("input[name='created_min']")
-        var created_max = $("input[name='created_max']")
+        var created_min = $("input[name='created__gte']")
+        var created_max = $("input[name='created__lte']")
         var current_language = $("select[name='language']").val()
 
         created_min.attr('autocomplete', 'off');
@@ -27,10 +27,10 @@ $(document).ready(
 $(document).ready(
     function() {
         // Auto submit form when dates changed
-        $("input[name='created_min']").change(function() {
+        $("input[name='created__gte']").change(function() {
             $(this).parents("form").submit();
         });
-        $("input[name='created_max']").change(function() {
+        $("input[name='created__lte']").change(function() {
             $(this).parents("form").submit();
         });
     });

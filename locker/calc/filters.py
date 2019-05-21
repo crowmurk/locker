@@ -4,20 +4,31 @@ from django.utils.translation import gettext_lazy as _
 from django_filters import (
     FilterSet,
     CharFilter,
-    DateFromToRangeFilter,
     NumberFilter,
-    RangeFilter,
+    DateFilter,
 )
-from django_filters.widgets import RangeWidget
 
 from .models import Order, Service, OrderOption
+from django.forms import DateInput
 
 
 class OrderFilter(FilterSet):
+    id = NumberFilter(label=_('Order'))
     author = CharFilter(method='author_filter')
     client = CharFilter(method='client_filter')
-    created = DateFromToRangeFilter(
-        widget=RangeWidget(
+    created__gte = DateFilter(
+        label=_('Created from'),
+        field_name='created',
+        lookup_expr='gte',
+        widget=DateInput(
+            attrs={'placeholder': _('MM/DD/YYYY')},
+        ),
+    )
+    created__lte = DateFilter(
+        label=_('Created to'),
+        field_name='created',
+        lookup_expr='lte',
+        widget=DateInput(
             attrs={'placeholder': _('MM/DD/YYYY')},
         ),
     )
@@ -41,7 +52,16 @@ class OrderFilter(FilterSet):
 
 class ServiceFilter(FilterSet):
     equipment = CharFilter(method='equipment_filter')
-    rating = RangeFilter()
+    rating__gte = NumberFilter(
+        label=_('Rating from'),
+        field_name='rating',
+        lookup_expr='gte',
+    )
+    rating__lte = NumberFilter(
+        label=_('Rating to'),
+        field_name='rating',
+        lookup_expr='lte',
+    )
 
     class Meta:
         model = Service

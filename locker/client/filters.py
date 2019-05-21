@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django_filters import (
     FilterSet,
     CharFilter,
-    RangeFilter,
+    NumberFilter,
 )
 
 from .models import Client, Branch
@@ -15,8 +15,15 @@ class ClientFilter(FilterSet):
         label=_('Client'),
         method='client_filter',
     )
-    number_of_orders = RangeFilter(
-        label=_('Orders'),
+    number_of_orders__gte = NumberFilter(
+        label=_('Orders from'),
+        field_name='number_of_orders',
+        lookup_expr='gte',
+    )
+    number_of_orders__lte = NumberFilter(
+        label=_('Orders to'),
+        field_name='number_of_orders',
+        lookup_expr='lte',
     )
 
     class Meta:
@@ -39,8 +46,15 @@ class BranchFilter(FilterSet):
         field_name='client__name',
         lookup_expr='icontains',
     )
-    number_of_orders = RangeFilter(
-        label=_('Orders'),
+    number_of_orders__gte = NumberFilter(
+        label=_('Orders from'),
+        field_name='number_of_orders',
+        lookup_expr='gte',
+    )
+    number_of_orders__lte = NumberFilter(
+        label=_('Orders to'),
+        field_name='number_of_orders',
+        lookup_expr='lte',
     )
 
     class Meta:
