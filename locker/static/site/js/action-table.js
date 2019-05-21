@@ -47,6 +47,7 @@ $(document).ready(function() {
 
     var datatable_options = {
         "filter": false,
+        "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
         "retrieve": true,
         "columnDefs": [
             { orderable: false, targets: -1 }
@@ -76,6 +77,10 @@ $(document).ready(function() {
                 "sortAscending": ": активировать для сортировки столбца по возрастанию",
                 "sortDescending": ": активировать для сортировки столбца по убыванию"
             }
+        }
+        var length_menu_all_index = datatable_options['lengthMenu'][1].indexOf('All');
+        if (length_menu_all_index !== -1) {
+            datatable_options['lengthMenu'][1][length_menu_all_index] = 'Все';
         }
     }
 
