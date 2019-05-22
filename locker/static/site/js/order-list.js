@@ -25,7 +25,10 @@ $(document).ready(
         $.getJSON(url, function(users) {
             $("input[type='text'][name='author']").autocomplete({
                 source: users,
-                select: function() {$(this).parents("form").submit();}
+                select: function(event, ui) {
+                    $(this).val(ui.item.value);
+                    $(this).parents("form").submit();
+                }
             });
         });
     });
