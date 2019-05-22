@@ -8,8 +8,14 @@ $(document).ready(
         created_min.attr('autocomplete', 'off');
         created_max.attr('autocomplete', 'off');
 
-        created_min.datepicker($.extend({maxDate: 0, }, $.datepicker.regional[current_language]));
-        created_max.datepicker($.extend({maxDate: 0, }, $.datepicker.regional[current_language]));
+        created_min.datepicker($.extend(
+                {maxDate: 0, },
+                $.datepicker.regional[current_language]
+            ));
+        created_max.datepicker($.extend(
+            {maxDate: 0, },
+            $.datepicker.regional[current_language]
+        ));
     });
 
 $(document).ready(
