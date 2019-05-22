@@ -20,11 +20,11 @@ function select_rows(source=undefined, options={}) {
 
     // Rows checkboxes to toggle if not undefined explicitly
     if (selectionName !== undefined && selectionType !== undefined)
-        var checkboxes = $(["input[type='", selectionType, "'][name='", selectionName, "']"].join(''));
+        var checkboxes = $(`input[type="${selectionType}"][name="${selectionName}"]`);
 
     // Delete button to toggle if not undefined explicitly
     if (buttonName !== undefined && buttonType !== undefined)
-        var button = $(["button[type='", buttonType, "'][name='", buttonName, "']"].join(''));
+        var button = $(`button[type="${buttonType}"][name="${buttonName}"]`);
 
 
     // Toggle row checkboxes

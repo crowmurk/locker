@@ -3,11 +3,11 @@ function get_branch_options(branches) {
     var options = '<option value="">---------</option>';
     for (var i = 0; i < branches.length; i++) {
         options += [
-            '<option value="', branches[i].pk, '">',
-            branches[i].fields['name'],
-            ' (', branches[i].fields['address'], ')',
-            '</option>'
+            `<option value="${branches[i].pk}">`,
+                `${branches[i].fields['name']} (${branches[i].fields['address']})`,
+            "</option>"
         ].join('');
+
     }
     return options
 }
