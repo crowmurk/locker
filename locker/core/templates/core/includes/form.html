@@ -11,7 +11,9 @@
                 {% formset_table formset %}
             {% endif %}
             {% if table %}
-                {% render_table table %}
+                <div class="action-table-container">
+                    {% render_table table %}
+                </div>
             {% endif %}
             <button class="button-primary" type="submit">{{ action_verbose|default:'Submit' }}</button>
         </form>

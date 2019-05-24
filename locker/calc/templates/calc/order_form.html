@@ -32,6 +32,7 @@
         {% trans "Create" as action_verbose %}
         {% url 'calc:order:create' as form_url %}
         {% form form_url action_verbose %}
+        <script type="text/javascript" src="{% static 'site/js/jquery-actiontable.js' %}" defer></script>
         <script type="text/javascript" src="{% static 'site/js/order-form-create.js' %}" defer></script>
     {% endif %}
     <script type="text/javascript" src="{% static 'site/js/order-form.js' %}" defer></script>
