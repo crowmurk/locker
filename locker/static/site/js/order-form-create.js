@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $(".action-table-container").actiontable()
+})
+
+$(document).ready(function() {
     // Make table DataTable
     var table = $('.table-container table')
 
