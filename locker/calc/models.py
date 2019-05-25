@@ -102,7 +102,11 @@ class OrderManager(models.Manager):
                 decimal_places=2,
             ),
         )
-        return super().get_queryset().annotate(price=models.Sum(price))
+        return super().get_queryset().select_related(
+            'author', 'client', 'branch',
+        ).prefetch_related(
+            'options',
+        ).annotate(price=models.Sum(price))
 
 
 class Order(models.Model):
@@ -221,7 +225,9 @@ class OrderOptionManager(models.Manager):
                 decimal_places=2,
             ),
         )
-        return super().get_queryset().annotate(price=price)
+        return super().get_queryset().select_related(
+            'order', 'service',
+        ).annotate(price=price)
 
 
 class OrderOption(models.Model):

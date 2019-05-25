@@ -8,9 +8,13 @@ from core.validators import validate_slug
 
 class ClientManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().annotate(
-            number_of_orders=models.Count('orders', distinct=True)).annotate(
-                number_of_branches=models.Count('branches', distinct=True))
+        return super().get_queryset().prefetch_related(
+            'branches', 'orders',
+        ).annotate(
+            number_of_orders=models.Count('orders', distinct=True),
+        ).annotate(
+            number_of_branches=models.Count('branches', distinct=True)
+        )
 
 
 class Client(models.Model):
@@ -88,7 +92,11 @@ class Client(models.Model):
 
 class BranchManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().annotate(
+        return super().get_queryset().select_related(
+            'client',
+        ).prefetch_related(
+            'orders',
+        ).annotate(
             number_of_orders=models.Count('orders'),
         )
 
