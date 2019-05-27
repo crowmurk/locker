@@ -373,26 +373,31 @@ table td select {
 }
 
 /* DataTables buttons */
-.dataTables_wrapper .button {
+.dataTables_wrapper .button,
+.pagination .button {
     padding: 0 15px;
     border-color: transparent;
 }
 
-.dataTables_wrapper .button:hover {
+.dataTables_wrapper .button:hover,
+.pagination .button:hover {
     border-color: #888;
 }
 
-.dataTables_wrapper .button-primary {
+.dataTables_wrapper .button-primary,
+.pagination .button-primary {
     color: #1EAEDB;
     background-color: transparent;
 }
 
-.dataTables_wrapper .button-primary:hover {
+.dataTables_wrapper .button-primary:hover,
+.pagination .button-primary:hover {
     color: #1EAEDB;
     background-color: transparent;
     border-color: #1EAEDB;
 }
 
-.dataTables_wrapper .button.disabled:hover {
+.dataTables_wrapper .button.disabled:hover,
+.pagination .button.disabled:hover {
     border-color: lightgrey;
 }
