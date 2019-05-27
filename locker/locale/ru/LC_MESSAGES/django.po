@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-24 21:48+0300\n"
+"POT-Creation-Date: 2019-05-27 15:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:37 calc/models.py:115
+#: calc/admin.py:37 calc/models.py:119
 msgid "Author"
 msgstr "Автор"
 
@@ -35,7 +35,7 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/filters.py:16 calc/models.py:161 calc/models.py:234 calc/tables.py:9
+#: calc/filters.py:16 calc/models.py:165 calc/models.py:240 calc/tables.py:9
 msgid "Order"
 msgstr "Заказ"
 
@@ -84,8 +84,8 @@ msgstr "Опция"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:47 calc/models.py:123 client/filters.py:15
-#: client/filters.py:45 client/models.py:39 client/models.py:103
+#: calc/forms.py:47 calc/models.py:127 client/filters.py:15
+#: client/filters.py:45 client/models.py:43 client/models.py:111
 msgid "Client"
 msgstr "Клиент"
 
@@ -118,11 +118,11 @@ msgstr "Рейтинг"
 msgid "Total"
 msgstr "Итого"
 
-#: calc/models.py:56 calc/models.py:242
+#: calc/models.py:56 calc/models.py:248
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:57 calc/models.py:138 templates/base.html:63
+#: calc/models.py:57 calc/models.py:142 templates/base.html:63
 msgid "Services"
 msgstr "Услуги"
 
@@ -131,49 +131,49 @@ msgstr "Услуги"
 msgid "{equipment} Work: {work} Price: {price}"
 msgstr "{equipment} Работа: {work} Цена: {price}"
 
-#: calc/models.py:131 client/filters.py:41 client/models.py:118
+#: calc/models.py:135 client/filters.py:41 client/models.py:126
 msgid "Branch"
 msgstr "Объект"
 
-#: calc/models.py:142
+#: calc/models.py:146
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:146
+#: calc/models.py:150
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:155
+#: calc/models.py:159
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:162 templates/base.html:60
+#: calc/models.py:166 templates/base.html:60
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:166
+#: calc/models.py:170
 #, python-brace-format
 msgid "Order {id}: {client} ({branch}: {address})"
 msgstr "Заказ {id}: {client} ({branch}: {address})"
 
-#: calc/models.py:248
+#: calc/models.py:254
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:254
+#: calc/models.py:260
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:255
+#: calc/models.py:261
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:259
+#: calc/models.py:265
 #, python-brace-format
 msgid "Order: {order} Option: {service} Quantity: {quantity} Sum: {price}"
 msgstr "Заказ: {order} Опция: {service} Количество: {quantity} Сумма: {price}"
 
-#: calc/tables.py:19 client/models.py:112
+#: calc/tables.py:19 client/models.py:120
 msgid "Address"
 msgstr "Адрес"
 
@@ -249,7 +249,7 @@ msgstr "Настройки фильтра:"
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
-#: client/apps.py:7 client/models.py:40
+#: client/apps.py:7 client/models.py:44
 #: client/templates/client/branch_list.html:15 templates/base.html:61
 msgid "Clients"
 msgstr "Клиенты"
@@ -262,23 +262,23 @@ msgstr "Заказов от"
 msgid "Orders to"
 msgstr "Заказов до"
 
-#: client/models.py:20 client/models.py:108
+#: client/models.py:24 client/models.py:116
 msgid "Name"
 msgstr "Название"
 
-#: client/models.py:28
+#: client/models.py:32
 msgid "A label for URL config."
 msgstr "URL идентификатор объекта"
 
-#: client/models.py:32
+#: client/models.py:36
 msgid "Details"
 msgstr "Детали"
 
-#: client/models.py:33
+#: client/models.py:37
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: client/models.py:119 templates/base.html:62
+#: client/models.py:127 templates/base.html:62
 msgid "Branches"
 msgstr "Объекты"
 
@@ -298,7 +298,26 @@ msgstr "Отмена"
 msgid "Filter"
 msgstr "Фильтр"
 
-#: core/templates/core/includes/formset_table.html:112
+#: core/templates/core/includes/formset_table.html:116
+#, python-format
+msgid ""
+"\n"
+"                        Page %(page)s of %(pages)s\n"
+"                    "
+msgstr ""
+"\n"
+"                        Страница %(page)s из %(pages)s\n"
+"                    "
+
+#: core/templates/core/includes/formset_table.html:122
+msgid "First"
+msgstr "Первая"
+
+#: core/templates/core/includes/formset_table.html:132
+msgid "Last"
+msgstr "Последняя"
+
+#: core/templates/core/includes/formset_table.html:140
 msgid "Add"
 msgstr "Добавить"
 
