@@ -137,6 +137,11 @@
     </div>
 {% endif %}
 
-<input type="button" value="{% trans 'Add' %}" onclick="add_form('{{ formset.prefix }}', '{{ formset.prefix }}_empty_form_table_body', '{{ formset.prefix }}_table_body')">
+<input type="button"
+       id="formset_add_form_button"
+       value="{% trans 'Add' %}"
+       data-prefix="{{ formset.prefix }}"
+       data-form="{{ formset.prefix }}_empty_form_table_body"
+       data-formset="{{ formset.prefix }}_table_body">
 
 <script type="text/javascript" src="{% static 'site/js/formset-dynamic.js' %}" defer></script>
