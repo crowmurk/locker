@@ -1,8 +1,14 @@
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from django.core.paginator import (
+    Paginator,
+    EmptyPage,
+    PageNotAnInteger,
+)
 
 from client.models import Client, Branch
 
+from .models import OrderOption
 from .forms import OrderOptionFormSet
 
 
@@ -89,10 +95,26 @@ class OrderFormMixin:
                 prefix='order_options',
             )
         else:
+            queryset = OrderOption.objects.filter(order=self.object)
+            paginator = Paginator(queryset, self.paginate_by)
+            page = self.request.GET.get('page')
+
+            try:
+                page_objects = paginator.page(page)
+            except PageNotAnInteger:
+                page_objects = paginator.page(1)
+            except EmptyPage:
+                page_objects = paginator.page(paginator.num_pages)
+
+            page_query = queryset.filter(id__in=[item.id for item in page_objects])
+
             context_data['formset'] = OrderOptionFormSet(
                 instance=self.object,
+                queryset=page_query,
                 prefix='order_options',
             )
+            context_data['paginator'] = page_objects
+
         return context_data
 
     def form_valid(self, form):

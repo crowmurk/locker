@@ -74,6 +74,7 @@ def formset_table(context, *args, **kwargs):
     """Тег представления formset как таблицы
     """
     formset = context.get('formset')
+    paginator = context.get('paginator')
 
     if not formset:
         formset = (args[0] if len(args) > 0
@@ -84,7 +85,10 @@ def formset_table(context, *args, **kwargs):
             "formset_table template tag requires "
             "at least one argument: formset.")
 
-    return {'formset': formset, }
+    return {
+        'formset': formset,
+        'paginator': paginator,
+    }
 
 
 @register.inclusion_tag(
@@ -107,6 +111,7 @@ def form(context, *args, **kwargs):
     formset = context.get('formset')
     table = context.get('table')
     view = context.get('view')
+    paginator = context.get('paginator')
 
     if hasattr(view, 'model'):
         action_verbose = ' '.join(
@@ -128,6 +133,7 @@ def form(context, *args, **kwargs):
         'formset': formset,
         'table': table,
         'method': method,
+        'paginator': paginator,
     }
 
 

@@ -117,6 +117,7 @@ class OrderDetailPDF(PdfMixin, OrderDetail):
 class OrderUpdate(OrderFormMixin, UpdateView):
     model = Order
     form_class = OrderForm
+    paginate_by = 10
 
 
 class OrderDelete(DeleteView):
