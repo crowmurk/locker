@@ -143,6 +143,9 @@ class Branch(models.Model):
     def number_of_orders(self, value):
         pass
 
+    def get_orders(self):
+        return self.orders.all()
+
     def get_absolute_url(self):
         return reverse(
             'client:branch:detail',
