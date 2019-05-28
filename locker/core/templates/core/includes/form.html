@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load django_tables2 %}
 {% load forms %}
 
@@ -16,6 +17,11 @@
                 </div>
             {% endif %}
             <button class="button-primary" type="submit">{{ action_verbose|default:'Submit' }}</button>
+            {% if object %}
+                <div class="u-pull-right">
+                    <a href="{{ object.get_absolute_url }}" class="button">{% trans "Cancel" %}</a>
+                </div>
+            {% endif %}
         </form>
     </div>
 </div>
