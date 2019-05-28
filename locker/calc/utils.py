@@ -82,11 +82,29 @@ class OrderCreateClientMixin:
 
 
 class OrderFormMixin:
+    def get_success_url(self):
+        return self.request.get_full_path()
+
     def get_context_data(self, *args, **kwargs):
         """ Добавляет formset в контекст
         создания и изменения закака
         """
         context_data = super().get_context_data(*args, **kwargs)
+
+        queryset = OrderOption.objects.filter(order=self.object).order_by('id')
+        paginator = Paginator(queryset, self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            page_objects = paginator.page(page)
+        except PageNotAnInteger:
+            page_objects = paginator.page(1)
+        except EmptyPage:
+            page_objects = paginator.page(paginator.num_pages)
+
+        page_query = queryset.filter(id__in=[item.id for item in page_objects])
+
+        context_data['paginator'] = page_objects
 
         if self.request.method == 'POST':
             context_data['formset'] = OrderOptionFormSet(
@@ -95,25 +113,11 @@ class OrderFormMixin:
                 prefix='order_options',
             )
         else:
-            queryset = OrderOption.objects.filter(order=self.object).order_by('id')
-            paginator = Paginator(queryset, self.paginate_by)
-            page = self.request.GET.get('page')
-
-            try:
-                page_objects = paginator.page(page)
-            except PageNotAnInteger:
-                page_objects = paginator.page(1)
-            except EmptyPage:
-                page_objects = paginator.page(paginator.num_pages)
-
-            page_query = queryset.filter(id__in=[item.id for item in page_objects])
-
             context_data['formset'] = OrderOptionFormSet(
                 instance=self.object,
                 queryset=page_query,
                 prefix='order_options',
             )
-            context_data['paginator'] = page_objects
 
         return context_data
 
