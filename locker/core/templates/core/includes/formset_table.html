@@ -129,7 +129,7 @@
                         {% endif %}
                     {% endfor %}
                     {% if paginator.has_next %}
-                        <a class="button" href="?page={{ paginator.num_pages }}">{% trans "Last" %} &raquo;</a>
+                        <a class="button" href="?page={{ paginator.paginator.num_pages }}">{% trans "Last" %} &raquo;</a>
                     {% endif %}
                 </div>
             </div>
