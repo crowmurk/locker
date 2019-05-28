@@ -11,15 +11,26 @@ class OrderTable(tables.Table):
         accessor='author.get_full_name',
         order_by=('author.first_name', 'author.last_name', ),
     )
-    branch = tables.LinkColumn(
-        text=lambda record: record.branch.name,
+    branch = tables.Column(
+        linkify=(
+            'client:branch:detail',
+            {
+                'client_slug': tables.A('client.slug'),
+                'pk': tables.A('branch.pk'),
+            },
+        ),
+        accessor='branch.name',
     )
     address = tables.Column(
         accessor='branch.address',
         verbose_name=_('Address'),
     )
-    client = tables.LinkColumn(
-        text=lambda record: record.client.name,
+    client = tables.Column(
+        linkify=(
+            'client:detail',
+            {'slug': tables.A('client.slug'), },
+        ),
+        accessor='client.name',
     )
     price = tables.Column(verbose_name=_("Price"))
     delete = tables.CheckBoxColumn(accessor="pk")
@@ -80,11 +91,19 @@ class ServiceTable(tables.Table):
 
 
 class OrderOptionTable(tables.Table):
-    order = tables.LinkColumn(
-        text=lambda record: record.order.pk,
+    order = tables.Column(
+        linkify=(
+            'calc:order:detail',
+            {'pk': tables.A('order.pk'), },
+        ),
+        accessor='order.pk',
     )
-    service = tables.LinkColumn(
-        text=lambda record: record.service.equipment,
+    service = tables.Column(
+        linkify=(
+            'calc:service:detail',
+            {'pk': tables.A('service.pk'), },
+        ),
+        accessor='service.equipment',
         verbose_name=_('Option'),
     )
     service_price = tables.Column(

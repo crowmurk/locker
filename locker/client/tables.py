@@ -23,8 +23,12 @@ class ClientTable(tables.Table):
 
 class BranchTable(tables.Table):
     name = tables.LinkColumn()
-    client = tables.LinkColumn(
-        text=lambda record: record.client.name,
+    client = tables.Column(
+        linkify=(
+            'client:detail',
+            {'slug': tables.A('client.slug'), },
+        ),
+        accessor='client.name',
     )
     number_of_orders = tables.Column(
         verbose_name=_("Number of orders"),
