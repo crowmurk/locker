@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-27 15:14+0300\n"
+"POT-Creation-Date: 2019-05-28 22:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: calc/admin.py:32 calc/tables.py:24 calc/tables.py:45 calc/tables.py:92
+#: calc/admin.py:32 calc/tables.py:37 calc/tables.py:58 calc/tables.py:114
 #: calc/templates/calc/order_detail.html:36
 #: calc/templates/calc/order_detail_pdf.html:35
 #: calc/templates/calc/orderoption_detail.html:28
@@ -36,6 +36,7 @@ msgid "Calculator"
 msgstr "Калькулятор"
 
 #: calc/filters.py:16 calc/models.py:165 calc/models.py:240 calc/tables.py:9
+#: calc/tables.py:102
 msgid "Order"
 msgstr "Заказ"
 
@@ -59,7 +60,7 @@ msgstr "Рейтинг от"
 msgid "Rating to"
 msgstr "Рейтинг до"
 
-#: calc/filters.py:79 calc/tables.py:88
+#: calc/filters.py:79 calc/tables.py:110
 msgid "Option"
 msgstr "Опция"
 
@@ -84,8 +85,9 @@ msgstr "Опция"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:47 calc/models.py:127 client/filters.py:15
+#: calc/forms.py:47 calc/models.py:127 calc/tables.py:35 client/filters.py:15
 #: client/filters.py:45 client/models.py:43 client/models.py:111
+#: client/tables.py:32
 msgid "Client"
 msgstr "Клиент"
 
@@ -131,7 +133,8 @@ msgstr "Услуги"
 msgid "{equipment} Work: {work} Price: {price}"
 msgstr "{equipment} Работа: {work} Цена: {price}"
 
-#: calc/models.py:135 client/filters.py:41 client/models.py:126
+#: calc/models.py:135 calc/tables.py:23 client/filters.py:41
+#: client/models.py:126
 msgid "Branch"
 msgstr "Объект"
 
@@ -173,16 +176,16 @@ msgstr "Опции заказов"
 msgid "Order: {order} Option: {service} Quantity: {quantity} Sum: {price}"
 msgstr "Заказ: {order} Опция: {service} Количество: {quantity} Сумма: {price}"
 
-#: calc/tables.py:19 client/models.py:120
+#: calc/tables.py:27 client/models.py:120
 msgid "Address"
 msgstr "Адрес"
 
-#: calc/tables.py:40 calc/tables.py:61 calc/tables.py:79 calc/tables.py:107
-#: client/tables.py:21 client/tables.py:43
+#: calc/tables.py:53 calc/tables.py:74 calc/tables.py:92 calc/tables.py:129
+#: client/tables.py:21 client/tables.py:48
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
-#: calc/tables.py:94 calc/templates/calc/orderoption_detail.html:32
+#: calc/tables.py:116 calc/templates/calc/orderoption_detail.html:32
 msgid "Sum"
 msgstr "Сумма"
 
@@ -205,7 +208,7 @@ msgstr "Сумма"
 #: client/templates/client/client_detail.html:46
 #: client/templates/client/client_detail.html:58
 #: client/templates/client/client_list.html:24
-#: core/templates/core/includes/delete_form.html:8
+#: core/templates/core/includes/delete_form.html:7
 msgid "Delete"
 msgstr "Удалить"
 
@@ -245,7 +248,7 @@ msgstr "нет"
 msgid "Filter options:"
 msgstr "Настройки фильтра:"
 
-#: client/admin.py:31 client/tables.py:14 client/tables.py:30
+#: client/admin.py:31 client/tables.py:14 client/tables.py:35
 msgid "Number of orders"
 msgstr "Кличество заказов"
 
@@ -290,7 +293,8 @@ msgstr "Кличество объектов"
 msgid "Are you sure you want to delete"
 msgstr "Вы действительно хотите удалить"
 
-#: core/templates/core/includes/delete_form.html:7
+#: core/templates/core/includes/delete_form.html:9
+#: core/templates/core/includes/form.html:28
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -317,7 +321,7 @@ msgstr "Первая"
 msgid "Last"
 msgstr "Последняя"
 
-#: core/templates/core/includes/formset_table.html:140
+#: core/templates/core/includes/formset_table.html:142
 msgid "Add"
 msgstr "Добавить"
 
