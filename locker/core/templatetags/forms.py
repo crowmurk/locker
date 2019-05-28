@@ -11,18 +11,20 @@ register = Library()
 def filter_table_form(context, *args, **kwargs):
     """Тег представления filter form как таблицы
     """
-    filter_form = context.get('filter')
+    filter_form = (args[0] if len(args) > 0
+                   else kwargs.get('filter'))
 
     if not filter_form:
-        filter_form = (args[0] if len(args) > 0
-                       else kwargs.get('filter'))
+        filter_form = context.get('filter')
 
     if filter_form is None:
         raise TemplateSyntaxError(
             "filter_table template tag requires "
             "at least one argument: filter.")
 
-    return {'filter': filter_form, }
+    return {
+        'filter': filter_form,
+    }
 
 
 @register.inclusion_tag(
@@ -55,9 +57,9 @@ def action_table_form(context, *args, **kwargs):
 
     return {
         'request': request,
+        'table': table,
         'action': action,
         'method': method,
-        'table': table,
         'button_type': button_type,
         'button_class': button_class,
         'button_name': button_name,
@@ -73,19 +75,27 @@ def action_table_form(context, *args, **kwargs):
 def formset_table(context, *args, **kwargs):
     """Тег представления formset как таблицы
     """
-    formset = context.get('formset')
-    paginator = context.get('paginator')
+    request = context.get('request')
+
+    formset = (args[0] if len(args) > 0
+               else kwargs.get('formset'))
 
     if not formset:
-        formset = (args[0] if len(args) > 0
-                   else kwargs.get('formset'))
+        formset = context.get('formset')
 
     if formset is None:
         raise TemplateSyntaxError(
             "formset_table template tag requires "
             "at least one argument: formset.")
 
+    paginator = (args[1] if len(args) > 1
+                 else kwargs.get('paginator'))
+
+    if not paginator:
+        paginator = context.get('paginator')
+
     return {
+        'request': request,
         'formset': formset,
         'paginator': paginator,
     }
@@ -98,26 +108,10 @@ def formset_table(context, *args, **kwargs):
 def form(context, *args, **kwargs):
     """Тег формы создания и изменения объекта.
     """
-    # Формируем контекст для шаблона формы
     request = context.get('request')
 
     action = (args[0] if len(args) > 0
               else kwargs.get('action'))
-    action_verbose = (args[1] if len(args) > 1
-                      else kwargs.get('action_verbose'))
-    method = (args[2] if len(args) > 2
-              else kwargs.get('method'))
-    form = context.get('form')
-    formset = context.get('formset')
-    table = context.get('table')
-    view = context.get('view')
-    paginator = context.get('paginator')
-
-    if hasattr(view, 'model'):
-        action_verbose = ' '.join(
-            [action_verbose,
-             verbose_name(view.model).lower()],
-        )
 
     if action is None:
         raise TemplateSyntaxError(
@@ -125,15 +119,36 @@ def form(context, *args, **kwargs):
             "at least one argument: action, "
             "which is a URL.")
 
+    action_verbose = (args[1] if len(args) > 1
+                      else kwargs.get('action_verbose'))
+
+    view = context.get('view')
+
+    if hasattr(view, 'model'):
+        action_verbose = ' '.join(
+            [action_verbose,
+             verbose_name(view.model).lower()],
+        )
+
+    method = (args[2] if len(args) > 2
+              else kwargs.get('method'))
+
+    form = context.get('form')
+    display_object = kwargs.get('object', context.get('object'))
+    formset = kwargs.get('formset', context.get('formset'))
+    paginator = kwargs.get('paginator', context.get('paginator'))
+    table = kwargs.get('table', context.get('table'))
+
     return {
         'request': request,
         'action': action,
         'action_verbose': action_verbose,
-        'form': form,
-        'formset': formset,
-        'table': table,
         'method': method,
+        'form': form,
+        'object': display_object,
+        'formset': formset,
         'paginator': paginator,
+        'table': table,
     }
 
 
@@ -144,36 +159,43 @@ def form(context, *args, **kwargs):
 def delete_form(context, *args, **kwargs):
     """Тег формы удаления объекта.
     """
-    # Формируем контекст для шаблона формы
     action = (args[0] if len(args) > 0
               else kwargs.get('action'))
-    method = (args[1] if len(args) > 1
-              else kwargs.get('method'))
-    form = context.get('form')
-    display_object = kwargs.get(
-        'object', context.get('object'))
+
     if action is None:
         raise TemplateSyntaxError(
             "delete_form template tag "
             "requires at least one argument: "
             "action, which is a URL.")
+
+    method = (args[1] if len(args) > 1
+              else kwargs.get('method'))
+
+    display_object = kwargs.get(
+        'object', context.get('object'))
+
     if display_object is None:
         raise TemplateSyntaxError(
-            "display_form needs object "
+            "delete_form needs object "
             "manually specified in this case.")
+
     if hasattr(display_object, 'name'):
         object_name = display_object.name
     else:
         object_name = str(display_object)
+
     object_type = kwargs.get(
         'obj_type',
         verbose_name(display_object),
     )
+
+    form = context.get('form')
+
     return {
         'action': action,
-        'form': form,
         'method': method,
         'object': display_object,
         'object_name': object_name,
         'object_type': object_type,
+        'form': form,
     }
