@@ -95,7 +95,7 @@ class OrderFormMixin:
                 prefix='order_options',
             )
         else:
-            queryset = OrderOption.objects.filter(order=self.object)
+            queryset = OrderOption.objects.filter(order=self.object).order_by('id')
             paginator = Paginator(queryset, self.paginate_by)
             page = self.request.GET.get('page')
 
