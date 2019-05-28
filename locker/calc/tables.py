@@ -20,6 +20,7 @@ class OrderTable(tables.Table):
             },
         ),
         accessor='branch.name',
+        verbose_name=_('Branch'),
     )
     address = tables.Column(
         accessor='branch.address',
@@ -31,6 +32,7 @@ class OrderTable(tables.Table):
             {'slug': tables.A('client.slug'), },
         ),
         accessor='client.name',
+        verbose_name=_('Client'),
     )
     price = tables.Column(verbose_name=_("Price"))
     delete = tables.CheckBoxColumn(accessor="pk")
@@ -97,6 +99,7 @@ class OrderOptionTable(tables.Table):
             {'pk': tables.A('order.pk'), },
         ),
         accessor='order.pk',
+        verbose_name=_('Order'),
     )
     service = tables.Column(
         linkify=(

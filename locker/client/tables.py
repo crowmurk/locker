@@ -29,6 +29,7 @@ class BranchTable(tables.Table):
             {'slug': tables.A('client.slug'), },
         ),
         accessor='client.name',
+        verbose_name=_("Client"),
     )
     number_of_orders = tables.Column(
         verbose_name=_("Number of orders"),
