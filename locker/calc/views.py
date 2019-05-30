@@ -33,7 +33,7 @@ class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
     action_table_model = Service
-    action_table_success_message = _("Service(s) deleted successfuly")
+    action_table_success_message = _("Services were deleted successfuly")
 
 
 class ServiceCreate(CreateView):
@@ -63,7 +63,7 @@ class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
     action_table_model = Order
-    action_table_success_message = _("Order(s) deleted successfuly")
+    action_table_success_message = _("Orders were deleted successfuly")
 
 
 class OrderListPDF(PdfMixin, OrderList):
@@ -104,7 +104,7 @@ class OrderDetail(SingleTableMixin, ActionTableDeleteMixin, DetailView):
     table_class = OrderOptionTable
     form_class = OrderForm
     action_table_model = OrderOption
-    action_table_success_message = _("Order option(s) deleted successfuly")
+    action_table_success_message = _("Order's options were deleted successfuly")
 
     def get_table_data(self):
         return self.object.get_options()
@@ -139,7 +139,7 @@ class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'
     action_table_model = OrderOption
-    action_table_success_message = _("Order option(s) deleted successfuly")
+    action_table_success_message = _("Orders' options were deleted successfuly")
 
 
 class OrderOptionCreate(CreateView):
@@ -160,4 +160,4 @@ class OrderOptionUpdate(UpdateView):
 class OrderOptionDelete(SuccessDeleteMessageMixin, DeleteView):
     model = OrderOption
     success_url = reverse_lazy('calc:orderoption:list')
-    success_message = _("Order option was deleted successfuly")
+    success_message = _("Order's option was deleted successfuly")
