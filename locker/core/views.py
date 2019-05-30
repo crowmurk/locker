@@ -1,4 +1,5 @@
 from django.core.exceptions import ImproperlyConfigured
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -31,3 +32,9 @@ class ActionTableDeleteMixin:
                 selected_objects.delete()
 
         return HttpResponseRedirect(request.path)
+
+
+class SuccessDeleteMessageMixin:
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)

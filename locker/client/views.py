@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -10,7 +11,7 @@ from django.views.generic import (
 from django_tables2 import SingleTableView, SingleTableMixin, MultiTableMixin
 from django_filters.views import FilterView
 
-from core.views import ActionTableDeleteMixin
+from core.views import ActionTableDeleteMixin, SuccessDeleteMessageMixin
 from calc.tables import OrderTable
 from calc.models import Order
 
@@ -56,9 +57,10 @@ class ClientUpdate(UpdateView):
     form_class = ClientForm
 
 
-class ClientDelete(DeleteView):
+class ClientDelete(SuccessDeleteMessageMixin, DeleteView):
     model = Client
     success_url = reverse_lazy('client:list')
+    success_message = _("Client was deleted successfuly")
 
 
 class BranchList(
@@ -139,8 +141,14 @@ class BranchUpdate(BranchGetObjectMixin, ClientContextMixin, UpdateView):
     form_class = BranchForm
 
 
-class BranchDelete(BranchGetObjectMixin, ClientContextMixin, DeleteView):
+class BranchDelete(
+        BranchGetObjectMixin,
+        ClientContextMixin,
+        SuccessDeleteMessageMixin,
+        DeleteView,
+):
     model = Branch
+    success_message = _("Branch was deleted successfuly")
 
     def get_success_url(self):
         return self.object.client.get_absolute_url()
