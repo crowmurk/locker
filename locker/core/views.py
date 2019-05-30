@@ -8,6 +8,7 @@ class ActionTableDeleteMixin:
     action_table_model = None
     action_table_button = "action-table-button"
     action_table_multitables = dict()
+    success_delete_message = None
 
     def post(self, request, *args, **kwargs):
         actions = dict()
@@ -30,12 +31,16 @@ class ActionTableDeleteMixin:
             if pks:
                 selected_objects = model.objects.filter(pk__in=pks)
                 selected_objects.delete()
-                messages.success(self.request, self.success_delete_message)
+                if self.success_delete_message:
+                    messages.success(self.request, self.success_delete_message)
 
         return HttpResponseRedirect(request.path)
 
 
 class SuccessDeleteMessageMixin:
+    success_delete_message = None
+
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
+        if self.success_delete_message:
+            messages.success(self.request, self.success_message)
         return super().delete(request, *args, **kwargs)
