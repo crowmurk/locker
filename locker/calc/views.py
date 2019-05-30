@@ -1,5 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -114,10 +116,11 @@ class OrderDetailPDF(PdfMixin, OrderDetail):
         return {'exclude': ('order', 'delete', ), }
 
 
-class OrderUpdate(OrderFormMixin, UpdateView):
+class OrderUpdate(SuccessMessageMixin, OrderFormMixin, UpdateView):
     model = Order
     form_class = OrderForm
     paginate_by = 10
+    success_message = _("Order was changed successfuly")
 
 
 class OrderDelete(DeleteView):
