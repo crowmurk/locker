@@ -30,6 +30,7 @@ class ActionTableDeleteMixin:
             if pks:
                 selected_objects = model.objects.filter(pk__in=pks)
                 selected_objects.delete()
+                messages.success(self.request, self.success_delete_message)
 
         return HttpResponseRedirect(request.path)
 

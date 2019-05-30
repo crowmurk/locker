@@ -33,6 +33,7 @@ class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     table_class = ServiceTable
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
+    success_delete_message = _("Service(s) deleted successfuly")
 
 
 class ServiceCreate(CreateView):
@@ -62,6 +63,7 @@ class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     table_class = OrderTable
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
+    success_delete_message = _("Order(s) deleted successfuly")
 
 
 class OrderListPDF(PdfMixin, OrderList):
@@ -136,6 +138,7 @@ class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     table_class = OrderOptionTable
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'
+    success_delete_message = _("Order option(s) deleted successfuly")
 
 
 class OrderOptionCreate(CreateView):
