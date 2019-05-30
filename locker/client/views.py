@@ -24,11 +24,11 @@ from .utils import ClientContextMixin, BranchGetObjectMixin
 
 class ClientList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Client
-    action_table_model = Client
     table_class = ClientTable
     filterset_class = ClientFilter
     template_name = 'client/client_list.html'
-    success_delete_message = _("Client(s) deleted successfuly")
+    action_table_model = Client
+    action_table_success_message = _("Client(s) deleted successfuly")
 
 
 class ClientCreate(CreateView):
@@ -39,10 +39,18 @@ class ClientCreate(CreateView):
 class ClientDetail(MultiTableMixin, ActionTableDeleteMixin, DetailView):
     model = Client
     form_class = ClientForm
-    action_table_multitables = {
-        'action-table-button': Order,
-        'branch-table-button': Branch,
-    }
+    action_table_multitables = [
+        {
+            'model': Order,
+            'button': 'action-table-button',
+            'success_message': _("Orders(s) deleted successfuly"),
+        },
+        {
+            'model': Branch,
+            'button': 'branch-table-button',
+            'success_message': _("Branch(es) deleted successfuly"),
+        },
+    ]
 
     def get_tables(self):
         self.tables = [
@@ -70,12 +78,12 @@ class BranchList(
         FilterView,
 ):
     model = Branch
-    action_table_model = Branch
-    action_table_button = 'branch-table-button'
     table_class = BranchTable
     filterset_class = BranchFilter
     template_name = 'client/branch_list.html'
-    success_delete_message = _("Branch(es) deleted successfuly")
+    action_table_model = Branch
+    action_table_button = 'branch-table-button'
+    action_table_success_message = _("Branch(es) deleted successfuly")
 
 
 class BranchListClient(
@@ -85,11 +93,11 @@ class BranchListClient(
         ActionTableDeleteMixin,
 ):
     model = Branch
-    action_table_model = Branch
-    action_table_button = 'branch-table-button'
     table_class = BranchTable
     template_name = 'client/branch_list.html'
-    success_delete_message = _("Branch(es) deleted successfuly")
+    action_table_model = Branch
+    action_table_button = 'branch-table-button'
+    action_table_success_message = _("Branch(es) deleted successfuly")
 
     def get_table_data(self):
         client_slug = self.kwargs.get(self.client_slug_url_kwarg)
@@ -123,8 +131,9 @@ class BranchDetail(
 ):
     model = Branch
     form_class = BranchForm
-    action_table_model = Order
     table_class = OrderTable
+    action_table_model = Order
+    action_table_success_message = _("Order(s) deleted successfuly")
 
     def get_table_kwargs(self):
         return {
