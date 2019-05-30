@@ -29,11 +29,11 @@ from .utils import OrderCreateClientMixin, OrderFormMixin
 
 class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Service
-    action_table_model = Service
     table_class = ServiceTable
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
-    success_delete_message = _("Service(s) deleted successfuly")
+    action_table_model = Service
+    action_table_success_message = _("Service(s) deleted successfuly")
 
 
 class ServiceCreate(CreateView):
@@ -59,11 +59,11 @@ class ServiceDelete(SuccessDeleteMessageMixin, DeleteView):
 
 class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Order
-    action_table_model = Order
     table_class = OrderTable
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
-    success_delete_message = _("Order(s) deleted successfuly")
+    action_table_model = Order
+    action_table_success_message = _("Order(s) deleted successfuly")
 
 
 class OrderListPDF(PdfMixin, OrderList):
@@ -102,8 +102,9 @@ class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
 class OrderDetail(SingleTableMixin, ActionTableDeleteMixin, DetailView):
     model = Order
     table_class = OrderOptionTable
-    action_table_model = OrderOption
     form_class = OrderForm
+    action_table_model = OrderOption
+    action_table_success_message = _("Order option(s) deleted successfuly")
 
     def get_table_data(self):
         return self.object.get_options()
@@ -134,11 +135,11 @@ class OrderDelete(SuccessDeleteMessageMixin, DeleteView):
 
 class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = OrderOption
-    action_table_model = OrderOption
     table_class = OrderOptionTable
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'
-    success_delete_message = _("Order option(s) deleted successfuly")
+    action_table_model = OrderOption
+    action_table_success_message = _("Order option(s) deleted successfuly")
 
 
 class OrderOptionCreate(CreateView):
