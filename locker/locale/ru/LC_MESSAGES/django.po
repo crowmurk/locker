@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-30 07:19+0300\n"
+"POT-Creation-Date: 2019-05-30 16:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,13 +248,41 @@ msgstr "нет"
 msgid "Filter options:"
 msgstr "Настройки фильтра:"
 
-#: calc/views.py:123
+#: calc/views.py:36
+msgid "Services were deleted successfuly"
+msgstr "Услуги были успешно удалены"
+
+#: calc/views.py:57
+msgid "Service was deleted successfuly"
+msgstr "Услуга была успешно удалена"
+
+#: calc/views.py:66 client/views.py:46 client/views.py:136
+msgid "Orders were deleted successfuly"
+msgstr "Заказы были успешно удалены"
+
+#: calc/views.py:107
+msgid "Order's options were deleted successfuly"
+msgstr "Опции заказа были успешно удалены"
+
+#: calc/views.py:127
 msgid "Order was changed successfuly"
-msgstr "Заказ успешно изменен"
+msgstr "Заказ был успешно изменен"
+
+#: calc/views.py:133
+msgid "Order was deleted successfuly"
+msgstr "Заказ был успешно удален"
+
+#: calc/views.py:142
+msgid "Orders' options were deleted successfuly"
+msgstr "Опции заказов были успешно удалены"
+
+#: calc/views.py:163
+msgid "Order's option was deleted successfuly"
+msgstr "Опция заказа была успешно удалена"
 
 #: client/admin.py:31 client/tables.py:14 client/tables.py:35
 msgid "Number of orders"
-msgstr "Кличество заказов"
+msgstr "Количество заказов"
 
 #: client/apps.py:7 client/models.py:44
 #: client/templates/client/branch_list.html:15 templates/base.html:61
@@ -291,7 +319,23 @@ msgstr "Объекты"
 
 #: client/tables.py:11
 msgid "Number of branches"
-msgstr "Кличество объектов"
+msgstr "Количество объектов"
+
+#: client/views.py:31
+msgid "Clients were deleted successfuly"
+msgstr "Клиенты были успешно удалены"
+
+#: client/views.py:51 client/views.py:86 client/views.py:100
+msgid "Branches were deleted successfuly"
+msgstr "Объекты были успешно удалены"
+
+#: client/views.py:72
+msgid "Client was deleted successfuly"
+msgstr "Клиент был успешно удален"
+
+#: client/views.py:163
+msgid "Branch was deleted successfuly"
+msgstr "Объект был успешно удален"
 
 #: core/templates/core/includes/delete_form.html:6
 msgid "Are you sure you want to delete"
