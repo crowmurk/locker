@@ -11,7 +11,8 @@ $(document).ready(function() {
         "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
         "retrieve": true,
         "columnDefs": [
-            { orderable: false, targets: -1 }
+            { targets: 'orderable', orderable: true },
+            { targets: '_all', orderable: false }
         ]
     }
 
