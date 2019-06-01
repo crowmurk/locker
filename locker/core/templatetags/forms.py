@@ -47,6 +47,7 @@ def action_table_form(context, *args, **kwargs):
             "action_table template tag requires "
             "at least one argument: table.")
 
+    readonly = kwargs.get('readonly', False)
     action = kwargs.get('action', '')
     method = kwargs.get('method', 'post')
     button_type = kwargs.get('button_type', 'submit')
@@ -58,6 +59,7 @@ def action_table_form(context, *args, **kwargs):
     return {
         'request': request,
         'table': table,
+        'readonly': readonly,
         'action': action,
         'method': method,
         'button_type': button_type,
