@@ -309,11 +309,6 @@ input[type="button"].button-primary:disabled {
 
 /* Input
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-select,
-input {
-  margin-bottom: 0rem;
-}
-
 select[multiple] {
     height: auto;
 }
@@ -359,6 +354,8 @@ table td input,
 table td select {
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 0rem;
+
 }
 
 /* Add table sort indicator */
