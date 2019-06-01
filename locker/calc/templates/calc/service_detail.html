@@ -11,8 +11,10 @@
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a>
-    <a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+    {% if request.user.is_superuser %}
+        <a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a>
+        <a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+    {% endif %}
 {% endblock %}
 
 {% block calc_content %}

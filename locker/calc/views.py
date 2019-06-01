@@ -35,6 +35,13 @@ class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     action_table_model = Service
     action_table_success_message = _("Services were deleted successfuly")
 
+    def get_table_kwargs(self):
+        if not self.request.user.is_superuser:
+            return {
+                'exclude': ('delete', ),
+            }
+        return {}
+
 
 class ServiceCreate(CreateView):
     model = Service
