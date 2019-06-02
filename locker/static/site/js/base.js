@@ -4,7 +4,8 @@ $(window).on('load', function() {
 });
 
 $(document).ready(function() {
-    $("ul.messages").delay(3000).fadeOut(1000, function() {
-        $(this).remove();
-    });
+    $("ul.messages").delay(3000). animate(
+        {height:"toggle", opacity:"toggle" },
+        1000
+    );
 });
