@@ -80,8 +80,11 @@
                 </div>
             {% endif %}
             <main>
-                {% block content %}
-                {% endblock %}
+                <div class="loading-progress"></div>
+                <div class="body-container" style="visibility: hidden">
+                    {% block content %}
+                    {% endblock %}
+                </div>
             </main>
         </div><!-- container -->
         <footer>
