@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-30 16:09+0300\n"
+"POT-Creation-Date: 2019-06-02 21:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "Опция"
 #: calc/templates/calc/orderoption_list.html:16
 #: calc/templates/calc/service_form.html:11
 #: calc/templates/calc/service_form.html:21
-#: calc/templates/calc/service_list.html:16
+#: calc/templates/calc/service_list.html:17
 #: client/templates/client/branch_detail.html:41
 #: client/templates/client/branch_form.html:11
 #: client/templates/client/branch_form.html:21
@@ -197,8 +197,8 @@ msgstr "Сумма"
 #: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/orderoption_list.html:24
 #: calc/templates/calc/service_confirm_delete.html:7
-#: calc/templates/calc/service_detail.html:15
-#: calc/templates/calc/service_list.html:24
+#: calc/templates/calc/service_detail.html:16
+#: calc/templates/calc/service_list.html:27
 #: client/templates/client/branch_confirm_delete.html:7
 #: client/templates/client/branch_detail.html:16
 #: client/templates/client/branch_detail.html:45
@@ -223,7 +223,7 @@ msgstr "PDF"
 #: calc/templates/calc/orderoption_detail.html:14
 #: calc/templates/calc/orderoption_form.html:10
 #: calc/templates/calc/orderoption_form.html:25
-#: calc/templates/calc/service_detail.html:14
+#: calc/templates/calc/service_detail.html:15
 #: calc/templates/calc/service_form.html:9
 #: calc/templates/calc/service_form.html:18
 #: client/templates/client/branch_detail.html:15
@@ -252,31 +252,31 @@ msgstr "Настройки фильтра:"
 msgid "Services were deleted successfuly"
 msgstr "Услуги были успешно удалены"
 
-#: calc/views.py:57
+#: calc/views.py:64
 msgid "Service was deleted successfuly"
 msgstr "Услуга была успешно удалена"
 
-#: calc/views.py:66 client/views.py:46 client/views.py:136
+#: calc/views.py:73 client/views.py:46 client/views.py:136
 msgid "Orders were deleted successfuly"
 msgstr "Заказы были успешно удалены"
 
-#: calc/views.py:107
+#: calc/views.py:114
 msgid "Order's options were deleted successfuly"
 msgstr "Опции заказа были успешно удалены"
 
-#: calc/views.py:127
+#: calc/views.py:134
 msgid "Order was changed successfuly"
 msgstr "Заказ был успешно изменен"
 
-#: calc/views.py:133
+#: calc/views.py:140
 msgid "Order was deleted successfuly"
 msgstr "Заказ был успешно удален"
 
-#: calc/views.py:142
+#: calc/views.py:149
 msgid "Orders' options were deleted successfuly"
 msgstr "Опции заказов были успешно удалены"
 
-#: calc/views.py:163
+#: calc/views.py:170
 msgid "Order's option was deleted successfuly"
 msgstr "Опция заказа была успешно удалена"
 
