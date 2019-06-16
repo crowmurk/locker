@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-02 21:02+0300\n"
+"POT-Creation-Date: 2019-06-16 21:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,6 +336,22 @@ msgstr "Клиент был успешно удален"
 #: client/views.py:163
 msgid "Branch was deleted successfuly"
 msgstr "Объект был успешно удален"
+
+#: core/templates/core/includes/action_table_form.html:21
+msgid "Confirmation required:"
+msgstr "Требуется подтверждение:"
+
+#: core/templates/core/includes/action_table_form.html:23
+msgid "Are you sure you want to"
+msgstr "Вы действительно хотите"
+
+#: core/templates/core/includes/action_table_form.html:30
+msgid "Yes"
+msgstr "Да"
+
+#: core/templates/core/includes/action_table_form.html:33
+msgid "No"
+msgstr "Нет"
 
 #: core/templates/core/includes/delete_form.html:6
 msgid "Are you sure you want to delete"
