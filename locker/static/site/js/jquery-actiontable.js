@@ -33,13 +33,29 @@
                 }
 
                 // Find button
-                var button = $(this).find(':button')
+                var dialog = $(this).find(".action-table-confirm-dialog")
+                var form = $(this).find('.action-table-form')
+                var button = form.find(':button').not(".action-table-confirm-dialog :button")
+
                 switch (button.length) {
                     case 0:
                         button = undefined
                         break;
                     case 1:
                         bodyCheckBoxes.attr('name', button.attr('value'))
+                        // Add confirm dialog
+                        button.on("click", function(event) {
+                            event.preventDefault();
+                            dialog = dialog.dialog({
+                                resizable: false,
+                                modal: true,
+                                appendTo: form
+                            });
+                            dialog.find('.button-primary').on("click", function(event) {
+                                event.preventDefault();
+                                dialog.dialog("close");
+                            });
+                        });
                         break;
                     default:
                         console.warn("Too many buttons found:", button.length)

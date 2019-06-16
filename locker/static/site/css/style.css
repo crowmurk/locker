@@ -331,6 +331,14 @@ textarea {
     height: 38px !important;
 }
 
+/* jquery-ui dialog style */
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-size: 11px !important;
+}
+
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 table {

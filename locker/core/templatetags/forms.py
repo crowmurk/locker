@@ -47,6 +47,19 @@ def action_table_form(context, *args, **kwargs):
             "action_table template tag requires "
             "at least one argument: table.")
 
+    object_type = kwargs.get('object_type')
+
+    if object_type is None:
+        model = getattr(table._meta, 'model', None)
+        if model is None:
+            object_type = 'objects'
+        else:
+            object_type = getattr(
+                model._meta,
+                'verbose_name_plural',
+                'objects',
+            )
+
     readonly = kwargs.get('readonly', False)
     action = kwargs.get('action', '')
     method = kwargs.get('method', 'post')
@@ -67,6 +80,7 @@ def action_table_form(context, *args, **kwargs):
         'button_name': button_name,
         'button_value': button_value,
         'action_verbose': action_verbose,
+        'object_type': object_type,
     }
 
 
