@@ -115,7 +115,7 @@ class Branch(models.Model):
         Client,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='branches',
         verbose_name=_('Client'),
     )

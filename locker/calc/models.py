@@ -114,7 +114,7 @@ class Order(models.Model):
         User,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='orders',
         verbose_name=_('Author'),
     )
@@ -122,7 +122,7 @@ class Order(models.Model):
         Client,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='orders',
         verbose_name=_('Client'),
     )
@@ -130,7 +130,7 @@ class Order(models.Model):
         Branch,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='orders',
         verbose_name=_('Branch'),
     )
@@ -235,7 +235,7 @@ class OrderOption(models.Model):
         Order,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='options',
         verbose_name=_('Order'),
     )
@@ -243,7 +243,7 @@ class OrderOption(models.Model):
         Service,
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='options',
         verbose_name=_('Service'),
     )
