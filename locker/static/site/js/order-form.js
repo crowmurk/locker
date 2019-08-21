@@ -18,9 +18,9 @@ $(document).ready(function() {
     var order_options = $("select[name^='order_options-'][name!='order_options-__prefix__-service']");
 
     // Add search option to select fields
-    client_select.select2();
-    branch_select.select2();
-    order_options.select2();
+    client_select.select2({language: current_language});
+    branch_select.select2({language: current_language});
+    order_options.select2({language: current_language});
 
     // Setup chained selection
     if (client_select.val() == '') {
@@ -80,7 +80,7 @@ $(document).ready(function() {
             if(order_options.length !== numberOfForms){
                 numberOfForms = order_options.length;
                 // Add search option to select field in formset
-                $('#id_order_options-' + (parseInt(numberOfForms) - 1) + '-service').select2();
+                $('#id_order_options-' + (parseInt(numberOfForms) - 1) + '-service').select2({language: current_language});
             }
         });
     }
