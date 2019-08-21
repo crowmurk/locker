@@ -11,7 +11,11 @@
             {% else %}
                 action="{{ action }}"
             {% endif %}
-            method="{{ method|default:'post' }}">
+            method="{{ method|default:'post' }}"
+            {% if upload %}
+                enctype="multipart/form-data"
+            {% endif %}
+                >
             {% csrf_token %}
             {{ form.as_p }}
             {% if formset %}
@@ -23,9 +27,9 @@
                 </div>
             {% endif %}
             <button class="button-primary" type="submit">{{ action_verbose|default:'Submit' }}</button>
-            {% if object %}
+            {% if cancel_url %}
                 <div class="u-pull-right">
-                    <a href="{{ object.get_absolute_url }}" class="button">{% trans "Cancel" %}</a>
+                    <a href="{{ cancel_url }}" class="button">{% trans "Cancel" %}</a>
                 </div>
             {% endif %}
         </form>

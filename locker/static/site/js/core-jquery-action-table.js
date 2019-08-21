@@ -1,3 +1,5 @@
+// JQuery action-table plugin
+
 (function ($, window, document, undefined) {
     $.fn.actiontable = function() {
         if (this.data.actiontable) {

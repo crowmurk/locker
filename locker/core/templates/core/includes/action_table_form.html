@@ -3,6 +3,7 @@
 {% load django_tables2 %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'site/css/datatables.min.css' %}">
+
 <div class="action-table-container">
     {% if readonly %}
         {% render_table table %}
@@ -36,7 +37,8 @@
         </form>
     {% endif %}
 </div>
+
 <script type="text/javascript" src="{% static 'site/js/jquery-ui.min.js' %}" defer></script>
 <script type="text/javascript" src="{% static 'site/js/datatables.min.js' %}" defer></script>
-<script type="text/javascript" src="{% static 'site/js/jquery-actiontable.js' %}" defer></script>
-<script type="text/javascript" src="{% static 'site/js/action-table.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/core-jquery-action-table.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/core-action-table.js' %}" defer></script>

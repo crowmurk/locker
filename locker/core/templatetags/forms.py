@@ -149,11 +149,17 @@ def form(context, *args, **kwargs):
     method = (args[2] if len(args) > 2
               else kwargs.get('method'))
 
-    form = context.get('form')
     display_object = kwargs.get('object', context.get('object'))
+
+    cancel_url = kwargs.get(
+        'cancel_url',
+        display_object.get_absolute_url if display_object else None)
+
+    form = context.get('form')
     formset = kwargs.get('formset', context.get('formset'))
     paginator = kwargs.get('paginator', context.get('paginator'))
     table = kwargs.get('table', context.get('table'))
+    upload = kwargs.get('upload')
 
     return {
         'request': request,
@@ -165,6 +171,8 @@ def form(context, *args, **kwargs):
         'formset': formset,
         'paginator': paginator,
         'table': table,
+        'upload': upload,
+        'cancel_url': cancel_url,
     }
 
 

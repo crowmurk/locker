@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Make table action-table
     $(".action-table-container").actiontable()
 })
 
@@ -13,7 +14,8 @@ $(document).ready(function() {
         "columnDefs": [
             { targets: 'orderable', orderable: true },
             { targets: '_all', orderable: false }
-        ]
+        ],
+        "order": []
     }
 
     // Russian language support
