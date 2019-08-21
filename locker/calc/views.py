@@ -13,7 +13,7 @@ from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
 
-from core.views import ActionTableDeleteMixin, SuccessDeleteMessageMixin
+from core.views import ActionTableDeleteMixin, DeleteMessageMixin
 
 from .models import Order, Service, OrderOption
 from .forms import OrderForm, ServiceForm, OrderOptionForm
@@ -58,7 +58,7 @@ class ServiceUpdate(UpdateView):
     form_class = ServiceForm
 
 
-class ServiceDelete(SuccessDeleteMessageMixin, DeleteView):
+class ServiceDelete(DeleteMessageMixin, DeleteView):
     model = Service
     success_url = reverse_lazy('calc:service:list')
     success_message = _("Service was deleted successfuly")
@@ -134,7 +134,7 @@ class OrderUpdate(SuccessMessageMixin, OrderFormMixin, UpdateView):
     success_message = _("Order was changed successfuly")
 
 
-class OrderDelete(SuccessDeleteMessageMixin, DeleteView):
+class OrderDelete(DeleteMessageMixin, DeleteView):
     model = Order
     success_url = reverse_lazy('calc:order:list')
     success_message = _("Order was deleted successfuly")
@@ -164,7 +164,7 @@ class OrderOptionUpdate(UpdateView):
     form_class = OrderOptionForm
 
 
-class OrderOptionDelete(SuccessDeleteMessageMixin, DeleteView):
+class OrderOptionDelete(DeleteMessageMixin, DeleteView):
     model = OrderOption
     success_url = reverse_lazy('calc:orderoption:list')
     success_message = _("Order's option was deleted successfuly")

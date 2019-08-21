@@ -11,7 +11,7 @@ from django.views.generic import (
 from django_tables2 import SingleTableView, SingleTableMixin, MultiTableMixin
 from django_filters.views import FilterView
 
-from core.views import ActionTableDeleteMixin, SuccessDeleteMessageMixin
+from core.views import ActionTableDeleteMixin, DeleteMessageMixin
 from calc.tables import OrderTable
 from calc.models import Order
 
@@ -66,7 +66,7 @@ class ClientUpdate(UpdateView):
     form_class = ClientForm
 
 
-class ClientDelete(SuccessDeleteMessageMixin, DeleteView):
+class ClientDelete(DeleteMessageMixin, DeleteView):
     model = Client
     success_url = reverse_lazy('client:list')
     success_message = _("Client was deleted successfuly")
@@ -156,7 +156,7 @@ class BranchUpdate(BranchGetObjectMixin, ClientContextMixin, UpdateView):
 class BranchDelete(
         BranchGetObjectMixin,
         ClientContextMixin,
-        SuccessDeleteMessageMixin,
+        DeleteMessageMixin,
         DeleteView,
 ):
     model = Branch
