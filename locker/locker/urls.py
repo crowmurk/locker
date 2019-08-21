@@ -14,13 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, register_converter
 from django.conf import settings
 from django.views.generic import TemplateView, RedirectView
+
+from core.converters import RussianSlugConverter
 
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 admin.site.site_title = settings.ADMIN_SITE_TITLE
 admin.site.index_title = settings.ADMIN_INDEX_TITLE
+
+register_converter(RussianSlugConverter, 'slug')
 
 urlpatterns = [
     path('', RedirectView.as_view(

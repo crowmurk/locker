@@ -1,8 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import validate_unicode_slug
 
 from core.validators import validate_slug
+from core.utils import get_unique_slug
 
 # Create your models here.
 
@@ -25,8 +27,11 @@ class Client(models.Model):
     )
     slug = models.SlugField(
         max_length=120,
+        unique=True,
         editable=False,
+        allow_unicode=True,
         validators=[
+            validate_unicode_slug,
             validate_slug,
         ],
         help_text=_('A label for URL config.'),
@@ -48,6 +53,10 @@ class Client(models.Model):
         return "{name}".format(
             name=self.name,
         )
+
+    def save(self, *args, **kwargs):
+        self.slug = get_unique_slug(self, 'slug', 'name', unique=True)
+        super(Client, self).save(*args, **kwargs)
 
     @property
     def number_of_branches(self):
