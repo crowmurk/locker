@@ -21,38 +21,43 @@
     </head>
     <body>
         <div class="container"><!-- container -->
-            <div class="status row">
-                <div class="offset-by-eight four columns">
-                    <ul class="inline">
-                        {% if user.is_authenticated %}
-                            <li>{{ user.get_full_name }}</li>
-                            <li><a href="{% url 'logout' %}">{% trans "LogOut" %}</a></li>
-                        {% else %}
-                            <li><a href="{% url 'login' %}">{% trans "LogIn" %}</a></li>
-                        {% endif %}
-                    </ul>
+            <header>
+                <div class="row">
+                    <div class="offset-by-six six columns">
+                        <ul class="inline">
+                            {% if user.is_authenticated %}
+                                <li>{{ user.get_full_name }}</li>
+                                <li><a href="{% url 'logout' %}">{% trans "LogOut" %}</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">{% trans "LogIn" %}</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <header class="row">
-                <div class="offset-by-one ten columns">
-                    <a href="/"><h1 class="logo">Loker calculator</h1></a>
-                </div>
-                <div class="u-pull-right">
-                    <form action="{% url 'set_language' %}" method="post">
-                        {% csrf_token %}
-                        <input name="next" type="hidden" value="{{ redirect_to }}" />
-                        <select class="inline" name="language" onchange="this.form.submit()">
-                            {% get_current_language as CURRENT_LANGUAGE  %}
-                            {% get_available_languages as LANGUAGES %}
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <option value="{{ language.code }}"
-                                        {% if language.code == CURRENT_LANGUAGE %} selected="selected"{% endif %}>
-                                {{ language.name_local }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </form>
+                <div class="row">
+                    <div class="u-pull-left">
+                        <h1><a class="logo" href="/">Loker</a></h1>
+                    </div>
+                    <div class="offset-by-two five columns">
+                        <h1>Loker calculator</h1>
+                    </div>
+                    <div class="u-pull-right">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}" />
+                            <select class="inline" name="language" onchange="this.form.submit()">
+                                {% get_current_language as CURRENT_LANGUAGE  %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"
+                                            {% if language.code == CURRENT_LANGUAGE %} selected="selected"{% endif %}>
+                                    {{ language.name_local }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </header>
             <nav>
