@@ -8,9 +8,6 @@ from django.core.paginator import (
 
 from client.models import Client, Branch
 
-from .models import OrderOption
-from .forms import OrderOptionFormSet
-
 
 class OrderCreateClientMixin:
     # Передаваемые в URL аргументы
@@ -79,67 +76,3 @@ class OrderCreateClientMixin:
 
         initial.update(self.initial)
         return initial
-
-
-class OrderFormMixin:
-    def get_success_url(self):
-        return self.request.get_full_path()
-
-    def get_context_data(self, *args, **kwargs):
-        """ Добавляет formset в контекст
-        создания и изменения закака
-        """
-        context_data = super().get_context_data(*args, **kwargs)
-
-        queryset = OrderOption.objects.filter(order=self.object).order_by('id')
-        paginator = Paginator(queryset, self.paginate_by)
-        page = self.request.GET.get('page')
-
-        try:
-            page_objects = paginator.page(page)
-        except PageNotAnInteger:
-            page_objects = paginator.page(1)
-        except EmptyPage:
-            page_objects = paginator.page(paginator.num_pages)
-
-        page_query = queryset.filter(id__in=[item.id for item in page_objects])
-
-        context_data['paginator'] = page_objects
-
-        if self.request.method == 'POST':
-            context_data['formset'] = OrderOptionFormSet(
-                self.request.POST,
-                instance=self.object,
-                prefix='order_options',
-            )
-        else:
-            context_data['formset'] = OrderOptionFormSet(
-                instance=self.object,
-                queryset=page_query,
-                prefix='order_options',
-            )
-
-        return context_data
-
-    def form_valid(self, form):
-        """Переопределено для автоматического
-        добавления автора заказа  и опций
-        """
-        context_data = self.get_context_data()
-        formset = context_data['formset']
-
-        if form.is_valid() and formset.is_valid():
-            self.object = form.save(self.request)
-            instances = formset.save(commit=False)
-
-            for item in formset.deleted_objects:
-                item.delete()
-
-            for item in instances:
-                item.order = self.object
-                item.save()
-
-            formset.save_m2m()
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form))

@@ -1,7 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -13,10 +12,14 @@ from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
 from django_xhtml2pdf.views import PdfMixin
 
-from core.views import ActionTableDeleteMixin, DeleteMessageMixin
+from core.views import (
+    ActionTableDeleteMixin,
+    DeleteMessageMixin,
+    SingleFormSetMixin,
+)
 
 from .models import Order, Service, OrderOption
-from .forms import OrderForm, ServiceForm, OrderOptionForm
+from .forms import OrderForm, ServiceForm, OrderOptionForm, OrderOptionFormSet
 from .tables import (
     OrderTable,
     OrderCreateServiceTable,
@@ -24,7 +27,7 @@ from .tables import (
     OrderOptionTable,
 )
 from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
-from .utils import OrderCreateClientMixin, OrderFormMixin
+from .utils import OrderCreateClientMixin
 
 
 class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
@@ -95,15 +98,16 @@ class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
         """Переопределено для автоматического
         добавления автора заказа  и опций
         """
-        if form.is_valid():
-            self.object = form.save(self.request)
-            pks = self.request.POST.getlist('add')
-            if pks:
-                for service in Service.objects.filter(pk__in=pks):
-                    self.object.services.add(service)
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form))
+        self.object = form.save(request=self.request)
+        pks = self.request.POST.getlist('add')
+        if pks:
+            for service in Service.objects.filter(pk__in=pks):
+                option = OrderOption(
+                    order=self.object,
+                    service=service,
+                )
+                option.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class OrderDetail(SingleTableMixin, ActionTableDeleteMixin, DetailView):
@@ -127,10 +131,10 @@ class OrderDetailPDF(PdfMixin, OrderDetail):
         return {'exclude': ('order', 'delete', ), }
 
 
-class OrderUpdate(SuccessMessageMixin, OrderFormMixin, UpdateView):
+class OrderUpdate(SingleFormSetMixin, UpdateView):
     model = Order
     form_class = OrderForm
-    paginate_by = 10
+    formset = OrderOptionFormSet
     success_message = _("Order was changed successfuly")
 
 

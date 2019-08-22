@@ -1,6 +1,10 @@
 from decimal import Decimal
 
 from django.db import models
+from django.db.models import Sum
+from django.db.models.expressions import Subquery, OuterRef
+from django.db.models.functions import Coalesce
+
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -36,7 +40,7 @@ class Service(models.Model):
         decimal_places=2,
         verbose_name=_('Work price'),
     )
-    rating = models.PositiveIntegerField(
+    rating = models.PositiveSmallIntegerField(
         blank=False,
         null=False,
         default=0,
@@ -49,7 +53,7 @@ class Service(models.Model):
         decimal_places=2,
         editable=False,
         default=0,
-        verbose_name=_('Total'),
+        verbose_name=_('Total price'),
     )
 
     class Meta:
@@ -90,23 +94,19 @@ class Service(models.Model):
 
 class OrderManager(models.Manager):
     def get_queryset(self):
-        equipment_price = models.F('options__service__equipment_price')
-        work_price = models.F('options__service__work_price')
-        factor = models.F('options__order__factor')
-        quantity = models.F('options__quantity')
-
-        price = models.ExpressionWrapper(
-            (equipment_price + work_price * factor) * quantity,
-            output_field=models.DecimalField(
-                max_digits=9,
-                decimal_places=2,
-            ),
+        price = Subquery(
+            OrderOption.objects.filter(
+                order=OuterRef('pk'),
+            ).values('order').order_by('order').annotate(
+                sum=Coalesce(Sum('price'), 0)
+            ).values('sum'),
         )
+
         return super().get_queryset().select_related(
             'author', 'client', 'branch',
         ).prefetch_related(
             'options',
-        ).annotate(price=models.Sum(price))
+        ).annotate(price=Coalesce(price, 0))
 
 
 class Order(models.Model):
@@ -167,11 +167,10 @@ class Order(models.Model):
         ordering = ['author', 'client']
 
     def __str__(self):
-        return _("Order {id}: {client} ({branch}: {address})").format(
+        return _("{id}: {client} ({branch}) [{price}]").format(
             id=self.pk,
             client=self.client.name,
             branch=self.branch.name,
-            address=self.branch.address,
             price=self.price,
         )
 
@@ -213,21 +212,9 @@ class Order(models.Model):
 
 class OrderOptionManager(models.Manager):
     def get_queryset(self):
-        equipment_price = models.F('service__equipment_price')
-        work_price = models.F('service__work_price')
-        factor = models.F('order__factor')
-        quantity = models.F('quantity')
-
-        price = models.ExpressionWrapper(
-            (equipment_price + work_price * factor) * quantity,
-            output_field=models.DecimalField(
-                max_digits=9,
-                decimal_places=2,
-            ),
-        )
         return super().get_queryset().select_related(
             'order', 'service',
-        ).annotate(price=price)
+        )
 
 
 class OrderOption(models.Model):
@@ -247,11 +234,29 @@ class OrderOption(models.Model):
         related_name='options',
         verbose_name=_('Service'),
     )
+    service_price = models.DecimalField(
+        null=False,
+        blank=False,
+        max_digits=9,
+        decimal_places=2,
+        editable=False,
+        default=0,
+        verbose_name=_('Service price'),
+    )
     quantity = models.PositiveIntegerField(
         blank=False,
         null=False,
         default=1,
         verbose_name=_('Quantity'),
+    )
+    price = models.DecimalField(
+        null=False,
+        blank=False,
+        max_digits=9,
+        decimal_places=2,
+        editable=False,
+        default=0,
+        verbose_name=_('Total price'),
     )
 
     objects = OrderOptionManager()
@@ -263,22 +268,18 @@ class OrderOption(models.Model):
 
     def __str__(self):
         return _("Order: {order} Option: {service}"
-                 " Quantity: {quantity} Sum: {price}").format(
+                 " Quantity: {quantity} Total price: {price}").format(
                      order=self.order.pk,
                      service=self.service.equipment,
                      quantity=self.quantity,
                      price=self.price,
         )
 
-    @property
-    def price(self):
-        factor = Decimal(self.order.factor)
-        result = (self.service.equipment_price + self.service.work_price * factor) * self.quantity
-        return result.quantize(Decimal('0.01'))
-
-    @price.setter
-    def price(self, value):
-        pass
+    def save(self, *args, **kwargs):
+        self.service_price = self.service.equipment_price + self.service.work_price * Decimal(self.order.factor)
+        self.price = self.service_price * self.quantity
+        self.price.quantize(Decimal('0.01'))
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(

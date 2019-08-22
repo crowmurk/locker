@@ -26,10 +26,10 @@
                     <dt><strong>{% field_verbose_name orderoption 'service' %}:</strong></dt>
                     <dd>{{ orderoption.service.equipment }}</dd>
                     <dt><strong>{% trans "Price" %}:</strong></dt>
-                    <dd>{{ orderoption.service.price }}</dd>
+                    <dd>{{ orderoption.service_price }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'quantity' %}:</strong></dt>
                     <dd>{{ orderoption.quantity }}</dd>
-                    <dt><strong>{% trans "Sum" %}:</strong></dt>
+                    <dt><strong>{% field_verbose_name orderoption 'price' %}:</strong></dt>
                     <dd>{{ orderoption.price }}</dd>
                 </dl>
             </div>

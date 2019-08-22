@@ -34,7 +34,7 @@ class OrderTable(tables.Table):
         accessor='client.name',
         verbose_name=_('Client'),
     )
-    price = tables.Column(verbose_name=_("Price"))
+    price = tables.Column(verbose_name=_("Total price"))
     delete = tables.CheckBoxColumn(accessor="pk")
 
     class Meta:
@@ -55,7 +55,6 @@ class OrderTable(tables.Table):
 
 class OrderCreateServiceTable(tables.Table):
     equipment = tables.LinkColumn()
-    price = tables.Column(verbose_name=_("Price"))
     add = tables.CheckBoxColumn(accessor="pk")
 
     class Meta:
@@ -109,11 +108,6 @@ class OrderOptionTable(tables.Table):
         accessor='service.equipment',
         verbose_name=_('Option'),
     )
-    service_price = tables.Column(
-        accessor='service.price',
-        verbose_name=_('Price')
-    )
-    price = tables.Column(verbose_name=_("Sum"))
     delete = tables.CheckBoxColumn(accessor="pk")
 
     class Meta:

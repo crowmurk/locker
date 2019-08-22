@@ -16,6 +16,9 @@ class ServiceForm(forms.ModelForm):
         model = Service
         fields = '__all__'
 
+    def has_changed(self, *args, **kwargs):
+        return True
+
 
 class RelatedFieldWidgetCanAdd(widgets.Select):
     """Append add button to Select widget
@@ -51,6 +54,9 @@ class OrderForm(forms.ModelForm):
         model = Order
         exclude = ('author', 'services')
 
+    def has_changed(self, *args, **kwargs):
+        return True
+
     def clean(self):
         cleaned_data = super().clean()
 
@@ -75,14 +81,20 @@ class OrderForm(forms.ModelForm):
 
         return cleaned_data
 
-    def save(self, request, commit=True):
+    def save(self, *args, **kwargs):
         """Переопределено для автоматического
         добавления автора заказа
         """
+        commit = kwargs.get('commit', True)
+        request = kwargs.get('request')
+
         order = super().save(commit=False)
         # Если создается новый заказ
         if not order.pk:
-            order.author = get_user(request)
+            if not request:
+                raise ValueError(_('Request object required'))
+            else:
+                order.author = get_user(request)
         if commit:
             order.save()
             self.save_m2m()
@@ -93,6 +105,9 @@ class OrderOptionForm(forms.ModelForm):
     class Meta:
         model = OrderOption
         fields = '__all__'
+
+    def has_changed(self, *args, **kwargs):
+        return True
 
 
 OrderOptionFormSet = inlineformset_factory(
