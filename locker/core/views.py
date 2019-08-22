@@ -176,6 +176,7 @@ class SingleFormSetMixin:
                                       name=formset.model._meta.verbose_name.lower()
                 )
                 messages.error(self.request, error_message)
+
             return redirect
 
         return self.render_to_response(
