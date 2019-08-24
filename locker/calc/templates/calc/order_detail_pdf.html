@@ -26,20 +26,14 @@
 
         <h3>{{ order|verbose_name }}: {{ order.pk }}</h3>
 
-        <strong>{% field_verbose_name order 'author' %}:</strong> {{ order.author.get_full_name }}
-        </BR>
-        <strong>{% field_verbose_name order 'client' %}:</strong> {{ order.client }}
-        </BR>
-        <strong>{% field_verbose_name order 'branch' %}:</strong> {{ order.branch.name }} ({{ order.branch.address }})
-        </BR>
-        <strong>{% field_verbose_name order 'factor' %}:</strong> {{ order.factor }}
-        </BR>
-        <strong>{% trans "Price" %}:</strong> {{ order.price }}
-        </BR>
-        <strong>{% field_verbose_name order 'created' %}:</strong> {{ order.created }}
-        </BR>
-        <strong>{% field_verbose_name order 'modified' %}:</strong> {{ order.modified }}
-        </BR> </BR>
+        <strong>{% field_verbose_name order 'author' %}:</strong> {{ order.author.get_full_name }} </BR>
+        <strong>{% field_verbose_name order 'client' %}:</strong> {{ order.client }} </BR>
+        <strong>{% field_verbose_name order 'branch' %}:</strong> {{ order.branch.name }} ({{ order.branch.address }}) </BR>
+        <strong>{% field_verbose_name order 'factor' %}:</strong> {{ order.factor }} </BR>
+        <strong>{% trans "Total price" %}:</strong> {{ order.price }} </BR>
+        <strong>{% field_verbose_name order 'created' %}:</strong> {{ order.created }} </BR>
+        <strong>{% field_verbose_name order 'modified' %}:</strong> {{ order.modified }} </BR> </BR>
+
         <h4>{% field_verbose_name order 'services' %}</h4>
 
         {% render_table table %}

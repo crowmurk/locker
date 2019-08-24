@@ -63,7 +63,7 @@ class Service(models.Model):
         unique_together = (('equipment', 'work'),)
 
     def __str__(self):
-        return _("{equipment} Work: {work} Price: {price}").format(
+        return _("{equipment} ({work}): Price: {price}").format(
             equipment=self.equipment,
             work=self.work,
             price=self.price,
@@ -139,7 +139,7 @@ class Order(models.Model):
         related_name='orders',
         through='OrderOption',
         through_fields=('order', 'service'),
-        verbose_name=_('Services'),
+        verbose_name=_('Options'),
     )
     created = models.DateField(
         auto_now_add=True,
@@ -167,10 +167,11 @@ class Order(models.Model):
         ordering = ['author', 'client']
 
     def __str__(self):
-        return _("{id}: {client} ({branch}) [{price}]").format(
+        return _("{id}: {client} ({branch}, {address}) [{price}]").format(
             id=self.pk,
             client=self.client.name,
             branch=self.branch.name,
+            address=self.branch.address,
             price=self.price,
         )
 
@@ -232,7 +233,7 @@ class OrderOption(models.Model):
         blank=False,
         on_delete=models.PROTECT,
         related_name='options',
-        verbose_name=_('Service'),
+        verbose_name=_('Option'),
     )
     service_price = models.DecimalField(
         null=False,
@@ -241,7 +242,7 @@ class OrderOption(models.Model):
         decimal_places=2,
         editable=False,
         default=0,
-        verbose_name=_('Service price'),
+        verbose_name=_('Option price'),
     )
     quantity = models.PositiveIntegerField(
         blank=False,

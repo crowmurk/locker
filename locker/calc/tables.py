@@ -11,6 +11,14 @@ class OrderTable(tables.Table):
         accessor='author.get_full_name',
         order_by=('author.first_name', 'author.last_name', ),
     )
+    client = tables.Column(
+        linkify=(
+            'client:detail',
+            {'slug': tables.A('client.slug'), },
+        ),
+        accessor='client.name',
+        verbose_name=_('Client'),
+    )
     branch = tables.Column(
         linkify=(
             'client:branch:detail',
@@ -25,14 +33,6 @@ class OrderTable(tables.Table):
     address = tables.Column(
         accessor='branch.address',
         verbose_name=_('Address'),
-    )
-    client = tables.Column(
-        linkify=(
-            'client:detail',
-            {'slug': tables.A('client.slug'), },
-        ),
-        accessor='client.name',
-        verbose_name=_('Client'),
     )
     price = tables.Column(verbose_name=_("Total price"))
     delete = tables.CheckBoxColumn(accessor="pk")

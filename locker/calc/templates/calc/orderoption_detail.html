@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block calc_header %}
-    <h5>{{ orderoption|verbose_name }} {{ orderoption.order.pk }}: {{ orderoption.service.equipment }}</h5>
+    <h5>{{ orderoption|verbose_name }}</h5>
 {% endblock %}
 
 {% block calc_button %}
@@ -25,7 +25,7 @@
                     <dd>{{ orderoption.order.pk }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'service' %}:</strong></dt>
                     <dd>{{ orderoption.service.equipment }}</dd>
-                    <dt><strong>{% trans "Price" %}:</strong></dt>
+                    <dt><strong>{% field_verbose_name orderoption 'service_price' %}:</strong></dt>
                     <dd>{{ orderoption.service_price }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'quantity' %}:</strong></dt>
                     <dd>{{ orderoption.quantity }}</dd>
