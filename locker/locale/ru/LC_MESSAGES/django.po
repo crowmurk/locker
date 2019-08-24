@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-24 13:16+0300\n"
+"POT-Creation-Date: 2019-08-24 19:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:37 calc/models.py:119
+#: calc/admin.py:37 calc/models.py:121
 msgid "Author"
 msgstr "Автор"
 
@@ -32,8 +32,8 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/filters.py:16 calc/models.py:165 calc/models.py:228 calc/tables.py:9
-#: calc/tables.py:101
+#: calc/filters.py:16 calc/models.py:167 calc/models.py:230 calc/tables.py:9
+#: calc/tables.py:107
 msgid "Order"
 msgstr "Заказ"
 
@@ -49,15 +49,15 @@ msgstr "ДД.ММ.ГГГГ"
 msgid "Created to"
 msgstr "Создан по"
 
-#: calc/filters.py:56
+#: calc/filters.py:59
 msgid "Rating from"
 msgstr "Рейтинг от"
 
-#: calc/filters.py:61
+#: calc/filters.py:64
 msgid "Rating to"
 msgstr "Рейтинг до"
 
-#: calc/filters.py:79 calc/models.py:236 calc/tables.py:109
+#: calc/filters.py:82 calc/models.py:238 calc/tables.py:115
 msgid "Option"
 msgstr "Опция"
 
@@ -82,8 +82,8 @@ msgstr "Опция"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:50 calc/models.py:127 calc/tables.py:20 client/filters.py:15
-#: client/filters.py:45 client/models.py:48 client/models.py:120
+#: calc/forms.py:50 calc/models.py:129 calc/tables.py:20 client/filters.py:15
+#: client/filters.py:45 client/models.py:49 client/models.py:121
 #: client/tables.py:32
 msgid "Client"
 msgstr "Клиент"
@@ -97,104 +97,104 @@ msgstr "Объект %(branch)s (%(address)s) не принадлежит кли
 msgid "Request object required"
 msgstr "Требуется объект request"
 
-#: calc/models.py:22
+#: calc/models.py:23
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/models.py:29
+#: calc/models.py:30
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
-#: calc/models.py:34
+#: calc/models.py:36
 msgid "Work"
 msgstr "Работа"
 
-#: calc/models.py:41
+#: calc/models.py:43
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:47
+#: calc/models.py:49
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:56 calc/models.py:260 calc/tables.py:37
+#: calc/models.py:58 calc/models.py:262 calc/tables.py:37
 #: calc/templates/calc/order_detail.html:36
 #: calc/templates/calc/order_detail_pdf.html:33
 msgid "Total price"
 msgstr "Итоговая цена"
 
-#: calc/models.py:60
+#: calc/models.py:62
 msgid "Service"
 msgstr "Услуга"
 
-#: calc/models.py:61 templates/base.html:70
+#: calc/models.py:63 templates/base.html:70
 msgid "Services"
 msgstr "Услуги"
 
-#: calc/models.py:66
+#: calc/models.py:68
 #, python-brace-format
 msgid "{equipment} ({work}): Price: {price}"
 msgstr "{equipment} ({work}): Цена: {price}"
 
-#: calc/models.py:135 calc/tables.py:31 client/filters.py:41
-#: client/models.py:135
+#: calc/models.py:137 calc/tables.py:31 client/filters.py:41
+#: client/models.py:144
 msgid "Branch"
 msgstr "Объект"
 
-#: calc/models.py:142
+#: calc/models.py:144
 msgid "Options"
 msgstr "Опции"
 
-#: calc/models.py:146
+#: calc/models.py:148
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:150
+#: calc/models.py:152
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:159
+#: calc/models.py:161
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:166 templates/base.html:67
+#: calc/models.py:168 templates/base.html:67
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:170
+#: calc/models.py:172
 #, python-brace-format
 msgid "{id}: {client} ({branch}, {address}) [{price}]"
 msgstr "{id}: {client} ({branch}, {address}) [{price}]"
 
-#: calc/models.py:245
+#: calc/models.py:247
 msgid "Option price"
 msgstr "Цена опции"
 
-#: calc/models.py:251
+#: calc/models.py:253
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:266
+#: calc/models.py:268
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:267
+#: calc/models.py:269
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:271
+#: calc/models.py:273
 #, python-brace-format
 msgid ""
 "Order: {order} Option: {service} Quantity: {quantity} Total price: {price}"
 msgstr ""
 "Заказ: {order} Опция: {service} Количество: {quantity} Итоговая цена: {price}"
 
-#: calc/tables.py:35 client/models.py:129
+#: calc/tables.py:35 client/models.py:138
 msgid "Address"
 msgstr "Адрес"
 
-#: calc/tables.py:53 calc/tables.py:73 calc/tables.py:91 calc/tables.py:123
-#: client/tables.py:21 client/tables.py:48
+#: calc/tables.py:53 calc/tables.py:79 calc/tables.py:97 calc/tables.py:129
+#: client/tables.py:21 client/tables.py:49
 #: core/templates/core/includes/formset_table.html:74
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
@@ -294,7 +294,7 @@ msgstr "Опция заказа была успешно удалена"
 msgid "Number of orders"
 msgstr "Количество заказов"
 
-#: client/apps.py:7 client/models.py:49
+#: client/apps.py:7 client/models.py:50
 #: client/templates/client/branch_list.html:16 templates/base.html:68
 msgid "Clients"
 msgstr "Клиенты"
@@ -307,7 +307,7 @@ msgstr "Заказов от"
 msgid "Orders to"
 msgstr "Заказов до"
 
-#: client/models.py:26 client/models.py:125
+#: client/models.py:26 client/models.py:127
 msgid "Name"
 msgstr "Название"
 
@@ -315,15 +315,19 @@ msgstr "Название"
 msgid "A label for URL config."
 msgstr "URL идентификатор объекта"
 
-#: client/models.py:41
+#: client/models.py:42
 msgid "Details"
 msgstr "Детали"
 
-#: client/models.py:42
+#: client/models.py:43
 msgid "Details regarding the client"
 msgstr "Информация о клиенте"
 
-#: client/models.py:136 templates/base.html:69
+#: client/models.py:133
+msgid "Settlement"
+msgstr "Населенный пункт"
+
+#: client/models.py:145 templates/base.html:69
 msgid "Branches"
 msgstr "Объекты"
 
@@ -413,17 +417,17 @@ msgstr "Slug не может быть \"%(slug)s\""
 msgid "This value must be grater than zero"
 msgstr "Это значение должно быть больше нуля"
 
-#: core/views.py:57
+#: core/views.py:63
 #, python-brace-format
 msgid "{name} were deleted successfuly"
 msgstr "{name} успешно удалены"
 
-#: core/views.py:62 core/views.py:98 core/views.py:174
+#: core/views.py:68 core/views.py:104 core/views.py:180
 #, python-brace-format
 msgid "Cannot delete {name} because of foreign references"
 msgstr "Невозможно удалить {name} при существующих внешних ссылках"
 
-#: core/views.py:90
+#: core/views.py:96
 #, python-brace-format
 msgid "{name} was deleted successfuly"
 msgstr "{name} успешно удален"
