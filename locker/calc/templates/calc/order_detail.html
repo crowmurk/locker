@@ -30,7 +30,7 @@
                     <dd><a href="{{ order.client.get_absolute_url }}">{{ order.client.name }}</a></dd>
                     <dt><strong>{% field_verbose_name order 'branch' %}:</strong></dt>
                     <dd><a href="{{ order.branch.get_absolute_url }}">{{ order.branch.name }}</a></dd>
-                    <dd>({{ order.branch.address }})</dd>
+                    <dd>({{ order.branch.settlement }}, {{ order.branch.address }})</dd>
                     <dt><strong>{% field_verbose_name order 'factor' %}:</strong></dt>
                     <dd>{{ order.factor }}</a></dd>
                     <dt><strong>{% trans "Total price" %}:</strong></dt>

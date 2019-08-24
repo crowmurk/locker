@@ -126,6 +126,12 @@ class Branch(models.Model):
         blank=False,
         verbose_name=_('Name'),
     )
+    settlement = models.CharField(
+        max_length=120,
+        null=False,
+        blank=False,
+        verbose_name=_('Settlement'),
+    )
     address = models.TextField(
         null=False,
         blank=False,
@@ -138,12 +144,12 @@ class Branch(models.Model):
         verbose_name = _('Branch')
         verbose_name_plural = _('Branches')
         ordering = ['client', 'name']
-        unique_together = (('client', 'name', 'address'),)
+        unique_together = (('client', 'name', 'settlement', 'address'),)
 
     def __str__(self):
         return "{name}: {address} ({client})".format(
             name=self.name,
-            address=self.address,
+            address=', '.join((self.settlement, self.address)),
             client=self.client.name,
         )
 

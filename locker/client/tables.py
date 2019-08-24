@@ -40,6 +40,7 @@ class BranchTable(tables.Table):
         model = Branch
         sequence = (
             'name',
+            'settlement',
             'address',
             'client',
             'number_of_orders',

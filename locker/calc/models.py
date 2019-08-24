@@ -173,7 +173,7 @@ class Order(models.Model):
             id=self.pk,
             client=self.client.name,
             branch=self.branch.name,
-            address=self.branch.address,
+            address=', '.join((self.branch.settlement, self.branch.address)),
             price=self.price,
         )
 

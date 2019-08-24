@@ -46,7 +46,10 @@ class OrderFilter(FilterSet):
 
     def client_filter(self, queryset, name, value):
         return queryset.filter(
-            Q(client__name__icontains=value) | Q(branch__name__icontains=value) | Q(branch__address__icontains=value)
+            Q(client__name__icontains=value) |
+            Q(branch__name__icontains=value) |
+            Q(branch__settlement__icontains=value) |
+            Q(branch__address__icontains=value)
         )
 
 

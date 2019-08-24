@@ -49,8 +49,14 @@ class OrderTable(tables.Table):
             'modified',
             'price',
         )
-        exclude = ('factor', )
+        exclude = ('settlement', 'factor', )
         empty_text = _("There are no records available")
+
+    def render_address(self, record, value):
+        return "{settlement}, {address}".format(
+            settlement=record.branch.settlement,
+            address=value,
+        )
 
 
 class OrderCreateServiceTable(tables.Table):

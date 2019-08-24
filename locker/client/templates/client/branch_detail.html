@@ -27,7 +27,7 @@
                     <dt><strong>{% field_verbose_name branch 'client' %}:</strong></dt>
                     <dd><a href="{{ branch.client.get_absolute_url }}">{{ branch.client.name }}</a></dd>
                     <dt><strong>{% field_verbose_name branch 'address' %}:</strong></dt>
-                    <dd>{{ branch.address }}</dd>
+                    <dd>{{ branch.settlement }}, {{ branch.address }}</dd>
                     <dt><strong>{% field_verbose_name branch 'orders' %}:</strong></dt>
                     <dd>{{ branch.number_of_orders }}</dd>
                 </dl>

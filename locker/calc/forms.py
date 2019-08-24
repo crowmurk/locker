@@ -74,7 +74,7 @@ class OrderForm(forms.ModelForm):
                     params={
                         'client': client,
                         'branch': branch.name,
-                        'address': branch.address,
+                        'address': ', '.join((branch.settlement, branch.address)),
                     },
                 ),
             )

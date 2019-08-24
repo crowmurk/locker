@@ -137,7 +137,7 @@ class BranchDetail(
 
     def get_table_kwargs(self):
         return {
-            'exclude': ('client', 'branch', 'address', )
+            'exclude': ('client', 'branch', 'settlement', 'address', )
         }
 
     def get_table_data(self):

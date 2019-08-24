@@ -63,5 +63,5 @@ class BranchFilter(FilterSet):
 
     def branch_filter(self, queryset, name, value):
         return queryset.filter(
-            Q(name__icontains=value) | Q(address__icontains=value)
+            Q(name__icontains=value) | Q(settlement__icontains=value) | Q(address__icontains=value)
         )
