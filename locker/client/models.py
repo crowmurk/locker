@@ -37,6 +37,7 @@ class Client(models.Model):
         help_text=_('A label for URL config.'),
     )
     details = models.TextField(
+        null=False,
         blank=False,
         verbose_name=_('Details'),
         help_text=_('Details regarding the client'),
@@ -121,10 +122,12 @@ class Branch(models.Model):
     )
     name = models.CharField(
         max_length=120,
+        null=False,
         blank=False,
         verbose_name=_('Name'),
     )
     address = models.TextField(
+        null=False,
         blank=False,
         verbose_name=_('Address'),
     )

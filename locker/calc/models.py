@@ -17,6 +17,7 @@ from client.models import Client, Branch
 
 class Service(models.Model):
     equipment = models.CharField(
+        null=False,
         blank=False,
         max_length=250,
         verbose_name=_('Equipment'),
@@ -29,6 +30,7 @@ class Service(models.Model):
         verbose_name=_('Equipment price'),
     )
     work = models.CharField(
+        null=False,
         blank=False,
         max_length=250,
         verbose_name=_('Work'),
@@ -41,8 +43,8 @@ class Service(models.Model):
         verbose_name=_('Work price'),
     )
     rating = models.PositiveSmallIntegerField(
-        blank=False,
         null=False,
+        blank=False,
         default=0,
         verbose_name=_('Rating'),
     )
@@ -245,8 +247,8 @@ class OrderOption(models.Model):
         verbose_name=_('Option price'),
     )
     quantity = models.PositiveIntegerField(
-        blank=False,
         null=False,
+        blank=False,
         default=1,
         verbose_name=_('Quantity'),
     )
