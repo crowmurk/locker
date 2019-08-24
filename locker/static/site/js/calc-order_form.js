@@ -13,14 +13,13 @@ function get_branch_options(branches) {
 }
 
 $(document).ready(function() {
-    var client_select = $("select[name='client'][id='id_client']");
-    var branch_select = $("select[name='branch'][id='id_branch']");
-    var order_options = $("select[name^='order_options-'][name!='order_options-__prefix__-service']");
+    var current_language = $("select[name='language']").val()
+    var client_select = $("#id_client");
+    var branch_select = $("#id_branch");
 
     // Add search option to select fields
     client_select.select2({language: current_language});
     branch_select.select2({language: current_language});
-    order_options.select2({language: current_language});
 
     // Setup chained selection
     if (client_select.val() == '') {
@@ -41,10 +40,10 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $("select[name='client'][id='id_client']").change(function() {
+    $("#id_client").change(function() {
         // Refresh chained selection
         var client_select = $(this);
-        var branch_select = $("select[name='branch'][id='id_branch']");
+        var branch_select = $("#id_branch");
 
         if ($(this).val() == '') {
             // Disable branch selector when no client selected
@@ -65,22 +64,37 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    // Add search option to select field
-    // when new form added in formset
-    var order_options_table = $('#order_options_table')
+    // Add search option to formset selects
+    // Disable formset fields autocomplete
+    var current_language = $("select[name='language']").val()
+    var formset = 'options';
+    var table = $(`#${formset}_table`);
 
     // if formset is present
-    if (order_options_table.length) {
-        var order_options_selector = "select[name^='order_options-'][name!='order_options-__prefix__-service']"
-        var numberOfForms = $(order_options_selector).length
+    if (table.length) {
+        var selectorsID = `select[id^='id_${formset}-']`;
+        var textinputsID = `input[type="text"]input[id^='id_${formset}-']`;
+        var selectors = table.find($(selectorsID))
+        var textinputs = table.find($(textinputsID))
+        var numberOfSelectors = selectors.length;
 
-        order_options_table.bind('DOMSubtreeModified', function() {
+        // Add search option to selectors
+        selectors.select2({language: current_language})
+        // Disable autocomplete on text fields
+        textinputs.attr('autocomplete', 'off')
+
+        table.bind('DOMSubtreeModified', function() {
             // if new form added in formset
-            var order_options = $(order_options_selector)
-            if(order_options.length !== numberOfForms){
-                numberOfForms = order_options.length;
+            var newSelectors = table.find($(selectorsID));
+            if(newSelectors.length !== numberOfSelectors) {
+                numberOfSelectors = newSelectors.length;
                 // Add search option to select field in formset
-                $('#id_order_options-' + (parseInt(numberOfForms) - 1) + '-service').select2({language: current_language});
+                table.find(
+                    $(`select[id^='id_${formset}-${parseInt(numberOfSelectors) - 1}-']`)
+                ).select2({language: current_language});
+                table.find(
+                    $(`input[type="text"]input[id^='id_${formset}-${parseInt(numberOfSelectors) - 1}-']`)
+                ).attr('autocomplete', 'off')
             }
         });
     }

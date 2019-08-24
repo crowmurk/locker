@@ -30,5 +30,8 @@
         {% url 'calc:orderoption:create' as form_url %}
         {% form form_url action_verbose %}
     {% endif %}
-    <script type="text/javascript" src="{% static 'site/js/orderoption-form.js' %}" defer></script>
+{% endblock %}
+
+{% block body %}
+    <script type="text/javascript" src="{% static 'site/js/calc-orderoption_form.js' %}" defer></script>
 {% endblock %}

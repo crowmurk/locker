@@ -9,12 +9,6 @@
     {{ block.super }} - {{ view.model|verbose_name_plural }}
 {% endblock %}
 
-{% block head %}
-    {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'site/css/jquery-ui.min.css' %}">
-    <script type="text/javascript" src="{% static 'site/js/jquery-ui.min.js' %}" defer></script>
-{% endblock %}
-
 {% block calc_header %}
     <h2>{{ view.model|verbose_name_plural }}</h2>
 {% endblock %}
@@ -32,8 +26,9 @@
         {% trans "Delete" as action_verbose %}
         {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
     {% endif %}
-    {% if filter %}
-        <script type="text/javascript" src="{% static 'site/js/order-list.js' %}" defer></script>
-        <script type="text/javascript" src="{% static 'site/js/datepicker-ru.js' %}" defer></script>
-    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <script type="text/javascript" src="{% static 'site/js/datepicker-ru.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/calc-order_list.js' %}" defer></script>
 {% endblock %}

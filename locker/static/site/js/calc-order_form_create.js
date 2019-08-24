@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    $(".action-table-container").actiontable()
-})
-
-$(document).ready(function() {
     // Make table DataTable
+    $(".action-table-container").actiontable()
+
     var table = $('.table-container table')
 
     var datatable_options = {
@@ -25,4 +23,4 @@ $(document).ready(function() {
     table.DataTable(datatable_options);
     table.addClass("hover")
     $('.table-container').css("margin-bottom", "30px")
-});
+})
