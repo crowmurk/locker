@@ -53,8 +53,15 @@ class ClientDetail(MultiTableMixin, ActionTableDeleteMixin, DetailView):
     ]
 
     def get_tables(self):
+        orders = self.object.get_orders()
+        orders_exclude_columns = ['client', ]
+
+        if not self.request.user.is_superuser:
+            orders = orders.filter(author=self.request.user)
+            orders_exclude_columns.append('author')
+
         self.tables = [
-            OrderTable(self.object.get_orders(), exclude=('client', )),
+            OrderTable(orders, exclude=orders_exclude_columns),
             BranchTable(self.object.get_branches(), exclude=('client', )),
         ]
         tables = super(ClientDetail, self).get_tables()
@@ -136,16 +143,26 @@ class BranchDetail(
     action_table_success_message = _("Orders were deleted successfuly")
 
     def get_table_kwargs(self):
-        return {
-            'exclude': ('client', 'branch', 'settlement', 'address', )
+        kwargs = {
+            'exclude': ['client', 'branch', 'settlement', 'address', ]
         }
+
+        if not self.request.user.is_superuser:
+            kwargs['exclude'].append('author')
+
+        return kwargs
 
     def get_table_data(self):
         client_slug = self.kwargs.get(self.client_slug_url_kwarg)
-        return Order.objects.filter(
-            client__slug__iexact=client_slug,
-            branch=self.object,
-        )
+        data_filter = {
+            'client__slug__iexact': client_slug,
+            'branch': self.object,
+        }
+
+        if not self.request.user.is_superuser:
+            data_filter['author'] = self.request.user
+
+        return self.action_table_model.objects.filter(**data_filter)
 
 
 class BranchUpdate(BranchGetObjectMixin, ClientContextMixin, UpdateView):

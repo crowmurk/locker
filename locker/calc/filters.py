@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.http.request import QueryDict
 from django.utils.translation import gettext_lazy as _
 
 from django_filters import (
@@ -36,6 +37,16 @@ class OrderFilter(FilterSet):
     class Meta:
         model = Order
         fields = []
+
+    def __init__(self, data=None, *args, **kwargs):
+        user = getattr(kwargs.get('request'), 'user', None)
+        if user and not user.is_superuser:
+            if data is None:
+                data = QueryDict()
+            data = data.copy()
+            data['author'] = user.get_full_name()
+
+        super(OrderFilter, self).__init__(data, *args, **kwargs)
 
     def author_filter(self, queryset, name, value):
         for word in value.split():

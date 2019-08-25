@@ -27,7 +27,11 @@ from .tables import (
     OrderOptionTable,
 )
 from .filters import OrderFilter, ServiceFilter, OrderOptionFilter
-from .utils import OrderCreateClientMixin
+from .utils import (
+    OrderCreateClientMixin,
+    OrderUserTestMixin,
+    OrderOptionUserTestMixin,
+)
 
 
 class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
@@ -75,15 +79,33 @@ class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     action_table_model = Order
     action_table_success_message = _("Orders were deleted successfuly")
 
+    def get_queryset(self):
+        queryset = self.model.objects.all()
+        if self.request.user.is_superuser:
+            return queryset
+        return queryset.filter(author=self.request.user)
+
+    def get_table_kwargs(self):
+        if self.request.user.is_superuser:
+            return {}
+        return {
+            'exclude': ('author', ),
+        }
+
 
 class OrderListPDF(PdfMixin, OrderList):
     template_name = "calc/order_list_pdf.html"
 
     def get_table_kwargs(self):
-        return {
-            'exclude': ('delete', ),
+        kwargs = {
             'order_by': 'id',
+            'exclude': ['delete', ]
         }
+
+        if not self.request.user.is_superuser:
+            kwargs['exclude'].append('author')
+
+        return kwargs
 
 
 class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
@@ -110,7 +132,7 @@ class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class OrderDetail(SingleTableMixin, ActionTableDeleteMixin, DetailView):
+class OrderDetail(OrderUserTestMixin, SingleTableMixin, ActionTableDeleteMixin, DetailView):
     model = Order
     table_class = OrderOptionTable
     form_class = OrderForm
@@ -131,14 +153,14 @@ class OrderDetailPDF(PdfMixin, OrderDetail):
         return {'exclude': ('order', 'delete', ), }
 
 
-class OrderUpdate(SingleFormSetMixin, UpdateView):
+class OrderUpdate(OrderUserTestMixin, SingleFormSetMixin, UpdateView):
     model = Order
     form_class = OrderForm
     formset = OrderOptionFormSet
     success_message = _("Order was changed successfuly")
 
 
-class OrderDelete(DeleteMessageMixin, DeleteView):
+class OrderDelete(OrderUserTestMixin, DeleteMessageMixin, DeleteView):
     model = Order
     success_url = reverse_lazy('calc:order:list')
     success_message = _("Order was deleted successfuly")
@@ -152,23 +174,29 @@ class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     action_table_model = OrderOption
     action_table_success_message = _("Orders' options were deleted successfuly")
 
+    def get_queryset(self):
+        queryset = self.model.objects.all()
+        if self.request.user.is_superuser:
+            return queryset
+        return queryset.filter(order__author=self.request.user)
+
 
 class OrderOptionCreate(CreateView):
     model = OrderOption
     form_class = OrderOptionForm
 
 
-class OrderOptionDetail(DetailView):
+class OrderOptionDetail(OrderOptionUserTestMixin, DetailView):
     model = OrderOption
     form_class = OrderOptionForm
 
 
-class OrderOptionUpdate(UpdateView):
+class OrderOptionUpdate(OrderOptionUserTestMixin, UpdateView):
     model = OrderOption
     form_class = OrderOptionForm
 
 
-class OrderOptionDelete(DeleteMessageMixin, DeleteView):
+class OrderOptionDelete(OrderOptionUserTestMixin, DeleteMessageMixin, DeleteView):
     model = OrderOption
     success_url = reverse_lazy('calc:orderoption:list')
     success_message = _("Order's option was deleted successfuly")

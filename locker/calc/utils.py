@@ -1,10 +1,5 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.core.paginator import (
-    Paginator,
-    EmptyPage,
-    PageNotAnInteger,
-)
 
 from client.models import Client, Branch
 
@@ -76,3 +71,25 @@ class OrderCreateClientMixin:
 
         initial.update(self.initial)
         return initial
+
+
+class OrderUserTestMixin(UserPassesTestMixin):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        order = get_object_or_404(
+            self.model,
+            pk=self.kwargs.get('pk'),
+        )
+        return self.request.user == order.author
+
+
+class OrderOptionUserTestMixin(UserPassesTestMixin):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        option = get_object_or_404(
+            self.model,
+            pk=self.kwargs.get('pk'),
+        )
+        return self.request.user == option.order.author
