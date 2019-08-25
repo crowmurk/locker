@@ -65,9 +65,8 @@ class Service(models.Model):
         unique_together = (('equipment', 'work'),)
 
     def __str__(self):
-        return _("{equipment} ({work}): Price: {price}").format(
+        return _("{equipment} (Price: {price})").format(
             equipment=self.equipment,
-            work=self.work,
             price=self.price,
         )
 
