@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-24 19:29+0300\n"
+"POT-Creation-Date: 2019-08-25 11:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:37 calc/models.py:121
+#: calc/admin.py:37 calc/models.py:120
 msgid "Author"
 msgstr "Автор"
 
@@ -32,32 +32,32 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/filters.py:16 calc/models.py:167 calc/models.py:230 calc/tables.py:9
+#: calc/filters.py:17 calc/models.py:166 calc/models.py:229 calc/tables.py:9
 #: calc/tables.py:107
 msgid "Order"
 msgstr "Заказ"
 
-#: calc/filters.py:20
+#: calc/filters.py:21
 msgid "Created from"
 msgstr "Создан с"
 
-#: calc/filters.py:24 calc/filters.py:32
+#: calc/filters.py:25 calc/filters.py:33
 msgid "MM/DD/YYYY"
 msgstr "ДД.ММ.ГГГГ"
 
-#: calc/filters.py:28
+#: calc/filters.py:29
 msgid "Created to"
 msgstr "Создан по"
 
-#: calc/filters.py:59
+#: calc/filters.py:70
 msgid "Rating from"
 msgstr "Рейтинг от"
 
-#: calc/filters.py:64
+#: calc/filters.py:75
 msgid "Rating to"
 msgstr "Рейтинг до"
 
-#: calc/filters.py:82 calc/models.py:238 calc/tables.py:115
+#: calc/filters.py:93 calc/models.py:237 calc/tables.py:115
 msgid "Option"
 msgstr "Опция"
 
@@ -82,7 +82,7 @@ msgstr "Опция"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:50 calc/models.py:129 calc/tables.py:20 client/filters.py:15
+#: calc/forms.py:50 calc/models.py:128 calc/tables.py:20 client/filters.py:15
 #: client/filters.py:45 client/models.py:49 client/models.py:121
 #: client/tables.py:32
 msgid "Client"
@@ -117,7 +117,7 @@ msgstr "Стоимость работы"
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:58 calc/models.py:262 calc/tables.py:37
+#: calc/models.py:58 calc/models.py:261 calc/tables.py:37
 #: calc/templates/calc/order_detail.html:36
 #: calc/templates/calc/order_detail_pdf.html:33
 msgid "Total price"
@@ -133,56 +133,56 @@ msgstr "Услуги"
 
 #: calc/models.py:68
 #, python-brace-format
-msgid "{equipment} ({work}): Price: {price}"
-msgstr "{equipment} ({work}): Цена: {price}"
+msgid "{equipment} (Price: {price})"
+msgstr "{equipment} (Цена: {price})"
 
-#: calc/models.py:137 calc/tables.py:31 client/filters.py:41
+#: calc/models.py:136 calc/tables.py:31 client/filters.py:41
 #: client/models.py:144
 msgid "Branch"
 msgstr "Объект"
 
-#: calc/models.py:144
+#: calc/models.py:143
 msgid "Options"
 msgstr "Опции"
 
-#: calc/models.py:148
+#: calc/models.py:147
 msgid "Created"
 msgstr "Создан"
 
-#: calc/models.py:152
+#: calc/models.py:151
 msgid "Modified"
 msgstr "Изменен"
 
-#: calc/models.py:161
+#: calc/models.py:160
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:168 templates/base.html:67
+#: calc/models.py:167 templates/base.html:67
 msgid "Orders"
 msgstr "Заказы"
 
-#: calc/models.py:172
+#: calc/models.py:171
 #, python-brace-format
 msgid "{id}: {client} ({branch}, {address}) [{price}]"
 msgstr "{id}: {client} ({branch}, {address}) [{price}]"
 
-#: calc/models.py:247
+#: calc/models.py:246
 msgid "Option price"
 msgstr "Цена опции"
 
-#: calc/models.py:253
+#: calc/models.py:252
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:268
+#: calc/models.py:267
 msgid "Order option"
 msgstr "Опция заказа"
 
-#: calc/models.py:269
+#: calc/models.py:268
 msgid "Orders options"
 msgstr "Опции заказов"
 
-#: calc/models.py:273
+#: calc/models.py:272
 #, python-brace-format
 msgid ""
 "Order: {order} Option: {service} Quantity: {quantity} Total price: {price}"
@@ -258,35 +258,35 @@ msgstr "нет"
 msgid "Filter options:"
 msgstr "Настройки фильтра:"
 
-#: calc/views.py:39
+#: calc/views.py:44
 msgid "Services were deleted successfuly"
 msgstr "Услуги были успешно удалены"
 
-#: calc/views.py:67
+#: calc/views.py:72
 msgid "Service was deleted successfuly"
 msgstr "Услуга была успешно удалена"
 
-#: calc/views.py:76 client/views.py:46 client/views.py:136
+#: calc/views.py:82 client/views.py:47 client/views.py:146
 msgid "Orders were deleted successfuly"
 msgstr "Заказы были успешно удалены"
 
-#: calc/views.py:118
+#: calc/views.py:144
 msgid "Order's options were deleted successfuly"
 msgstr "Опции заказа были успешно удалены"
 
-#: calc/views.py:138
+#: calc/views.py:164
 msgid "Order was changed successfuly"
 msgstr "Заказ был успешно изменен"
 
-#: calc/views.py:144
+#: calc/views.py:170
 msgid "Order was deleted successfuly"
 msgstr "Заказ был успешно удален"
 
-#: calc/views.py:153
+#: calc/views.py:180
 msgid "Orders' options were deleted successfuly"
 msgstr "Опции заказов были успешно удалены"
 
-#: calc/views.py:174
+#: calc/views.py:207
 msgid "Order's option was deleted successfuly"
 msgstr "Опция заказа была успешно удалена"
 
@@ -335,19 +335,19 @@ msgstr "Объекты"
 msgid "Number of branches"
 msgstr "Количество объектов"
 
-#: client/views.py:31
+#: client/views.py:32
 msgid "Clients were deleted successfuly"
 msgstr "Клиенты были успешно удалены"
 
-#: client/views.py:51 client/views.py:86 client/views.py:100
+#: client/views.py:52 client/views.py:95 client/views.py:109
 msgid "Branches were deleted successfuly"
 msgstr "Объекты были успешно удалены"
 
-#: client/views.py:72
+#: client/views.py:80
 msgid "Client was deleted successfuly"
 msgstr "Клиент был успешно удален"
 
-#: client/views.py:163
+#: client/views.py:183
 msgid "Branch was deleted successfuly"
 msgstr "Объект был успешно удален"
 
