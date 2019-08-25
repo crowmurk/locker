@@ -37,6 +37,7 @@ from .utils import (
 class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Service
     table_class = ServiceTable
+    table_pagination = False
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
     action_table_model = Service
@@ -74,6 +75,7 @@ class ServiceDelete(DeleteMessageMixin, DeleteView):
 class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Order
     table_class = OrderTable
+    table_pagination = False
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
     action_table_model = Order
@@ -111,6 +113,7 @@ class OrderListPDF(PdfMixin, OrderList):
 class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
     model = Order
     table_class = OrderCreateServiceTable
+    table_pagination = False
     form_class = OrderForm
 
     def get_table_data(self):
@@ -135,6 +138,7 @@ class OrderCreate(OrderCreateClientMixin, SingleTableMixin, CreateView):
 class OrderDetail(OrderUserTestMixin, SingleTableMixin, ActionTableDeleteMixin, DetailView):
     model = Order
     table_class = OrderOptionTable
+    table_pagination = False
     form_class = OrderForm
     action_table_model = OrderOption
     action_table_success_message = _("Order's options were deleted successfuly")
@@ -169,6 +173,7 @@ class OrderDelete(OrderUserTestMixin, DeleteMessageMixin, DeleteView):
 class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = OrderOption
     table_class = OrderOptionTable
+    table_pagination = False
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'
     action_table_model = OrderOption

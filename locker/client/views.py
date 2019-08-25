@@ -25,6 +25,7 @@ from .utils import ClientContextMixin, BranchGetObjectMixin
 class ClientList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     model = Client
     table_class = ClientTable
+    table_pagination = False
     filterset_class = ClientFilter
     template_name = 'client/client_list.html'
     action_table_model = Client
@@ -86,6 +87,7 @@ class BranchList(
 ):
     model = Branch
     table_class = BranchTable
+    table_pagination = False
     filterset_class = BranchFilter
     template_name = 'client/branch_list.html'
     action_table_model = Branch
@@ -139,6 +141,7 @@ class BranchDetail(
     model = Branch
     form_class = BranchForm
     table_class = OrderTable
+    table_pagination = False
     action_table_model = Order
     action_table_success_message = _("Orders were deleted successfuly")
 
