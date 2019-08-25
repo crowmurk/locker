@@ -225,7 +225,7 @@ class OrderOption(models.Model):
         Order,
         null=False,
         blank=False,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='options',
         verbose_name=_('Order'),
     )
