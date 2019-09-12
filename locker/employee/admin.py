@@ -22,25 +22,27 @@ class UserAdmin(BaseUserAdmin):
         'first_name',
         'get_middle_name',
         'is_superuser',
+        'is_staff',
         'is_active',
         'last_login',
     )
     list_filter = (
         'is_superuser',
+        'is_staff',
         'is_active',
     )
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('last_name', 'first_name', 'email')}),
-        (_('Permissions'), {'fields': ('is_active', 'is_superuser')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_superuser', 'is_staff')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
 
     add_fieldsets = (
         (None, {'classes': ('wide',), 'fields': ('username', 'password1', 'password2')}),
         (_('Personal info'), {'fields': ('last_name', 'first_name', 'email')}),
-        (_('Permissions'), {'fields': ('is_active', 'is_superuser')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_superuser', 'is_staff')}),
     )
 
     readonly_fields = ('last_login', 'date_joined')
