@@ -15,7 +15,7 @@
 
 {% block calc_button %}
     {% if request.user.is_superuser %}
-        <a href="{% url 'calc:service:create' %}" class="button button-primary">{% trans "Create" %}</a>
+        <a href="{% url 'calc:service:create' %}" class="button button-primary">{% trans "Add" %}</a>
     {% endif %}
 {% endblock %}
 

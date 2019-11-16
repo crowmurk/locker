@@ -9,7 +9,7 @@
     {% if service %}
         - {% trans "Edit" %}
     {% else %}
-        - {% trans "Create" %}
+        - {% trans "Add" %}
     {% endif %}
     {{ view.model|verbose_name|lower }}
 {% endblock %}
@@ -19,7 +19,7 @@
         {% trans "Edit" as action_verbose %}
         {% form service.get_update_url action_verbose %}
     {% else %}
-        {% trans "Create" as action_verbose %}
+        {% trans "Add" as action_verbose %}
         {% url 'calc:service:create' as form_url %}
         {% form form_url action_verbose %}
     {% endif %}
