@@ -14,7 +14,7 @@ from django.forms import DateInput
 
 
 class OrderFilter(FilterSet):
-    id = NumberFilter(label=_('Order'))
+    id = NumberFilter(label=_('Estimate'))
     author = CharFilter(method='author_filter')
     client = CharFilter(method='client_filter')
     created__gte = DateFilter(
@@ -90,7 +90,7 @@ class ServiceFilter(FilterSet):
 class OrderOptionFilter(FilterSet):
     order = NumberFilter()
     equipment = CharFilter(
-        label=_('Option'),
+        label=_('Equipment'),
         field_name='service__equipment',
         lookup_expr='icontains',
     )

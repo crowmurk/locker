@@ -12,7 +12,7 @@ branch = [
     path('<int:pk>/', views.BranchDetail.as_view(), name='detail'),
     path('<int:pk>/update/', views.BranchUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.BranchDelete.as_view(), name='delete'),
-    path('<int:branch_pk>/order/create/', OrderCreate.as_view(), name='order_create'),
+    path('<int:branch_pk>/estimate/create/', OrderCreate.as_view(), name='order_create'),
 ]
 
 urlpatterns = [
@@ -22,6 +22,6 @@ urlpatterns = [
     path('<slug:slug>/', views.ClientDetail.as_view(), name='detail'),
     path('<slug:slug>/update/', views.ClientUpdate.as_view(), name='update'),
     path('<slug:slug>/delete/', views.ClientDelete.as_view(), name='delete'),
-    path('<slug:client_slug>/order/create/', OrderCreate.as_view(), name='order_create'),
+    path('<slug:client_slug>/estimate/create/', OrderCreate.as_view(), name='order_create'),
     path('<slug:client_slug>/branch/', include((branch, 'branch'))),
 ]

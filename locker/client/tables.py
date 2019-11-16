@@ -11,7 +11,7 @@ class ClientTable(tables.Table):
         verbose_name=_("Number of branches"),
     )
     number_of_orders = tables.Column(
-        verbose_name=_("Number of orders"),
+        verbose_name=_("Number of estimates"),
     )
     delete = tables.CheckBoxColumn(accessor="pk")
 
@@ -32,7 +32,7 @@ class BranchTable(tables.Table):
         verbose_name=_("Client"),
     )
     number_of_orders = tables.Column(
-        verbose_name=_("Number of orders"),
+        verbose_name=_("Number of estimates"),
     )
     delete = tables.CheckBoxColumn(accessor="pk")
 

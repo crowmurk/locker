@@ -41,7 +41,7 @@ class ServiceList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = ServiceFilter
     template_name = 'calc/service_list.html'
     action_table_model = Service
-    action_table_success_message = _("Services were deleted successfuly")
+    action_table_success_message = _("Equipment was deleted successfuly")
 
     def get_table_kwargs(self):
         if not self.request.user.is_superuser:
@@ -69,7 +69,7 @@ class ServiceUpdate(UpdateView):
 class ServiceDelete(DeleteMessageMixin, DeleteView):
     model = Service
     success_url = reverse_lazy('calc:service:list')
-    success_message = _("Service was deleted successfuly")
+    success_message = _("Equipment was deleted successfuly")
 
 
 class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
@@ -79,7 +79,7 @@ class OrderList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = OrderFilter
     template_name = 'calc/order_list.html'
     action_table_model = Order
-    action_table_success_message = _("Orders were deleted successfuly")
+    action_table_success_message = _("Estimates were deleted successfuly")
 
     def get_queryset(self):
         queryset = self.model.objects.all()
@@ -141,7 +141,7 @@ class OrderDetail(OrderUserTestMixin, SingleTableMixin, ActionTableDeleteMixin, 
     table_pagination = False
     form_class = OrderForm
     action_table_model = OrderOption
-    action_table_success_message = _("Order's options were deleted successfuly")
+    action_table_success_message = _("Estimate's equipment was deleted successfuly")
 
     def get_table_data(self):
         return self.object.get_options()
@@ -161,13 +161,13 @@ class OrderUpdate(OrderUserTestMixin, SingleFormSetMixin, UpdateView):
     model = Order
     form_class = OrderForm
     formset = OrderOptionFormSet
-    success_message = _("Order was changed successfuly")
+    success_message = _("Estimate was changed successfuly")
 
 
 class OrderDelete(OrderUserTestMixin, DeleteMessageMixin, DeleteView):
     model = Order
     success_url = reverse_lazy('calc:order:list')
-    success_message = _("Order was deleted successfuly")
+    success_message = _("Estimate was deleted successfuly")
 
 
 class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
@@ -177,7 +177,7 @@ class OrderOptionList(SingleTableMixin, ActionTableDeleteMixin, FilterView):
     filterset_class = OrderOptionFilter
     template_name = 'calc/orderoption_list.html'
     action_table_model = OrderOption
-    action_table_success_message = _("Orders' options were deleted successfuly")
+    action_table_success_message = _("Estimates' equipment was deleted successfuly")
 
     def get_queryset(self):
         queryset = self.model.objects.all()
@@ -204,4 +204,4 @@ class OrderOptionUpdate(OrderOptionUserTestMixin, UpdateView):
 class OrderOptionDelete(OrderOptionUserTestMixin, DeleteMessageMixin, DeleteView):
     model = OrderOption
     success_url = reverse_lazy('calc:orderoption:list')
-    success_message = _("Order's option was deleted successfuly")
+    success_message = _("Estimate's equipment was deleted successfuly")

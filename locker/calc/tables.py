@@ -6,7 +6,7 @@ from .models import Order, Service, OrderOption
 
 
 class OrderTable(tables.Table):
-    id = tables.LinkColumn(verbose_name=_('Order'))
+    id = tables.LinkColumn(verbose_name=_('Estimate'))
     author = tables.Column(
         accessor='author.get_full_name',
         order_by=('author.first_name', 'author.last_name', ),
@@ -104,7 +104,7 @@ class OrderOptionTable(tables.Table):
             {'pk': tables.A('order.pk'), },
         ),
         accessor='order.pk',
-        verbose_name=_('Order'),
+        verbose_name=_('Estimate'),
     )
     service = tables.Column(
         linkify=(
@@ -112,7 +112,7 @@ class OrderOptionTable(tables.Table):
             {'pk': tables.A('service.pk'), },
         ),
         accessor='service.equipment',
-        verbose_name=_('Option'),
+        verbose_name=_('Equipment'),
     )
     delete = tables.CheckBoxColumn(accessor="pk")
 

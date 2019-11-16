@@ -44,7 +44,7 @@ class ClientDetail(MultiTableMixin, ActionTableDeleteMixin, DetailView):
         {
             'model': Order,
             'button': 'action-table-button',
-            'success_message': _("Orders were deleted successfuly"),
+            'success_message': _("Estimates were deleted successfuly"),
         },
         {
             'model': Branch,
@@ -143,7 +143,7 @@ class BranchDetail(
     table_class = OrderTable
     table_pagination = False
     action_table_model = Order
-    action_table_success_message = _("Orders were deleted successfuly")
+    action_table_success_message = _("Estimates were deleted successfuly")
 
     def get_table_kwargs(self):
         kwargs = {

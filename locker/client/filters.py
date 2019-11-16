@@ -16,12 +16,12 @@ class ClientFilter(FilterSet):
         method='client_filter',
     )
     number_of_orders__gte = NumberFilter(
-        label=_('Orders from'),
+        label=_('Estimates from'),
         field_name='number_of_orders',
         lookup_expr='gte',
     )
     number_of_orders__lte = NumberFilter(
-        label=_('Orders to'),
+        label=_('Estimates to'),
         field_name='number_of_orders',
         lookup_expr='lte',
     )
@@ -47,12 +47,12 @@ class BranchFilter(FilterSet):
         lookup_expr='icontains',
     )
     number_of_orders__gte = NumberFilter(
-        label=_('Orders from'),
+        label=_('Estimates from'),
         field_name='number_of_orders',
         lookup_expr='gte',
     )
     number_of_orders__lte = NumberFilter(
-        label=_('Orders to'),
+        label=_('Estimates to'),
         field_name='number_of_orders',
         lookup_expr='lte',
     )

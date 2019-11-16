@@ -59,8 +59,8 @@ class Service(models.Model):
     )
 
     class Meta:
-        verbose_name = _('Service')
-        verbose_name_plural = _('Services')
+        verbose_name = _('Equipment')
+        verbose_name_plural = _('Equipment')
         ordering = ['equipment', 'work']
         unique_together = (('equipment', 'work'),)
 
@@ -140,7 +140,7 @@ class Order(models.Model):
         related_name='orders',
         through='OrderOption',
         through_fields=('order', 'service'),
-        verbose_name=_('Options'),
+        verbose_name=_('Equipment'),
     )
     created = models.DateField(
         auto_now_add=True,
@@ -163,8 +163,8 @@ class Order(models.Model):
     objects = OrderManager()
 
     class Meta:
-        verbose_name = _('Order')
-        verbose_name_plural = _('Orders')
+        verbose_name = _('Estimate')
+        verbose_name_plural = _('Estimates')
         ordering = ['author', 'client']
 
     def __str__(self):
@@ -226,7 +226,7 @@ class OrderOption(models.Model):
         blank=False,
         on_delete=models.CASCADE,
         related_name='options',
-        verbose_name=_('Order'),
+        verbose_name=_('Estimate'),
     )
     service = models.ForeignKey(
         Service,
@@ -234,7 +234,7 @@ class OrderOption(models.Model):
         blank=False,
         on_delete=models.PROTECT,
         related_name='options',
-        verbose_name=_('Option'),
+        verbose_name=_('Equipment'),
     )
     service_price = models.DecimalField(
         null=False,
@@ -243,7 +243,7 @@ class OrderOption(models.Model):
         decimal_places=2,
         editable=False,
         default=0,
-        verbose_name=_('Option price'),
+        verbose_name=_('Equipment price'),
     )
     quantity = models.PositiveIntegerField(
         null=False,
@@ -264,12 +264,12 @@ class OrderOption(models.Model):
     objects = OrderOptionManager()
 
     class Meta:
-        verbose_name = _('Order option')
-        verbose_name_plural = _('Orders options')
+        verbose_name = _('Estimate equipment')
+        verbose_name_plural = _('Estimates equipment')
         unique_together = (('order', 'service'),)
 
     def __str__(self):
-        return _("Order: {order} Option: {service}"
+        return _("Estimate: {order} Equipment: {service}"
                  " Quantity: {quantity} Total price: {price}").format(
                      order=self.order.pk,
                      service=self.service.equipment,

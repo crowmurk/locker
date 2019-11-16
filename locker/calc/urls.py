@@ -8,10 +8,10 @@ app_name = 'calc'
 
 order = [
     path('', views.OrderList.as_view(), name='list'),
-    path('orders.pdf', views.OrderListPDF.as_view(), name='list_pdf'),
+    path('estimates.pdf', views.OrderListPDF.as_view(), name='list_pdf'),
     path('create/', views.OrderCreate.as_view(), name='create'),
     path('<int:pk>/', views.OrderDetail.as_view(), name='detail'),
-    path('<int:pk>/order.pdf', views.OrderDetailPDF.as_view(), name='detail_pdf'),
+    path('<int:pk>/estimate.pdf', views.OrderDetailPDF.as_view(), name='detail_pdf'),
     path('<int:pk>/update/', views.OrderUpdate.as_view(), name='update'),
     path('<int:pk>/delete/', views.OrderDelete.as_view(), name='delete'),
 ]
@@ -39,7 +39,7 @@ orderoption = [
 ]
 
 urlpatterns = [
-    path('order/', include((order, 'order'))),
-    path('service/', include((service, 'service'))),
-    path('orderoption/', include((orderoption, 'orderoption'))),
+    path('estimate/', include((order, 'order'))),
+    path('equipment/', include((service, 'service'))),
+    path('estimateequipment/', include((orderoption, 'orderoption'))),
 ]

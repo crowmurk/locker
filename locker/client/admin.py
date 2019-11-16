@@ -28,7 +28,7 @@ class ClientAdmin(ImportExportModelAdmin):
     def get_number_of_orders(self, instance):
         return instance.number_of_orders
 
-    get_number_of_orders.short_description = _('Number of orders')
+    get_number_of_orders.short_description = _('Number of estimates')
 
 
 admin.site.register(Client, ClientAdmin)
