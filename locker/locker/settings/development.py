@@ -107,12 +107,12 @@ LOGGING = {
 # Сообщения отображаются в консоли
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Поле 'From' если не указано
-DEFAULT_FROM_EMAIL = 'no-reply@loker.local'
+DEFAULT_FROM_EMAIL = 'no-reply@psmontag.local'
 # Поле 'From' если отправлено ADMINS и MANAGERS
-SERVER_EMAIL = 'contact@loker.local'
+SERVER_EMAIL = 'contact@psmontag.local'
 # Префикс темы сообщения
-EMAIL_SUBJECT_PREFIX = '[Loker calculator] '
+EMAIL_SUBJECT_PREFIX = '[Industry-Spectrum calculator] '
 # Поле 'To' если отправлено MANAGERS
-MANAGERS = (('Us', 'ourselves@loker.local'),)
+MANAGERS = (('Us', 'ourselves@psmontag.local'),)
 # Поле 'To' если отправлено ADMINS
-ADMINS = (('Admin', 'admin@loker.local'),)
+ADMINS = (('Admin', 'admin@psmontag.local'),)

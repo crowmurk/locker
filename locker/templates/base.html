@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <title>
             {% block title %}
-                Loker calculator
+                Пром-Спектр
             {% endblock %}
         </title>
         <link rel="icon" href="{% static 'site/images/favicon.ico' %}" type="image/x-icon">
@@ -38,10 +38,10 @@
                 </div>
                 <div class="row">
                     <div class="u-pull-left">
-                        <h1><a class="logo" href="/">Loker</a></h1>
+                        <h1><a class="logo" href="/">Spectrum</a></h1>
                     </div>
-                    <div class="offset-by-two five columns">
-                        <h1>Loker calculator</h1>
+                    <div class="offset-by-one five columns">
+                        <h1>Пром-Спектр</h1>
                     </div>
                     <div class="u-pull-right">
                         <form action="{% url 'set_language' %}" method="post">
@@ -97,7 +97,7 @@
         <footer>
             {% block footer %}
             {% endblock %}
-            <p>&copy; {% now "Y" %} <a href="https://loker35.ru/">Loker</a></p>
+            <p>&copy; {% now "Y" %} <a href="https://psmontag.ru/">ООО ПКФ "ПРОМ-СПЕКТР”</a></p>
         </footer>
         <script type="text/javascript" src="{% static 'site/js/jquery-ui.min.js' %}" defer></script>
         <script type="text/javascript" src="{% static 'site/js/select2.min.js' %}" defer></script>
