@@ -39,8 +39,7 @@ class Client(models.Model):
     details = models.TextField(
         null=False,
         blank=False,
-        verbose_name=_('Details'),
-        help_text=_('Details regarding the client'),
+        verbose_name=_('Information'),
     )
 
     objects = ClientManager()
