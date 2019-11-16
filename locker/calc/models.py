@@ -33,7 +33,7 @@ class Service(models.Model):
         null=False,
         blank=False,
         max_length=250,
-        verbose_name=_('Work'),
+        verbose_name=_('Work type'),
     )
     work_price = models.DecimalField(
         null=False,
