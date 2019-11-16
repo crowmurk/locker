@@ -121,7 +121,8 @@ class OrderOptionTable(tables.Table):
         sequence = (
             'order',
             'service',
-            'service_price',
+            'equipment_price',
+            'work_price',
             'quantity',
             'price',
         )

@@ -236,7 +236,7 @@ class OrderOption(models.Model):
         related_name='options',
         verbose_name=_('Equipment'),
     )
-    service_price = models.DecimalField(
+    equipment_price = models.DecimalField(
         null=False,
         blank=False,
         max_digits=9,
@@ -244,6 +244,15 @@ class OrderOption(models.Model):
         editable=False,
         default=0,
         verbose_name=_('Equipment price'),
+    )
+    work_price = models.DecimalField(
+        null=False,
+        blank=False,
+        max_digits=9,
+        decimal_places=2,
+        editable=False,
+        default=0,
+        verbose_name=_('Work price'),
     )
     quantity = models.PositiveIntegerField(
         null=False,
@@ -278,8 +287,9 @@ class OrderOption(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        self.service_price = self.service.equipment_price + self.service.work_price * Decimal(self.order.factor)
-        self.price = self.service_price * self.quantity
+        self.equipment_price = self.service.equipment_price
+        self.work_price = self.service.work_price * Decimal(self.order.factor)
+        self.price = (self.equipment_price + self.work_price) * self.quantity
         self.price.quantize(Decimal('0.01'))
         super().save(*args, **kwargs)
 
