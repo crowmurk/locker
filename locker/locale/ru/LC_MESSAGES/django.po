@@ -102,7 +102,7 @@ msgstr "Цена оборудования"
 
 #: calc/models.py:36
 msgid "Work type"
-msgstr "Тип работы"
+msgstr "Вид работы"
 
 #: calc/models.py:43 calc/models.py:255
 msgid "Work price"
