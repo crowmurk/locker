@@ -33,8 +33,10 @@
                     <dd>({{ order.branch.settlement }}, {{ order.branch.address }})</dd>
                     <dt><strong>{% field_verbose_name order 'factor' %}:</strong></dt>
                     <dd>{{ order.factor }}</a></dd>
-                    <dt><strong>{% trans "Total price" %}:</strong></dt>
-                    <dd>{{ order.price }}</dd>
+                    <dt><strong>{% trans "Prices" %}:</strong></dt>
+                    <dd><strong>{% trans "Equipment" %}:</strong> {{ order.equipment_price }}</dd>
+                    <dd><strong>{% trans "Work" %}:</strong> {{ order.work_price }}</dd>
+                    <dd><strong>{% trans "Total" %}:</strong> {{ order.price }}</dd>
                 </dl>
             </div>
             <div class="five columns">

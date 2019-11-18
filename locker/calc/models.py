@@ -184,6 +184,22 @@ class Order(models.Model):
     def price(self, value):
         pass
 
+    @property
+    def work_price(self):
+        return sum([item.work_price * item.quantity for item in self.get_options()])
+
+    @work_price.setter
+    def work_price(self, value):
+        pass
+
+    @property
+    def equipment_price(self):
+        return sum([item.equipment_price * item.quantity for item in self.get_options()])
+
+    @equipment_price.setter
+    def equipment_price(self, value):
+        pass
+
     def get_options(self):
         return self.options.all()
 
