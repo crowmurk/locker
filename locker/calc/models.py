@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 
 from django.db import models
 from django.db.models import Sum
@@ -288,9 +288,9 @@ class OrderOption(models.Model):
 
     def save(self, *args, **kwargs):
         self.equipment_price = self.service.equipment_price
-        self.work_price = self.service.work_price * Decimal(self.order.factor)
+        work_price = self.service.work_price * Decimal(self.order.factor)
+        self.work_price = work_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         self.price = (self.equipment_price + self.work_price) * self.quantity
-        self.price.quantize(Decimal('0.01'))
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
