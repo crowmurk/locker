@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-16 21:54+0300\n"
+"POT-Creation-Date: 2019-11-18 16:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/filters.py:17 calc/models.py:166 calc/models.py:229 calc/tables.py:9
+#: calc/filters.py:17 calc/models.py:166 calc/models.py:245 calc/tables.py:9
 #: calc/tables.py:107
 msgid "Estimate"
 msgstr "Смета"
@@ -58,8 +58,8 @@ msgid "Rating to"
 msgstr "Рейтинг до"
 
 #: calc/filters.py:93 calc/models.py:23 calc/models.py:62 calc/models.py:63
-#: calc/models.py:143 calc/models.py:237 calc/tables.py:115
-#: templates/base.html:70
+#: calc/models.py:143 calc/models.py:253 calc/tables.py:115
+#: calc/templates/calc/order_detail.html:37 templates/base.html:70
 msgid "Equipment"
 msgstr "Оборудование"
 
@@ -96,7 +96,8 @@ msgstr "Объект %(branch)s (%(address)s) не принадлежит кли
 msgid "Request object required"
 msgstr "Требуется объект request"
 
-#: calc/models.py:30 calc/models.py:246
+#: calc/models.py:30 calc/models.py:262
+#: calc/templates/calc/order_detail_pdf.html:33
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
@@ -104,7 +105,8 @@ msgstr "Цена оборудования"
 msgid "Work type"
 msgstr "Вид работы"
 
-#: calc/models.py:43 calc/models.py:255
+#: calc/models.py:43 calc/models.py:271
+#: calc/templates/calc/order_detail_pdf.html:34
 msgid "Work price"
 msgstr "Стоимость работы"
 
@@ -112,9 +114,8 @@ msgstr "Стоимость работы"
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:58 calc/models.py:270 calc/tables.py:37
-#: calc/templates/calc/order_detail.html:36
-#: calc/templates/calc/order_detail_pdf.html:33
+#: calc/models.py:58 calc/models.py:286 calc/tables.py:37
+#: calc/templates/calc/order_detail_pdf.html:35
 msgid "Total price"
 msgstr "Итоговая цена"
 
@@ -149,19 +150,19 @@ msgstr "Сметы"
 msgid "{id}: {client} ({branch}, {address}) [{price}]"
 msgstr "{id}: {client} ({branch}, {address}) [{price}]"
 
-#: calc/models.py:261
+#: calc/models.py:277
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:276
+#: calc/models.py:292
 msgid "Estimate equipment"
 msgstr "Оборудование сметы"
 
-#: calc/models.py:277
+#: calc/models.py:293
 msgid "Estimates equipment"
 msgstr "Оборудование смет"
 
-#: calc/models.py:281
+#: calc/models.py:297
 #, python-brace-format
 msgid ""
 "Estimate: {order} Equipment: {service} Quantity: {quantity} Total price: "
@@ -182,7 +183,7 @@ msgstr "Записи не найдены или отсутствуют"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:18
-#: calc/templates/calc/order_detail.html:51
+#: calc/templates/calc/order_detail.html:53
 #: calc/templates/calc/order_list.html:26
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:15
@@ -225,6 +226,18 @@ msgstr "PDF"
 #: client/templates/client/client_form.html:19
 msgid "Edit"
 msgstr "Изменить"
+
+#: calc/templates/calc/order_detail.html:36
+msgid "Prices"
+msgstr "Цены"
+
+#: calc/templates/calc/order_detail.html:38
+msgid "Work"
+msgstr "Работа"
+
+#: calc/templates/calc/order_detail.html:39
+msgid "Total"
+msgstr "Итого"
 
 #: calc/templates/calc/order_detail_pdf.html:21
 #: calc/templates/calc/order_list_pdf.html:21
