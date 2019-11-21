@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-18 16:51+0300\n"
+"POT-Creation-Date: 2019-11-21 18:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgid "Create"
 msgstr "Создать"
 
 #: calc/forms.py:50 calc/models.py:128 calc/tables.py:20 client/filters.py:15
-#: client/filters.py:45 client/models.py:48 client/models.py:120
+#: client/filters.py:45 client/models.py:49 client/models.py:121
 #: client/tables.py:32
 msgid "Client"
 msgstr "Клиент"
@@ -125,7 +125,7 @@ msgid "{equipment} (Price: {price})"
 msgstr "{equipment} (Цена: {price})"
 
 #: calc/models.py:136 calc/tables.py:31 client/filters.py:41
-#: client/models.py:143
+#: client/models.py:144
 msgid "Branch"
 msgstr "Объект"
 
@@ -171,7 +171,7 @@ msgstr ""
 "Смета: {order} Оборудование: {service} Количество: {quantity} Итоговая цена: "
 "{price}"
 
-#: calc/tables.py:35 client/models.py:137
+#: calc/tables.py:35 client/models.py:138
 msgid "Address"
 msgstr "Адрес"
 
@@ -287,7 +287,7 @@ msgstr "Оборудование смет было успешно удалено
 msgid "Number of estimates"
 msgstr "Количество смет"
 
-#: client/apps.py:7 client/models.py:49
+#: client/apps.py:7 client/models.py:50
 #: client/templates/client/branch_list.html:16 templates/base.html:68
 msgid "Clients"
 msgstr "Клиенты"
@@ -300,23 +300,28 @@ msgstr "Сметы от"
 msgid "Estimates to"
 msgstr "Сметы до"
 
-#: client/models.py:26 client/models.py:126
+#: client/models.py:27
+msgctxt "Client name"
 msgid "Name"
-msgstr "Название"
+msgstr "Наименование клиента"
 
-#: client/models.py:37
+#: client/models.py:38
 msgid "A label for URL config."
 msgstr "URL идентификатор объекта"
 
-#: client/models.py:42
+#: client/models.py:43
 msgid "Information"
 msgstr "Информация"
 
-#: client/models.py:132
+#: client/models.py:127
+msgid "Name"
+msgstr "Название"
+
+#: client/models.py:133
 msgid "Settlement"
 msgstr "Населенный пункт"
 
-#: client/models.py:144 templates/base.html:69
+#: client/models.py:145 templates/base.html:69
 msgid "Branches"
 msgstr "Объекты"
 

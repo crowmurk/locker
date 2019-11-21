@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import pgettext_lazy
 from django.core.validators import validate_unicode_slug
 
 from core.validators import validate_slug
@@ -23,7 +24,7 @@ class Client(models.Model):
     name = models.CharField(
         max_length=120,
         unique=True,
-        verbose_name=_('Name'),
+        verbose_name=pgettext_lazy('Client name', 'Name'),
     )
     slug = models.SlugField(
         max_length=120,
