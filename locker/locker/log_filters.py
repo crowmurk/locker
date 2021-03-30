@@ -1,13 +1,16 @@
 from logging import Filter
 
 class ManagementFilter(Filter):
+    """Добавляет фильтр для лога.
+    """
     def filter(self, record):
-        """Фильтрует вывод лога
+        """Фильтрует вывод в лог.
         """
         if hasattr(record, 'funcName') and record.funcName in [
                 'execute',
                 'tick',
                 'watch_dir',
+                'debug_sql',
         ]:
             return False
         return True
