@@ -10,7 +10,6 @@ from django.views.generic import (
 
 from django_tables2 import SingleTableMixin
 from django_filters.views import FilterView
-from django_xhtml2pdf.views import PdfMixin
 
 from core.views import (
     ActionTableDeleteMixin,
@@ -31,6 +30,7 @@ from .utils import (
     OrderCreateClientMixin,
     OrderUserTestMixin,
     OrderOptionUserTestMixin,
+    PdfMixin
 )
 
 

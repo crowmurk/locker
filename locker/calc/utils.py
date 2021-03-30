@@ -1,5 +1,13 @@
+import os
+
+from xhtml2pdf import pisa
+
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.staticfiles import finders
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.template.loader import get_template
+from django.utils.html import escape
 
 from client.models import Client, Branch
 
@@ -93,3 +101,41 @@ class OrderOptionUserTestMixin(UserPassesTestMixin):
             pk=self.kwargs.get('pk'),
         )
         return self.request.user == option.order.author
+
+class PdfMixin:
+    def link_callback(self, uri, rel):
+        """ Convert HTML URIs to absolute system paths so
+        xhtml2pdf can access those resources"""
+
+        result = finders.find(uri)
+
+        if result:
+            path = result
+        else:
+            path = os.path.join(rel, uri)
+
+        if not os.path.isfile(path):
+            raise FileNotFoundError(
+                'Invalid media URI path: {}'.format(path)
+            )
+
+        return path
+
+    def render_to_response(self, context, **response_kwargs):
+        template = get_template(self.template_name)
+        html = template.render(context, request=self.request)
+
+        response = HttpResponse(content_type='application/pdf')
+
+        pdf = pisa.CreatePDF(
+            html,
+            dest=response,
+            link_callback=self.link_callback,
+        )
+
+        if pdf.err:
+            return HttpResponse(
+                'PDF convert error: <pre>{}</pre>'.format(escape(pdf.err)),
+            )
+
+        return response
