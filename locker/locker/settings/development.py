@@ -98,7 +98,7 @@ LOGGING = {
             ],
             'level': 'INFO',
             'propagate': False,
-        }
+        },
     },
 }
 
