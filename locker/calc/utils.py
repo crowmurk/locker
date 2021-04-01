@@ -2,6 +2,7 @@ import os
 
 from xhtml2pdf import pisa
 
+from django.conf import settings
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.staticfiles import finders
 from django.http import HttpResponse
@@ -112,7 +113,7 @@ class PdfMixin:
         if result:
             path = result
         else:
-            path = os.path.join(rel, uri)
+            path = os.path.join(settings.BASE_DIR, uri)
 
         if not os.path.isfile(path):
             raise FileNotFoundError(
