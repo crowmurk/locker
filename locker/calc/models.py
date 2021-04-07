@@ -1,4 +1,5 @@
 from decimal import Decimal, ROUND_HALF_UP
+from datetime import timedelta
 
 from django.db import models
 from django.db.models import Sum
@@ -41,6 +42,13 @@ class Service(models.Model):
         max_digits=9,
         decimal_places=2,
         verbose_name=_('Work price'),
+    )
+    work_duration = models.DurationField(
+        null=False,
+        blank=False,
+        default=timedelta(minutes=0),
+        verbose_name=_('Work duration'),
+        help_text=_('Duration time format [HH:]MM'),
     )
     rating = models.PositiveSmallIntegerField(
         null=False,
@@ -102,12 +110,22 @@ class OrderManager(models.Manager):
                 sum=Coalesce(Sum('price'), 0)
             ).values('sum'),
         )
+        work_duration = Subquery(
+            OrderOption.objects.filter(
+                order=OuterRef('pk'),
+            ).values('order').order_by('order').annotate(
+                sum=Sum('work_duration')
+            ).values('sum'),
+        )
 
         return super().get_queryset().select_related(
             'author', 'client', 'branch',
         ).prefetch_related(
             'options',
-        ).annotate(price=Coalesce(price, 0))
+        ).annotate(
+            price=Coalesce(price, 0),
+            work_duration=work_duration,
+        )
 
 
 class Order(models.Model):
@@ -193,6 +211,17 @@ class Order(models.Model):
         pass
 
     @property
+    def work_duration(self):
+        return sum(
+            [item.work_duration for item in self.get_options()],
+            timedelta(minutes=0),
+        )
+
+    @work_duration.setter
+    def work_duration(self, value):
+        pass
+
+    @property
     def equipment_price(self):
         return sum([item.equipment_price * item.quantity for item in self.get_options()])
 
@@ -270,6 +299,14 @@ class OrderOption(models.Model):
         default=0,
         verbose_name=_('Work price'),
     )
+    work_duration = models.DurationField(
+        null=False,
+        blank=False,
+        editable=False,
+        default=timedelta(minutes=0),
+        verbose_name=_('Work duration'),
+        help_text=_('Duration time format [HH:]MM'),
+    )
     quantity = models.PositiveIntegerField(
         null=False,
         blank=False,
@@ -307,6 +344,7 @@ class OrderOption(models.Model):
         work_price = self.service.work_price * Decimal(self.order.factor)
         self.work_price = work_price.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         self.price = (self.equipment_price + self.work_price) * self.quantity
+        self.work_duration = self.service.work_duration * self.quantity
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

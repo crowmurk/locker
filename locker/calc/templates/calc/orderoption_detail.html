@@ -1,6 +1,7 @@
 {% extends "calc/base_calc.html" %}
 {% load i18n %}
 {% load names %}
+{% load prettyfy %}
 
 {% block title %}
     {{ block.super }} – {{ orderoption|verbose_name }} {{ orderoption.order.pk }}: {{ orderoption.service.equipment }}
@@ -25,10 +26,10 @@
                     <dd>{{ orderoption.order.pk }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'service' %}:</strong></dt>
                     <dd>{{ orderoption.service.equipment }}</dd>
-                    <dt><strong>{% field_verbose_name orderoption 'service_price' %}:</strong></dt>
-                    <dd>{{ orderoption.service_price }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'quantity' %}:</strong></dt>
                     <dd>{{ orderoption.quantity }}</dd>
+                    <dt><strong>{% field_verbose_name orderoption 'work_duration' %}:</strong></dt>
+                    <dd>{{ orderoption.work_duration|duration }}</dd>
                     <dt><strong>{% field_verbose_name orderoption 'price' %}:</strong></dt>
                     <dd>{{ orderoption.price }}</dd>
                 </dl>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-21 18:30+0300\n"
+"POT-Creation-Date: 2021-04-06 17:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Price"
 msgstr "Цена"
 
-#: calc/admin.py:37 calc/models.py:120
+#: calc/admin.py:37 calc/models.py:138
 msgid "Author"
 msgstr "Автор"
 
@@ -32,8 +32,8 @@ msgstr "Автор"
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: calc/filters.py:17 calc/models.py:166 calc/models.py:245 calc/tables.py:9
-#: calc/tables.py:107
+#: calc/filters.py:17 calc/models.py:184 calc/models.py:274 calc/tables.py:23
+#: calc/tables.py:123
 msgid "Estimate"
 msgstr "Смета"
 
@@ -57,13 +57,27 @@ msgstr "Рейтинг от"
 msgid "Rating to"
 msgstr "Рейтинг до"
 
-#: calc/filters.py:93 calc/models.py:23 calc/models.py:62 calc/models.py:63
-#: calc/models.py:143 calc/models.py:253 calc/tables.py:115
-#: calc/templates/calc/order_detail.html:37 templates/base.html:70
+#: calc/filters.py:93 calc/models.py:24 calc/models.py:70 calc/models.py:71
+#: calc/models.py:161 calc/models.py:282 calc/tables.py:131
+#: calc/templates/calc/order_detail.html:40 templates/base.html:70
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/forms.py:36 calc/templates/calc/order_form.html:12
+#: calc/forms.py:54
+#, python-format
+msgid "Invalid value: %(value)s"
+msgstr "Неверное занчение: %(value)s"
+
+#: calc/forms.py:62 calc/models.py:50 calc/models.py:307
+#: calc/templates/calc/order_detail.html:37
+msgid "Work duration"
+msgstr "Продолжительность работ"
+
+#: calc/forms.py:63 calc/models.py:51 calc/models.py:308
+msgid "Duration time format [HH:]MM"
+msgstr "Формат продолжительности [ЧЧ:]ММ"
+
+#: calc/forms.py:87 calc/templates/calc/order_form.html:12
 #: calc/templates/calc/order_form.html:28
 #: calc/templates/calc/order_list.html:18
 #: calc/templates/calc/orderoption_form.html:12
@@ -81,88 +95,88 @@ msgstr "Оборудование"
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:50 calc/models.py:128 calc/tables.py:20 client/filters.py:15
+#: calc/forms.py:101 calc/models.py:146 calc/tables.py:34 client/filters.py:15
 #: client/filters.py:45 client/models.py:49 client/models.py:121
 #: client/tables.py:32
 msgid "Client"
 msgstr "Клиент"
 
-#: calc/forms.py:71
+#: calc/forms.py:122
 #, python-format
 msgid "%(client)s client does not own %(branch)s (%(address)s) branch"
 msgstr "Объект %(branch)s (%(address)s) не принадлежит клиенту %(client)s"
 
-#: calc/forms.py:95
+#: calc/forms.py:146
 msgid "Request object required"
 msgstr "Требуется объект request"
 
-#: calc/models.py:30 calc/models.py:262
-#: calc/templates/calc/order_detail_pdf.html:33
+#: calc/models.py:31 calc/models.py:291
+#: calc/templates/calc/order_detail_pdf.html:28
 msgid "Equipment price"
 msgstr "Цена оборудования"
 
-#: calc/models.py:36
+#: calc/models.py:37
 msgid "Work type"
 msgstr "Вид работы"
 
-#: calc/models.py:43 calc/models.py:271
-#: calc/templates/calc/order_detail_pdf.html:34
+#: calc/models.py:44 calc/models.py:300
+#: calc/templates/calc/order_detail_pdf.html:29
 msgid "Work price"
 msgstr "Стоимость работы"
 
-#: calc/models.py:49
+#: calc/models.py:57
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: calc/models.py:58 calc/models.py:286 calc/tables.py:37
-#: calc/templates/calc/order_detail_pdf.html:35
+#: calc/models.py:66 calc/models.py:323 calc/tables.py:51
+#: calc/templates/calc/order_detail_pdf.html:30
 msgid "Total price"
 msgstr "Итоговая цена"
 
-#: calc/models.py:68
+#: calc/models.py:76
 #, python-brace-format
 msgid "{equipment} (Price: {price})"
 msgstr "{equipment} (Цена: {price})"
 
-#: calc/models.py:136 calc/tables.py:31 client/filters.py:41
+#: calc/models.py:154 calc/tables.py:45 client/filters.py:41
 #: client/models.py:144
 msgid "Branch"
 msgstr "Объект"
 
-#: calc/models.py:147
+#: calc/models.py:165
 msgid "Created"
 msgstr "Создана"
 
-#: calc/models.py:151
+#: calc/models.py:169
 msgid "Modified"
 msgstr "Изменена"
 
-#: calc/models.py:160
+#: calc/models.py:178
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:167 templates/base.html:67
+#: calc/models.py:185 templates/base.html:67
 msgid "Estimates"
 msgstr "Сметы"
 
-#: calc/models.py:171
+#: calc/models.py:189
 #, python-brace-format
 msgid "{id}: {client} ({branch}, {address}) [{price}]"
 msgstr "{id}: {client} ({branch}, {address}) [{price}]"
 
-#: calc/models.py:277
+#: calc/models.py:314
 msgid "Quantity"
 msgstr "Количество"
 
-#: calc/models.py:292
+#: calc/models.py:329
 msgid "Estimate equipment"
 msgstr "Оборудование сметы"
 
-#: calc/models.py:293
+#: calc/models.py:330
 msgid "Estimates equipment"
 msgstr "Оборудование смет"
 
-#: calc/models.py:297
+#: calc/models.py:334
 #, python-brace-format
 msgid ""
 "Estimate: {order} Equipment: {service} Quantity: {quantity} Total price: "
@@ -171,25 +185,25 @@ msgstr ""
 "Смета: {order} Оборудование: {service} Количество: {quantity} Итоговая цена: "
 "{price}"
 
-#: calc/tables.py:35 client/models.py:138
+#: calc/tables.py:49 client/models.py:138
 msgid "Address"
 msgstr "Адрес"
 
-#: calc/tables.py:53 calc/tables.py:79 calc/tables.py:97 calc/tables.py:130
+#: calc/tables.py:67 calc/tables.py:94 calc/tables.py:113 calc/tables.py:146
 #: client/tables.py:21 client/tables.py:49
 #: core/templates/core/includes/formset_table.html:74
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
 #: calc/templates/calc/order_confirm_delete.html:7
-#: calc/templates/calc/order_detail.html:18
-#: calc/templates/calc/order_detail.html:53
+#: calc/templates/calc/order_detail.html:19
+#: calc/templates/calc/order_detail.html:56
 #: calc/templates/calc/order_list.html:26
 #: calc/templates/calc/orderoption_confirm_delete.html:7
-#: calc/templates/calc/orderoption_detail.html:15
+#: calc/templates/calc/orderoption_detail.html:16
 #: calc/templates/calc/orderoption_list.html:25
 #: calc/templates/calc/service_confirm_delete.html:7
-#: calc/templates/calc/service_detail.html:16
+#: calc/templates/calc/service_detail.html:17
 #: calc/templates/calc/service_list.html:28
 #: client/templates/client/branch_confirm_delete.html:7
 #: client/templates/client/branch_detail.html:16
@@ -204,18 +218,18 @@ msgstr "Записи не найдены или отсутствуют"
 msgid "Delete"
 msgstr "Удалить"
 
-#: calc/templates/calc/order_detail.html:16
+#: calc/templates/calc/order_detail.html:17
 #: calc/templates/calc/order_list.html:17
 msgid "PDF"
 msgstr "PDF"
 
-#: calc/templates/calc/order_detail.html:17
+#: calc/templates/calc/order_detail.html:18
 #: calc/templates/calc/order_form.html:10
 #: calc/templates/calc/order_form.html:25
-#: calc/templates/calc/orderoption_detail.html:14
+#: calc/templates/calc/orderoption_detail.html:15
 #: calc/templates/calc/orderoption_form.html:10
 #: calc/templates/calc/orderoption_form.html:26
-#: calc/templates/calc/service_detail.html:15
+#: calc/templates/calc/service_detail.html:16
 #: calc/templates/calc/service_form.html:10
 #: calc/templates/calc/service_form.html:19
 #: client/templates/client/branch_detail.html:15
@@ -227,28 +241,28 @@ msgstr "PDF"
 msgid "Edit"
 msgstr "Изменить"
 
-#: calc/templates/calc/order_detail.html:36
+#: calc/templates/calc/order_detail.html:39
 msgid "Prices"
 msgstr "Цены"
 
-#: calc/templates/calc/order_detail.html:38
+#: calc/templates/calc/order_detail.html:41
 msgid "Work"
 msgstr "Работа"
 
-#: calc/templates/calc/order_detail.html:39
+#: calc/templates/calc/order_detail.html:42
 msgid "Total"
 msgstr "Итого"
 
-#: calc/templates/calc/order_detail_pdf.html:21
-#: calc/templates/calc/order_list_pdf.html:21
+#: calc/templates/calc/order_detail_pdf.html:14
+#: calc/templates/calc/order_list_pdf.html:14
 msgid "Document created"
 msgstr "Документ создан"
 
-#: calc/templates/calc/order_list_pdf.html:27
+#: calc/templates/calc/order_list_pdf.html:22
 msgid "no"
 msgstr "нет"
 
-#: calc/templates/calc/order_list_pdf.html:28
+#: calc/templates/calc/order_list_pdf.html:23
 msgid "Filter options:"
 msgstr "Настройки фильтра:"
 

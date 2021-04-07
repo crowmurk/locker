@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
+{% load prettyfy %}
 {% load forms %}
 
 {% block title %}
@@ -33,6 +34,8 @@
                     <dd>({{ order.branch.settlement }}, {{ order.branch.address }})</dd>
                     <dt><strong>{% field_verbose_name order 'factor' %}:</strong></dt>
                     <dd>{{ order.factor }}</a></dd>
+                    <dt><strong>{% trans "Work duration" %}:</strong></dt>
+                    <dd>{{ order.work_duration|duration }}</dd>
                     <dt><strong>{% trans "Prices" %}:</strong></dt>
                     <dd><strong>{% trans "Equipment" %}:</strong> {{ order.equipment_price }}</dd>
                     <dd><strong>{% trans "Work" %}:</strong> {{ order.work_price }}</dd>

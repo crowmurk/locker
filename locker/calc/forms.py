@@ -1,17 +1,68 @@
+import datetime
+import re
+
 from django import forms
 from django.contrib.auth import get_user
+from django.core.exceptions import ValidationError
+from django.forms import inlineformset_factory
+from django.forms import widgets
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from django.forms import widgets
 from django.utils.translation import gettext_lazy as _
-from django.forms import inlineformset_factory
 
 from client.models import Client
 
 from .models import Order, Service, OrderOption
 
 
+class CustomDurationField(forms.DurationField):
+    def prepare_value(self, value):
+        """Removing the milliseconds and
+        seconds of the duration field"""
+
+        if isinstance(value, datetime.timedelta):
+            seconds = int(value.total_seconds())
+            hours = seconds // 3600
+            minutes = (seconds % 3600) // 60
+
+            return '{:d}:{:02d}'.format(hours, minutes)
+
+    def to_python(self, value):
+        regex = re.compile(r'^((?P<hours>\d+?):)?'
+                           r'(?P<minutes>\d+?)$')
+
+        if value is None or isinstance(value, datetime.timedelta):
+            return value
+
+        try:
+            parts = regex.match(value)
+            if parts:
+                kwargs = {
+                    item: int(value) for item, value in parts.groupdict().items()
+                    if value is not None
+                }
+                parsed = datetime.timedelta(**kwargs)
+            else:
+                parsed = None
+        except ValueError:
+            parsed = None
+
+        if parsed is not None:
+            return parsed
+
+        raise ValidationError(
+            _('Invalid value: %(value)s'),
+            code='invalid',
+            params={'value': value},
+        )
+
+
 class ServiceForm(forms.ModelForm):
+    work_duration = CustomDurationField(
+        label=_('Work duration'),
+        help_text=_('Duration time format [HH:]MM'),
+    )
+
     class Meta:
         model = Service
         fields = '__all__'

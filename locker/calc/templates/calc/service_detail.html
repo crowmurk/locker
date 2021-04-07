@@ -1,6 +1,7 @@
 {% extends "calc/base_calc.html" %}
 {% load i18n %}
 {% load names %}
+{% load prettyfy %}
 
 {% block title %}
     {{ block.super }} – {{ service|verbose_name }}: {{ service.equipment }}
@@ -31,6 +32,8 @@
                     <dd>{{ service.work }}</dd>
                     <dt><strong>{% field_verbose_name service 'work_price' %}:</strong></dt>
                     <dd>{{ service.work_price }}</dd>
+                    <dt><strong>{% field_verbose_name service 'work_duration' %}:</strong></dt>
+                    <dd>{{ service.work_duration|duration }}</dd>
                     <dt><strong>{% field_verbose_name service 'rating' %}:</strong></dt>
                     <dd>{{ service.rating }}</dd>
                     <dt><strong>{% field_verbose_name service 'price' %}:</strong></dt>
