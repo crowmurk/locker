@@ -8,21 +8,20 @@
 {% endblock %}
 
 {% block calc_header %}
-    <h5>{{ service|verbose_name }}</h5>
+    <h2>{{ service|verbose_name }}</h2>
 {% endblock %}
 
 {% block calc_button %}
     {% if request.user.is_superuser %}
-        <a href="{{ service.get_update_url }}" class="button">{% trans "Edit" %}</a>
-        <a href="{{ service.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+        <a href="{{ service.get_update_url }}" class="btn btn-outline-primary">{% trans "Edit" %}</a>
+        <a href="{{ service.get_delete_url }}" class="btn btn-outline-secondary">{% trans "Delete" %}</a>
     {% endif %}
 {% endblock %}
 
 {% block calc_content %}
     <article>
         <div class="row">
-            <div class="one column"></div>
-            <div class="ten columns">
+            <div class="col-5">
                 <dl>
                     <dt><strong>{% field_verbose_name service 'equipment' %}:</strong></dt>
                     <dd>{{ service.equipment }}</dd>

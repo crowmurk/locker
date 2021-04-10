@@ -10,20 +10,19 @@
 {% endblock %}
 
 {% block calc_header %}
-    <h5>{{ order|verbose_name }}: {{ order.pk }}</h5>
+    <h2>{{ order|verbose_name }}: {{ order.pk }}</h2>
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{{ order.get_pdf_url }}" class="button button-primary">{% trans "PDF" %}</a>
-    <a href="{{ order.get_update_url }}" class="button">{% trans "Edit" %}</a>
-    <a href="{{ order.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+    <a href="{{ order.get_pdf_url }}" class="btn btn-outline-secondary">{% trans "PDF" %}</a>
+    <a href="{{ order.get_update_url }}" class="btn btn-outline-primary">{% trans "Edit" %}</a>
+    <a href="{{ order.get_delete_url }}" class="btn btn-outline-secondary">{% trans "Delete" %}</a>
 {% endblock %}
 
 {% block calc_content %}
     <article>
         <div class="row">
-            <div class="one column"></div>
-            <div class="five columns">
+            <div class="col-5">
                 <dl>
                     <dt><strong>{% field_verbose_name order 'author' %}:</strong></dt>
                     <dd>{{ order.author.get_full_name }}</dd>
@@ -42,7 +41,7 @@
                     <dd><strong>{% trans "Total" %}:</strong> {{ order.price }}</dd>
                 </dl>
             </div>
-            <div class="five columns">
+            <div class="col-5">
                 <dl>
                     <dt><strong>{% field_verbose_name order 'created' %}:</strong></dt>
                     <dd>{{ order.created }}</dd>
@@ -51,10 +50,10 @@
                 </dl>
             </div>
         </div>
-        <h5>{% field_verbose_name order 'services' %}</h5>
+        <h2>{% field_verbose_name order 'services' %}</h2>
         {% if table %}
             {% trans "Delete" as action_verbose %}
-            {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+            {% action_table_form table button_class='btn btn-outline-secondary' action_verbose=action_verbose %}
         {% endif %}
     </article>
 {% endblock %}

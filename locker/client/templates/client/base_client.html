@@ -1,16 +1,16 @@
-{% extends "base.html" %}
+{% extends "site/base.html" %}
 {% load i18n %}
 
 {% block content %}
-    <div class="row">
-        <section class="seven columns">
+    <div class="row justify-content-between">
+        <div class="col">
             {% block client_header %}
             {% endblock %}
-        </section>
-        <section class="u-pull-right">
+        </div>
+        <div class="col-auto">
             {% block client_button %}
             {% endblock %}
-        </section>
+        </div>
     </div>
     {% block client_content %}
     {% endblock %}

@@ -14,21 +14,24 @@
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{% url 'calc:order:list_pdf' %}?{{ request.GET.urlencode }}" class="button">{% trans "PDF" %}</a>
-    <a href="{% url 'calc:order:create' %}" class="button button-primary">{% trans "Create" %}</a>
+    <a href="{% url 'calc:order:list_pdf' %}?{{ request.GET.urlencode }}" class="btn btn-outline-secondary">{% trans "PDF" %}</a>
+    {% if filter %}
+        <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filters">{% trans 'Filters' %}</button>
+    {% endif %}
+    <a href="{% url 'calc:order:create' %}" class="btn btn-outline-primary">{% trans "Create" %}</a>
 {% endblock %}
 
 {% block calc_content %}
     {% if filter %}
-        {% filter_table_form filter %}
+        {% filter_form filter %}
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}
-        {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+        {% action_table_form table button_class='btn btn-outline-secondary' action_verbose=action_verbose %}
     {% endif %}
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="{% static 'site/js/datepicker-ru.js' %}" defer></script>
-    <script type="text/javascript" src="{% static 'site/js/calc-order_list.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/jquery-ui/datepicker-ru.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/calc/order_list.js' %}" defer></script>
 {% endblock %}

@@ -8,19 +8,18 @@
 {% endblock %}
 
 {% block calc_header %}
-    <h5>{{ orderoption|verbose_name }}</h5>
+    <h2>{{ orderoption|verbose_name }}</h2>
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{{ orderoption.get_update_url }}" class="button">{% trans "Edit" %}</a>
-    <a href="{{ orderoption.get_delete_url }}" class="button">{% trans "Delete" %}</a>
+    <a href="{{ orderoption.get_update_url }}" class="btn btn-outline-primary">{% trans "Edit" %}</a>
+    <a href="{{ orderoption.get_delete_url }}" class="btn btn-outline-secondary">{% trans "Delete" %}</a>
 {% endblock %}
 
 {% block calc_content %}
     <article>
         <div class="row">
-            <div class="one column"></div>
-            <div class="ten columns">
+            <div class="col-5">
                 <dl>
                     <dt><strong>{% field_verbose_name orderoption 'order' %}:</strong></dt>
                     <dd>{{ orderoption.order.pk }}</dd>

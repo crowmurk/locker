@@ -14,19 +14,22 @@
 {% endblock %}
 
 {% block calc_button %}
-    <a href="{% url 'calc:orderoption:create' %}" class="button button-primary">{% trans "Create" %}</a>
+    {% if filter %}
+        <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filters">{% trans 'Filters' %}</button>
+    {% endif %}
+    <a href="{% url 'calc:orderoption:create' %}" class="btn btn-outline-primary">{% trans "Create" %}</a>
 {% endblock %}
 
 {% block calc_content %}
     {% if filter %}
-        {% filter_table_form filter %}
+        {% filter_form filter %}
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}
-        {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+        {% action_table_form table button_class='btn btn-outline-secondary' action_verbose=action_verbose %}
     {% endif %}
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="{% static 'site/js/calc-orderoption_list.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/calc/orderoption_list.js' %}" defer></script>
 {% endblock %}

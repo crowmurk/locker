@@ -9,28 +9,31 @@
     {{ block.super }} - {{ view.model|verbose_name_plural }}
 {% endblock %}
 
-{% block client_button %}
-    {% if client.slug %}
-        <a href="{% url 'client:branch:create' client_slug=client.slug %}" class="button button-primary">{% trans "Create" %}</a>
-    {% else %}
-        <a href="{% url 'client:list' %}" class="button">{% trans "Clients" %}</a>
-    {% endif %}
-{% endblock %}
-
 {% block client_header %}
     <h2>{{ view.model|verbose_name_plural }}</h2>
 {% endblock %}
 
+{% block client_button %}
+    {% if filter %}
+        <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filters">{% trans 'Filters' %}</button>
+    {% endif %}
+    {% if client.slug %}
+        <a href="{% url 'client:branch:create' client_slug=client.slug %}" class="btn btn-outline-primary">{% trans "Create" %}</a>
+    {% else %}
+        <a href="{% url 'client:list' %}" class="btn btn-outline-primary">{% trans "Clients" %}</a>
+    {% endif %}
+{% endblock %}
+
 {% block client_content %}
     {% if filter %}
-        {% filter_table_form filter %}
+        {% filter_form filter %}
     {% endif %}
     {% if table %}
         {% trans "Delete" as action_verbose %}
-        {% action_table_form table button_class='button button-primary' button_name='branch-table-button' button_value='branch-table-column-item' action_verbose=action_verbose %}
+        {% action_table_form table button_class='btn btn-outline-secondary' button_name='branch-table-button' button_value='branch-table-column-item' action_verbose=action_verbose %}
     {% endif %}
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="{% static 'site/js/client-branch_list.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/client/branch_list.js' %}" defer></script>
 {% endblock %}

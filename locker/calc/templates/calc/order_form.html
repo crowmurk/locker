@@ -16,7 +16,7 @@
 
 {% block head %}
     {% if not order %}
-        <link rel="stylesheet" type="text/css" href="{% static 'site/css/datatables.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/datatables/datatables.min.css' %}">
     {% endif %}
 {% endblock %}
 
@@ -28,12 +28,12 @@
         {% trans "Create" as action_verbose %}
         {% url 'calc:order:create' as form_url %}
         {% form form_url action_verbose %}
-        <script type="text/javascript" src="{% static 'site/js/datatables.min.js' %}" defer></script>
-        <script type="text/javascript" src="{% static 'site/js/core-jquery-action-table.js' %}" defer></script>
-        <script type="text/javascript" src="{% static 'site/js/calc-order_form_create.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'site/datatables/datatables.min.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'site/js/core/jquery-action-table.js' %}" defer></script>
+        <script type="text/javascript" src="{% static 'site/js/calc/order_form_create.js' %}" defer></script>
     {% endif %}
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="{% static 'site/js/calc-order_form.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/calc/order_form.js' %}" defer></script>
 {% endblock %}

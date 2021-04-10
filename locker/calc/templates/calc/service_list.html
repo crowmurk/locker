@@ -14,19 +14,22 @@
 {% endblock %}
 
 {% block calc_button %}
+    {% if filter %}
+        <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#filters">{% trans 'Filters' %}</button>
+    {% endif %}
     {% if request.user.is_superuser %}
-        <a href="{% url 'calc:service:create' %}" class="button button-primary">{% trans "Add" %}</a>
+        <a href="{% url 'calc:service:create' %}" class="btn btn-outline-primary">{% trans "Add" %}</a>
     {% endif %}
 {% endblock %}
 
 {% block calc_content %}
     {% if filter %}
-        {% filter_table_form filter %}
+        {% filter_form filter %}
     {% endif %}
     {% if table %}
         {% if request.user.is_superuser %}
             {% trans "Delete" as action_verbose %}
-            {% action_table_form table button_class='button button-primary' action_verbose=action_verbose %}
+            {% action_table_form table button_class='btn btn-outline-secondary' action_verbose=action_verbose %}
         {% else %}
             {% action_table_form readonly=True %}
         {% endif %}
@@ -34,5 +37,5 @@
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="{% static 'site/js/calc-service_list.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'site/js/calc/service_list.js' %}" defer></script>
 {% endblock %}
