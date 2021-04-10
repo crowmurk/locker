@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-06 17:09+0300\n"
+"POT-Creation-Date: 2021-04-10 10:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,54 +59,54 @@ msgstr "Рейтинг до"
 
 #: calc/filters.py:93 calc/models.py:24 calc/models.py:70 calc/models.py:71
 #: calc/models.py:161 calc/models.py:282 calc/tables.py:131
-#: calc/templates/calc/order_detail.html:40 templates/base.html:70
+#: calc/templates/calc/order_detail.html:39 templates/site/base.html:42
 msgid "Equipment"
 msgstr "Оборудование"
 
-#: calc/forms.py:54
+#: calc/forms.py:53
 #, python-format
 msgid "Invalid value: %(value)s"
 msgstr "Неверное занчение: %(value)s"
 
-#: calc/forms.py:62 calc/models.py:50 calc/models.py:307
-#: calc/templates/calc/order_detail.html:37
+#: calc/forms.py:61 calc/models.py:50 calc/models.py:307
+#: calc/templates/calc/order_detail.html:36
 msgid "Work duration"
 msgstr "Продолжительность работ"
 
-#: calc/forms.py:63 calc/models.py:51 calc/models.py:308
+#: calc/forms.py:62 calc/models.py:51 calc/models.py:308
 msgid "Duration time format [HH:]MM"
 msgstr "Формат продолжительности [ЧЧ:]ММ"
 
-#: calc/forms.py:87 calc/templates/calc/order_form.html:12
+#: calc/forms.py:80 calc/templates/calc/order_form.html:12
 #: calc/templates/calc/order_form.html:28
-#: calc/templates/calc/order_list.html:18
+#: calc/templates/calc/order_list.html:21
 #: calc/templates/calc/orderoption_form.html:12
 #: calc/templates/calc/orderoption_form.html:29
-#: calc/templates/calc/orderoption_list.html:17
-#: client/templates/client/branch_detail.html:41
+#: calc/templates/calc/orderoption_list.html:20
+#: client/templates/client/branch_detail.html:40
 #: client/templates/client/branch_form.html:12
 #: client/templates/client/branch_form.html:22
-#: client/templates/client/branch_list.html:14
-#: client/templates/client/client_detail.html:42
-#: client/templates/client/client_detail.html:54
+#: client/templates/client/branch_list.html:21
+#: client/templates/client/client_detail.html:41
+#: client/templates/client/client_detail.html:53
 #: client/templates/client/client_form.html:12
 #: client/templates/client/client_form.html:22
-#: client/templates/client/client_list.html:13
+#: client/templates/client/client_list.html:20
 msgid "Create"
 msgstr "Создать"
 
-#: calc/forms.py:101 calc/models.py:146 calc/tables.py:34 client/filters.py:15
+#: calc/forms.py:82 calc/models.py:146 calc/tables.py:34 client/filters.py:15
 #: client/filters.py:45 client/models.py:49 client/models.py:121
 #: client/tables.py:32
 msgid "Client"
 msgstr "Клиент"
 
-#: calc/forms.py:122
+#: calc/forms.py:103
 #, python-format
 msgid "%(client)s client does not own %(branch)s (%(address)s) branch"
 msgstr "Объект %(branch)s (%(address)s) не принадлежит клиенту %(client)s"
 
-#: calc/forms.py:146
+#: calc/forms.py:127
 msgid "Request object required"
 msgstr "Требуется объект request"
 
@@ -155,7 +155,7 @@ msgstr "Изменена"
 msgid "Factor"
 msgstr "Коэффициент"
 
-#: calc/models.py:185 templates/base.html:67
+#: calc/models.py:185 templates/site/base.html:39
 msgid "Estimates"
 msgstr "Сметы"
 
@@ -191,30 +191,30 @@ msgstr "Адрес"
 
 #: calc/tables.py:67 calc/tables.py:94 calc/tables.py:113 calc/tables.py:146
 #: client/tables.py:21 client/tables.py:49
-#: core/templates/core/includes/formset_table.html:74
+#: core/templates/core/includes/formset_table.html:65
 msgid "There are no records available"
 msgstr "Записи не найдены или отсутствуют"
 
 #: calc/templates/calc/order_confirm_delete.html:7
 #: calc/templates/calc/order_detail.html:19
-#: calc/templates/calc/order_detail.html:56
-#: calc/templates/calc/order_list.html:26
+#: calc/templates/calc/order_detail.html:55
+#: calc/templates/calc/order_list.html:29
 #: calc/templates/calc/orderoption_confirm_delete.html:7
 #: calc/templates/calc/orderoption_detail.html:16
-#: calc/templates/calc/orderoption_list.html:25
+#: calc/templates/calc/orderoption_list.html:28
 #: calc/templates/calc/service_confirm_delete.html:7
 #: calc/templates/calc/service_detail.html:17
-#: calc/templates/calc/service_list.html:28
+#: calc/templates/calc/service_list.html:31
 #: client/templates/client/branch_confirm_delete.html:7
 #: client/templates/client/branch_detail.html:16
-#: client/templates/client/branch_detail.html:45
-#: client/templates/client/branch_list.html:29
+#: client/templates/client/branch_detail.html:44
+#: client/templates/client/branch_list.html:32
 #: client/templates/client/client_confirm_delete.html:7
 #: client/templates/client/client_detail.html:17
-#: client/templates/client/client_detail.html:46
-#: client/templates/client/client_detail.html:58
-#: client/templates/client/client_list.html:25
-#: core/templates/core/includes/delete_form.html:8
+#: client/templates/client/client_detail.html:45
+#: client/templates/client/client_detail.html:57
+#: client/templates/client/client_list.html:28
+#: core/templates/core/includes/delete_form.html:12
 msgid "Delete"
 msgstr "Удалить"
 
@@ -241,15 +241,15 @@ msgstr "PDF"
 msgid "Edit"
 msgstr "Изменить"
 
-#: calc/templates/calc/order_detail.html:39
+#: calc/templates/calc/order_detail.html:38
 msgid "Prices"
 msgstr "Цены"
 
-#: calc/templates/calc/order_detail.html:41
+#: calc/templates/calc/order_detail.html:40
 msgid "Work"
 msgstr "Работа"
 
-#: calc/templates/calc/order_detail.html:42
+#: calc/templates/calc/order_detail.html:41
 msgid "Total"
 msgstr "Итого"
 
@@ -257,6 +257,14 @@ msgstr "Итого"
 #: calc/templates/calc/order_list_pdf.html:14
 msgid "Document created"
 msgstr "Документ создан"
+
+#: calc/templates/calc/order_list.html:19
+#: calc/templates/calc/orderoption_list.html:18
+#: calc/templates/calc/service_list.html:18
+#: client/templates/client/branch_list.html:18
+#: client/templates/client/client_list.html:18
+msgid "Filters"
+msgstr "Фильтры"
 
 #: calc/templates/calc/order_list_pdf.html:22
 msgid "no"
@@ -268,8 +276,8 @@ msgstr "Настройки фильтра:"
 
 #: calc/templates/calc/service_form.html:12
 #: calc/templates/calc/service_form.html:22
-#: calc/templates/calc/service_list.html:18
-#: core/templates/core/includes/formset_table.html:154
+#: calc/templates/calc/service_list.html:21 core/forms.py:13
+#: core/templates/core/includes/formset_table.html:135
 msgid "Add"
 msgstr "Добавить"
 
@@ -302,7 +310,7 @@ msgid "Number of estimates"
 msgstr "Количество смет"
 
 #: client/apps.py:7 client/models.py:50
-#: client/templates/client/branch_list.html:16 templates/base.html:68
+#: client/templates/client/branch_list.html:23 templates/site/base.html:40
 msgid "Clients"
 msgstr "Клиенты"
 
@@ -335,7 +343,7 @@ msgstr "Название"
 msgid "Settlement"
 msgstr "Населенный пункт"
 
-#: client/models.py:145 templates/base.html:69
+#: client/models.py:145 templates/site/base.html:41
 msgid "Branches"
 msgstr "Объекты"
 
@@ -359,19 +367,31 @@ msgstr "Клиент был успешно удален"
 msgid "Branch was deleted successfuly"
 msgstr "Объект был успешно удален"
 
-#: core/templates/core/includes/action_table_form.html:22
+#: core/paginators.py:80
+msgid "That page number is not an integer"
+msgstr ""
+
+#: core/paginators.py:83
+msgid "That page number is less than 1"
+msgstr ""
+
+#: core/paginators.py:85
+msgid "That page contains no results"
+msgstr ""
+
+#: core/templates/core/includes/action_table_form.html:34
 msgid "Confirmation required:"
 msgstr "Требуется подтверждение:"
 
-#: core/templates/core/includes/action_table_form.html:24
+#: core/templates/core/includes/action_table_form.html:40
 msgid "Are you sure you want to"
 msgstr "Вы действительно хотите"
 
-#: core/templates/core/includes/action_table_form.html:31
+#: core/templates/core/includes/action_table_form.html:48
 msgid "Yes"
 msgstr "Да"
 
-#: core/templates/core/includes/action_table_form.html:34
+#: core/templates/core/includes/action_table_form.html:50
 msgid "No"
 msgstr "Нет"
 
@@ -379,59 +399,65 @@ msgstr "Нет"
 msgid "Are you sure you want to delete"
 msgstr "Вы действительно хотите удалить"
 
-#: core/templates/core/includes/delete_form.html:10
-#: core/templates/core/includes/form.html:32
+#: core/templates/core/includes/delete_form.html:15
+#: core/templates/core/includes/form.html:38
+#: templates/registration/login.html:56 templates/registration/login.html:58
 msgid "Cancel"
 msgstr "Отмена"
 
-#: core/templates/core/includes/filter_table_form.html:56
+#: core/templates/core/includes/filter_form.html:47
 msgid "Filter"
 msgstr "Фильтр"
 
-#: core/templates/core/includes/formset_table.html:128
-#, python-format
-msgid ""
-"\n"
-"                        Page %(page)s of %(pages)s\n"
-"                    "
-msgstr ""
-"\n"
-"                        Страница %(page)s из %(pages)s\n"
-"                    "
-
-#: core/templates/core/includes/formset_table.html:134
+#: core/templates/core/includes/formset_table.html:109
 msgid "First"
 msgstr "Первая"
 
-#: core/templates/core/includes/formset_table.html:144
+#: core/templates/core/includes/formset_table.html:125
 msgid "Last"
 msgstr "Последняя"
 
-#: core/validators.py:16
-#, python-format
-msgid "An error was founded in %(value)s template: %(message)s"
-msgstr "Шаблон %(value)s содержит ошибку: %(message)s"
+#: core/templates/core/table.html:67
+msgid "Previous"
+msgstr ""
 
-#: core/validators.py:27
+#: core/templates/core/table.html:93
+msgid "Next"
+msgstr ""
+
+#: core/validators.py:14
+msgid "This date should be a Monday."
+msgstr ""
+
+#: core/validators.py:22
+msgid "This date should be a Sunday."
+msgstr ""
+
+#: core/validators.py:30
 #, python-format
 msgid "Slug must not be \"%(slug)s\""
 msgstr "Slug не может быть \"%(slug)s\""
 
-#: core/validators.py:37
+#: core/validators.py:39
 msgid "This value must be grater than zero"
 msgstr "Это значение должно быть больше нуля"
 
-#: core/views.py:63
+#: core/validators.py:51
+#, python-format
+msgid "An error was founded in %(value)s template: %(message)s"
+msgstr "Шаблон %(value)s содержит ошибку: %(message)s"
+
+#: core/views.py:78
 #, python-brace-format
 msgid "{name} were deleted successfuly"
 msgstr "{name} успешно удалены"
 
-#: core/views.py:68 core/views.py:104 core/views.py:180
+#: core/views.py:83 core/views.py:124 core/views.py:203
 #, python-brace-format
 msgid "Cannot delete {name} because of foreign references"
 msgstr "Невозможно удалить {name} при существующих внешних ссылках"
 
-#: core/views.py:96
+#: core/views.py:114
 #, python-brace-format
 msgid "{name} was deleted successfuly"
 msgstr "{name} успешно удален"
@@ -464,115 +490,117 @@ msgstr "Работники"
 msgid "Profiles"
 msgstr "Профили"
 
-#: locker/settings/base.py:125
+#: locker/settings/base.py:127
 msgid "Russian"
 msgstr "Русский"
 
-#: locker/settings/base.py:126
+#: locker/settings/base.py:128
 msgid "English"
 msgstr "Английский"
 
-#: locker/settings/base.py:152
+#: locker/settings/base.py:159
 msgid "Industry-Spectrum administration"
 msgstr "Администрирование Пром-Спектр"
 
-#: locker/settings/base.py:154
+#: locker/settings/base.py:161
 msgid "Industry-Spectrum site admin"
 msgstr "Администрирование сайта Пром-Спектр"
 
-#: locker/settings/base.py:156
+#: locker/settings/base.py:163
 msgid "Site administration"
 msgstr "Администрирование сайта"
 
-#: templates/400.html:5 templates/400.html:11
+#: templates/400.html:5 templates/400.html:9
 msgid "Bad request"
 msgstr "Ошибка в запросе"
 
-#: templates/400.html:13
+#: templates/400.html:12
 msgid ""
 "\n"
-"                    I do not get upset when people do not understand me,\n"
-"                    upset if I do not understand people.\"\n"
-"                "
+"            I do not get upset when people do not understand me,\n"
+"            upset if I do not understand people.\"\n"
+"        "
 msgstr ""
 "\n"
 "                    Я не огорчаюсь, если люди меня не понимают,\n"
 "                    - огорчаюсь, если я не понимаю людей.\"\n"
 "                "
 
-#: templates/403.html:5 templates/403.html:11
+#: templates/403.html:5 templates/403.html:9
 msgid "Forbidden"
 msgstr "Доступ запрещен"
 
-#: templates/403.html:13
+#: templates/403.html:11
 msgid "No things are forbidden, they are just not recommended."
 msgstr "Запретных вещей нет, есть вещи нерекомендованные."
 
-#: templates/404.html:5 templates/404.html:11
+#: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: templates/404.html:13
+#: templates/404.html:12
 msgid ""
 "\n"
-"                    There are all sorts here walking around,\n"
-"                    and then I have a page missing!\n"
-"                "
+"            There are all sorts here walking around,\n"
+"            and then I have a page missing!\n"
+"        "
 msgstr ""
 "\n"
 "                    Ходят тут всякие,\n"
 "                    а потом у меня страницы пропадают!\n"
 "                "
 
-#: templates/500.html:5 templates/500.html:11
+#: templates/500.html:5 templates/500.html:9
 msgid "Internal server error"
 msgstr "Ошибка сервера"
 
-#: templates/500.html:13
+#: templates/500.html:11
 msgid "Do not mistake the one who does nothing."
 msgstr "Никогда не ошибается тот, кто ничего не делает."
 
-#: templates/base.html:32
-msgid "LogOut"
-msgstr "Выйти"
-
-#: templates/base.html:34 templates/registration/login.html:37
-msgid "LogIn"
-msgstr "Войти"
-
-#: templates/registration/logged_out.html:6
+#: templates/registration/logged_out.html:5
+#: templates/registration/logged_out.html:9
 msgid "Logged out!"
 msgstr "Выход выполнен!"
 
-#: templates/registration/logged_out.html:7
+#: templates/registration/logged_out.html:11
 msgid "Click here to login again."
 msgstr "Войти снова."
 
-#: templates/registration/login.html:8
+#: templates/registration/login.html:6 templates/registration/login.html:12
+#: templates/registration/login.html:52 templates/site/base.html:65
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/login.html:21
+msgid "Your account doesn't have access to this page."
+msgstr "Ваш пользователь не имеет доступа к этой странице."
+
+#: templates/registration/login.html:23
+msgid "Please login to see this page."
+msgstr "Пожалуйста войдите чтобы увидеть страницу."
+
+#: templates/registration/login.html:34
 msgid ""
 "\n"
-"                    Your username and password didn't match.\n"
-"                    Please try again.\n"
-"                "
+"                        Your username and password didn't match.\n"
+"                        Please try again.\n"
+"                    "
 msgstr ""
 "\n"
 "                    Имя пользователя и пароль не совпадают.\n"
 "                    Пожалуйста, попробуйте снова.\n"
 "                "
 
-#: templates/registration/login.html:18
-msgid "Your account doesn't have access to this page."
-msgstr "Ваш пользователь не имеет доступа к этой странице."
-
-#: templates/registration/login.html:21
-msgid "Please login to see this page."
-msgstr "Пожалуйста войдите чтобы увидеть страницу."
+#: templates/site/base.html:60
+msgid "Log out"
+msgstr "Выход"
 
 #: templates/site/underconstruction.html:5
-#: templates/site/underconstruction.html:11
+#: templates/site/underconstruction.html:9
 msgid "Under construction"
 msgstr "В разработке"
 
-#: templates/site/underconstruction.html:13
+#: templates/site/underconstruction.html:11
 msgid "Sorry, this section is under construction."
 msgstr "Извините, раздел в разработке."
