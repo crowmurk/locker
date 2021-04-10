@@ -1,14 +1,18 @@
 {% load i18n %}
 
-<div class="row">
-    <div class="offset-by-two eight columns">
-        <form action="{{ action }}" method="{{ method|default:'post' }}">
+<form action="{{ action }}" method="{{ method|default:'post' }}">
+    <div class="row justify-content-center">
+        <div class="col-auto">
             {% csrf_token %}
             <p>{% trans "Are you sure you want to delete" %} {{ object_type|lower }}: "{{ object_name }}"?</p>
-            <button type="submit">{% trans "Delete" %} {{ object_type }}</button>
-            <div class="u-pull-right">
-                <a href="{{ object.get_absolute_url }}" class="button button-primary">{% trans "Cancel" %}</a>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div class="form-group row justify-content-between">
+        <div class="col">
+            <button class="btn btn-outline-secondary" type="submit">{% trans "Delete" %} {{ object_type }}</button>
+        </div>
+        <div class="col-auto">
+            <a href="{{ object.get_absolute_url }}" class="btn btn-outline-primary">{% trans "Cancel" %}</a>
+        </div>
+    </div>
+</form>

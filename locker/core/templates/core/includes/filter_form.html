@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load crispy_forms_field %}
+
+<form action="" method="get" class="collapse border px-3 py-2 my-3 bg-light" id="filters">
+        {% if filter.form.non_field_errors %}
+            <div class="form-row">
+                <div class="col-auto error">
+                    {% for error in filter.form.non_field_errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filter.form.hidden_fields %}
+            <div class="form-row">
+                {% for hidden in filter.form.hidden_fields %}
+                    <div class"col-auto" style="display: none;">
+                        {{ hidden }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="form-row">
+            {% for field in filter.form.visible_fields %}
+                <div class="form-group col-auto">
+                    <strong>{{ field.label_tag }}</strong>
+
+                    {% if field.field.fields %}
+                        <div class="d-flex">
+                            {% crispy_field field %}
+                        </div>
+                    {% else %}
+                        {% crispy_field field %}
+                    {% endif %}
+
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        </div>
+    <input value="{% trans "Filter" %}" type="submit" style="display: none;" />
+</form>

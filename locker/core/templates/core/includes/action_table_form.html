@@ -1,44 +1,61 @@
-{% load static %}
+{% load static%}
 {% load i18n %}
 {% load django_tables2 %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'site/css/datatables.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'site/datatables/datatables.min.css' %}">
 
-<div class="action-table-container">
+<div class="action-table-container py-3">
     {% if readonly %}
         {% render_table table %}
     {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static 'site/css/jquery-ui.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'site/jquery-ui/jquery-ui.min.css' %}">
         <form class="action-table-form" acrion="{{ action|default:'' }}" method="{{ method|default:'post' }}">
             {% csrf_token %}
             {% render_table table %}
-            <button type="{{ button_type|default:'submit' }}"
-                    class="{{ button_class|default:'button' }}"
-                    name="{{ button_name|default:'action-table-button' }}"
-                    value="{{ button_value|default:'action-table-column-item' }}"
-                    disabled>
-                {{ action_verbose|default:'Submit' }}
-            </button>
-            <div class="action-table-confirm-dialog" title="{% trans "Confirmation required:" %}" style="display: none;">
-                <p>
-                    {% trans "Are you sure you want to" %}
-                    {{ action_verbose|default:'Submit'|lower }} {{ object_type|default:'objects'|lower }}?
-                </p>
-                <button type="{{ button_type|default:'submit' }}"
-                        class="button"
-                        name="{{ button_name|default:'action-table-button' }}"
-                        value="{{ button_value|default:'action-table-column-item' }}">
-                    {% trans "Yes" %}
-                </button>
-                <div class="u-pull-right">
-                    <button class="button button-primary">{% trans "No" %}</button>
+            <div class="form-group row justify-content-between pt-3">
+                <div class="col">
+                </div>
+                <div class="col-auto">
+                    <button type="{{ button_type|default:'submit' }}"
+                            class="{{ button_class|default:'button' }}"
+                            name="{{ button_name|default:'action-table-button' }}"
+                            value="{{ button_value|default:'action-table-column-item' }}"
+                            data-toggle="modal"
+                            data-target="#{{ dialog_id|default:'action-table-dialog'}}"
+                            disabled>
+                        {{ action_verbose|default:'Submit' }}
+                    </button>
+                </div>
+            </div>
+            <div class="modal fade" id="{{ dialog_id }}" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="{{ dialog_id }}-title">{% trans "Confirmation required:" %}</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {% trans "Are you sure you want to" %}
+                            {{ action_verbose|default:'Submit'|lower }} {{ object_type|default:'objects'|lower }}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="{{ button_type|default:'submit' }}"
+                                    class="btn btn-outline-secondary"
+                                    name="{{ button_name|default:'action-table-button' }}"
+                                    value="{{ button_value|default:'action-table-column-item' }}">
+                                {% trans "Yes" %}
+                            </button>
+                            <button class="{{ button_class|default:'button' }}" data-dismiss="modal">{% trans "No" %}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
     {% endif %}
 </div>
-
-<script type="text/javascript" src="{% static 'site/js/jquery-ui.min.js' %}" defer></script>
-<script type="text/javascript" src="{% static 'site/js/datatables.min.js' %}" defer></script>
-<script type="text/javascript" src="{% static 'site/js/core-jquery-action-table.js' %}" defer></script>
-<script type="text/javascript" src="{% static 'site/js/core-action-table.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/jquery-ui/jquery-ui.min.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/datatables/datatables.min.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/core/jquery-action-table.js' %}" defer></script>
+<script type="text/javascript" src="{% static 'site/js/core/action-table.js' %}" defer></script>

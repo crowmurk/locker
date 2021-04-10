@@ -1,9 +1,10 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load forms %}
+{% load crispy_forms_tags %}
 
-<div class="row">
-    <div class="offset-by-two eight columns">
+<div class="row align-items-center justify-content-center">
+    <div class="col-auto">
         <h2>{{ action_verbose }}</h2>
         <form
             {% if paginator %}
@@ -11,27 +12,33 @@
             {% else %}
                 action="{{ action }}"
             {% endif %}
-            method="{{ method|default:'post' }}"
+                method="{{ method|default:'post' }}"
             {% if upload %}
                 enctype="multipart/form-data"
             {% endif %}
-                >
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if formset %}
-                {% formset_table formset %}
-            {% endif %}
-            {% if table %}
-                <div class="action-table-container">
-                    {% render_table table %}
+            >
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if formset %}
+                    <div class="form-group">
+                        {% formset_table formset %}
+                    </div>
+                {% endif %}
+                {% if table %}
+                    <div class="form-group">
+                        {% render_table table %}
+                    </div>
+                {% endif %}
+                <div class="form-group row justify-content-between">
+                    <div class="col">
+                        <button class="btn btn-outline-primary" type="submit">{{ action_verbose|default:'Submit' }}</button>
+                    </div>
+                    {% if cancel_url %}
+                        <div class="col-auto">
+                            <a href="{{ cancel_url }}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-            <button class="button-primary" type="submit">{{ action_verbose|default:'Submit' }}</button>
-            {% if cancel_url %}
-                <div class="u-pull-right">
-                    <a href="{{ cancel_url }}" class="button">{% trans "Cancel" %}</a>
-                </div>
-            {% endif %}
         </form>
     </div>
 </div>

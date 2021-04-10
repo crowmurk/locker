@@ -5,11 +5,11 @@ from core.templatetags.names import verbose_name
 register = Library()
 
 @register.inclusion_tag(
-    'core/includes/filter_table_form.html',
+    'core/includes/filter_form.html',
     takes_context=True,
 )
-def filter_table_form(context, *args, **kwargs):
-    """Тег представления filter form как таблицы
+def filter_form(context, *args, **kwargs):
+    """Тег представления filter form как таблицы.
     """
     filter_form = (args[0] if len(args) > 0
                    else kwargs.get('filter'))
@@ -19,7 +19,7 @@ def filter_table_form(context, *args, **kwargs):
 
     if filter_form is None:
         raise TemplateSyntaxError(
-            "filter_table template tag requires "
+            "filter template tag requires "
             "at least one argument: filter.")
 
     return {
@@ -32,7 +32,7 @@ def filter_table_form(context, *args, **kwargs):
     takes_context=True,
 )
 def action_table_form(context, *args, **kwargs):
-    """Тег формы таблицы с выбираемыми строками
+    """Тег формы таблицы с выбираемыми строками.
     """
     request = context.get('request')
 
@@ -68,6 +68,7 @@ def action_table_form(context, *args, **kwargs):
     button_name = kwargs.get('button_name', 'action-table-button')
     button_value = kwargs.get('button_value', 'action-table-column-item')
     action_verbose = kwargs.get('action_verbose', 'Submit')
+    dialog_id = kwargs.get('dialog_id', 'action-table-dialog')
 
     return {
         'request': request,
@@ -79,6 +80,7 @@ def action_table_form(context, *args, **kwargs):
         'button_class': button_class,
         'button_name': button_name,
         'button_value': button_value,
+        'dialog_id': dialog_id,
         'action_verbose': action_verbose,
         'object_type': object_type,
     }
@@ -89,7 +91,7 @@ def action_table_form(context, *args, **kwargs):
     takes_context=True,
 )
 def formset_table(context, *args, **kwargs):
-    """Тег представления formset как таблицы
+    """Тег представления formset как таблицы.
     """
     request = context.get('request')
 
