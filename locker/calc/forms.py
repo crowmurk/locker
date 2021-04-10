@@ -5,10 +5,9 @@ from django import forms
 from django.contrib.auth import get_user
 from django.core.exceptions import ValidationError
 from django.forms import inlineformset_factory
-from django.forms import widgets
-from django.urls import reverse
-from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+
+from core.forms import SelectWidgetCanAdd
 
 from client.models import Client
 
@@ -71,32 +70,14 @@ class ServiceForm(forms.ModelForm):
         return True
 
 
-class RelatedFieldWidgetCanAdd(widgets.Select):
-    """Append add button to Select widget
-    """
-    def __init__(self, related_model, *args, related_url=None, **kwargs):
-        super(RelatedFieldWidgetCanAdd, self).__init__(*args, **kwargs)
-        self.related_url = related_url
-
-    def render(self, name, value, *args, **kwargs):
-        self.related_url = reverse(self.related_url)
-        output = [super(RelatedFieldWidgetCanAdd, self).render(name, value, *args, **kwargs)]
-        output.append(
-            '&nbsp;<a href="{url}" class="button">{name}</a>'.format(
-                url=self.related_url,
-                name=_("Create"),
-            ),
-        )
-        return mark_safe(' '.join(output))
-
-
 class OrderForm(forms.ModelForm):
     client = forms.ModelChoiceField(
         required=True,
         queryset=Client.objects.all(),
-        widget=RelatedFieldWidgetCanAdd(
-            Client,
+        widget=SelectWidgetCanAdd(
             related_url="client:create",
+            link_class="btn btn-outline-primary",
+            link_name=_('Create')
         ),
         label=_('Client'),
     )
