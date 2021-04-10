@@ -107,7 +107,11 @@ class OrderManager(models.Manager):
             OrderOption.objects.filter(
                 order=OuterRef('pk'),
             ).values('order').order_by('order').annotate(
-                sum=Coalesce(Sum('price'), 0)
+                sum=Coalesce(
+                    Sum('price'),
+                    0,
+                    output_field=models.DecimalField(),
+                )
             ).values('sum'),
         )
         work_duration = Subquery(
@@ -123,7 +127,11 @@ class OrderManager(models.Manager):
         ).prefetch_related(
             'options',
         ).annotate(
-            price=Coalesce(price, 0),
+            price=Coalesce(
+                price,
+                0,
+                output_field=models.DecimalField(),
+            ),
             work_duration=work_duration,
         )
 

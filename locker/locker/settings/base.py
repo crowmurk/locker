@@ -65,6 +65,11 @@ MIDDLEWARE = [
     'global_login_required.GlobalLoginRequiredMiddleware',
 ]
 
+# Database
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# URLs
 ROOT_URLCONF = 'locker.urls'
 
 # Template engines
