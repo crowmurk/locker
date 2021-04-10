@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load django_tables2 %}
 {% load names %}
+{% load prettyfy %}
 
 <html>
     <head>
@@ -25,6 +26,7 @@
         <strong>{% field_verbose_name order 'client' %}:</strong> {{ order.client }} </BR>
         <strong>{% field_verbose_name order 'branch' %}:</strong> {{ order.branch.name }} ({{ order.branch.settlement }}, {{ order.branch.address }}) </BR>
         <strong>{% field_verbose_name order 'factor' %}:</strong> {{ order.factor }} </BR>
+        <strong>{% trans "Work duration" %}:</strong> {{ order.work_duration|duration }} </BR>
         <strong>{% trans "Equipment price" %}:</strong> {{ order.equipment_price }} </BR>
         <strong>{% trans "Work price" %}:</strong> {{ order.work_price }} </BR>
         <strong>{% trans "Total price" %}:</strong> {{ order.price }} </BR>
