@@ -37,6 +37,8 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'django_filters',
     'import_export',
+    'crispy_forms',
+    'widget_tweaks',
 ]
 
 LOCAL_APPS = [
@@ -146,6 +148,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Bootstrap 4 support
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 # Admin config
 
