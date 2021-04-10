@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "site/base.html" %}
 {% load i18n %}
 
 {% block title %}
@@ -6,15 +6,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="offset-by-two eight columns">
-            <h1>{% trans "Bad request" %}</h1>
-            <p>
-                {% blocktrans %}
-                    I do not get upset when people do not understand me,
-                    upset if I do not understand people."
-                {% endblocktrans %}
-            </p>
-        </div>
-    </div>
+    <h2>{% trans "Bad request" %}</h2>
+
+    <p>
+        {% blocktrans %}
+            I do not get upset when people do not understand me,
+            upset if I do not understand people."
+        {% endblocktrans %}
+    </p>
 {% endblock %}

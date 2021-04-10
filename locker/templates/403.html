@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "site/base.html" %}
 {% load i18n %}
 
 {% block title %}
@@ -6,12 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="offset-by-two eight columns">
-            <h1>{% trans "Forbidden" %}</h1>
-            <p>
-                {% trans "No things are forbidden, they are just not recommended." %}
-            </p>
-        </div>
-    </div>
+    <h2>{% trans "Forbidden" %}</h2>
+
+    <p>{% trans "No things are forbidden, they are just not recommended." %}</p>
 {% endblock %}

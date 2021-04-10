@@ -1,41 +1,65 @@
-{% extends "base.html" %}
+{% extends "site/base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }} – {% trans "Log in" %}
+{% endblock %}
 
 {% block content %}
-    <div class="offset-by-two eight columns">
-        {% if form.errors %}
-            <p>
-                {% blocktrans %}
-                    Your username and password didn't match.
-                    Please try again.
-                {% endblocktrans %}
-            </p>
-        {% endif %}
-
-        {% if next %}
-            {% if user.is_authenticated %}
-                <p>
-                    {% trans "Your account doesn't have access to this page." %}
-                </p>
-            {% else %}
-                <p>{% trans "Please login to see this page." %}</p>
-            {% endif %}
-        {% endif %}
-
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <div>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </div>
-            <div>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </div>
-            <div>
-                <input type="hidden" name="next" value="{{ next }}" />
-                <button class="button" type="submit">{% trans "LogIn" %}</button>
-            </div>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <h2>{% trans "Log in" %}</h2>
+        </div>
     </div>
+
+    {% if next %}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div class="alert alert-danger" role="alert">
+                    {% if user.is_authenticated %}
+                        {% trans "Your account doesn't have access to this page." %}
+                    {% else %}
+                        {% trans "Please login to see this page." %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if form.errors %}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div class="alert alert-danger" role="alert">
+                    {% blocktrans %}
+                        Your username and password didn't match.
+                        Please try again.
+                    {% endblocktrans %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                {% csrf_token %}
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <div class="form-group row justify-content-between">
+                    <div class="col">
+                        <button class="btn btn-outline-primary" type="submit">{% trans "Log in" %}</button>
+                    </div>
+                    <div class="col-auto">
+                        {% if next %}
+                            <a href="{{ next }}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                        {% else %}
+                            <a href="/" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 {% endblock %}

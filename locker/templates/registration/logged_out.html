@@ -1,9 +1,12 @@
-{% extends "base.html" %}
+{% extends "site/base.html" %}
 {% load i18n %}
 
+{% block title %}
+    {{ block.super }} – {% trans "Logged out!" %}
+{% endblock %}
+
 {% block content %}
-    <div class="offset-by-two eight columns">
-        <p>{% trans "Logged out!" %}</p>
-        <a href="{% url 'login'%}">{% trans "Click here to login again." %}</a>
-    </div>
+    <h2>{% trans "Logged out!" %}</h2>
+
+    <a href="{% url 'login'%}">{% trans "Click here to login again." %}</a>
 {% endblock %}
