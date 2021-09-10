@@ -42,7 +42,7 @@ pytz==2021.1
 PyYAML==5.4.1
 reportlab==3.5.66
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 tablib==3.0.0
 traitlets==5.0.5
 wcwidth==0.2.5
